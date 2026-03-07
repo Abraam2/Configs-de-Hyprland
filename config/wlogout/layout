@@ -1,8 +1,8 @@
 {
-    "label" : "lock",
-    "action" : "~/.config/hypr/scripts/power.sh lock",
-    "text" : "Lock",
-    "keybind" : "l"
+    "label" : "shutdown",
+    "action" : "~/.config/hypr/scripts/power.sh shutdown",
+    "text" : "Power Off",
+    "keybind" : "s"
 }
 {
     "label" : "logout",
@@ -23,8 +23,8 @@
     "keybind" : "r"
 }
 {
-    "label" : "shutdown",
-    "action" : "~/.config/hypr/scripts/power.sh shutdown",
-    "text" : "Power Off",
-    "keybind" : "s"
+    "label" : "lock",
+    "action" : "~/.config/hypr/scripts/power.sh lock",
+    "text" : "Lock",
+    "keybind" : "l"
 }
