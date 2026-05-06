@@ -3,22 +3,22 @@ return {
     "folke/which-key.nvim",
     opts = {
       spec = {
-        -- Verdes (Búsqueda)
-        { "<leader>,", icon = { icon = " ", hl = "String" }, desc = "Search Buffer" },
         { "<leader> ", icon = { icon = " ", hl = "String" }, desc = "Find Files (Root Dir)" },
-        
-        -- Azul Verdoso / Turquesa (Archivos y Exploradores)
-        { "<leader>.", icon = { icon = "󰈔 ", hl = "@tag" }, desc = "Switch to Other Buffer" },
+        { "<leader>.", icon = { icon = "󰈔 ", hl = "DiagnosticHint" }, desc = "Switch to Other Buffer" },
+        { "<leader>,", icon = { icon = "󰈔 ", hl = "DiagnosticHint" }, desc = "Toggle Scratch Buffer" },
         { "<leader>e", icon = { icon = " ", hl = "@tag" }, desc = "Explorer Snacks (root dir)" },
         { "<leader>E", icon = { icon = " ", hl = "@tag" }, desc = "Explorer Snacks (cwd)" },
-        { "<leader>/", icon = { icon = "󰈞 ", hl = "@tag" }, desc = "Grep (Root Dir)" },
-        
-        -- Otros colores
-        { "<leader>n", icon = { icon = "󰂚 ", hl = "Constant" }, desc = "Notification History" }, -- Naranja
-        { "<leader>S", icon = { icon = "󱞁 ", hl = "Statement" }, desc = "Select Scratch Buffer" }, -- Morado
-        { "<leader>:", icon = { icon = " ", hl = "DiagnosticWarn" }, desc = "Command History" }, -- Amarillo
-        { "<leader>K", icon = { icon = " ", hl = "Function" }, desc = "Keywordprg (Manual)" }, -- Azul
+        { "<leader>ñ", icon = { icon = " ", hl = "@tag" }, desc = "Open Oil (Text file explorer)" },
+        { "<leader>/", icon = { icon = "󰈞 ", hl = "DiagnosticHint" }, desc = "Grep (Root Dir)" },
+        { "<leader>n", icon = { icon = "󰂚 ", hl = "Constant" }, desc = "Notification History" },
+        { "<leader>:", icon = { icon = " ", hl = "DiagnosticWarn" }, desc = "Command History" },
+        { "<leader>r", icon = { icon = "󰐊", hl = "Keyword" }, desc = "Run Code" },
+        { "<leader>j", icon = { icon = "", hl = "DiagnosticError" }, desc = "Save file" },
+        { "<leader>J", icon = { icon = "", hl = "DiagnosticError" }, desc = "Save As Sudo" },
+        { "<leader>q", icon = { icon = "", hl = "DiagnosticError" }, desc = "quit/session" },
       },
     },
   },
 }
+
+-- DiagnosticError (rojo) DiagnosticWarn (amarillo) DiagnosticInfo (azul) DiagnosticHint (turquesa) Constant (naranja) String (verde) Identifier (rosa pálido, muy pálido) Function (azul) Keyword (morado vegeta) Special Type Number Boolean Label Operator Comment

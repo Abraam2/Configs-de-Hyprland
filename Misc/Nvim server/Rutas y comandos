@@ -1,0 +1,4 @@
+/home/abraham/.local/share/applications/nvim.desktop
+/home/abraham/.local/bin/nv
+
+ln -s nvim.svg /usr/share/icons/Papirus-Dark/48x48/apps

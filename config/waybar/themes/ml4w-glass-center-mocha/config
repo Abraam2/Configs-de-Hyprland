@@ -39,7 +39,7 @@
         //"group/tools",
         //"group/hardware",
         //"custom/notification",       
-        "clock",
-        "custom/ml4w-welcome"
+        "clock"
+        //"custom/ml4w-welcome"
     ]
 }

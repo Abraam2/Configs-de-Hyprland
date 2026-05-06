@@ -105,7 +105,7 @@
   },
   // Updates Count
   "custom/updates": {
-    "format": "  {}",
+    "format": "",
     "escape": true,
     "return-type": "json",
     "exec": "~/.config/waybar/scripts/ml4w-check-system-updates",
@@ -165,7 +165,7 @@
   // Power Menu
   "custom/exit": {
     "format": " <span color='#f38ba8'></span>",
-    "on-click": "~/.config/ml4w/scripts/ml4w-wlogout",
+    "on-click": "qs ipc call power toggle",
     "on-click-right": "hyprlock",
     "tooltip-format": "Left: Power menu\nRight: Lock screen"
   },
@@ -233,11 +233,12 @@
     "interval": 1,
     "locale": "es_ES.UTF-8",
     "format": "{:%H:%M - %A %d}",
-    "on-click": "flatpak run com.ml4w.calendar",
-    "on-click-right":"flatpak run com.ml4w.sidebar",
+    "on-click": "qs ipc call calendar toggle",
+    "on-click-right":"qs ipc call sidebar toggle",
     "timezone": "",
     "tooltip": false
   },
+  
   // System
   "custom/system": {
     "format": "",

@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
-#    ____         __       ____               __     __
-#   /  _/__  ___ / /____ _/ / / __ _____  ___/ /__ _/ /____ ___
-#  _/ // _ \(_-</ __/ _ `/ / / / // / _ \/ _  / _ `/ __/ -_|_-<
-# /___/_//_/___/\__/\_,_/_/_/  \_,_/ .__/\_,_/\_,_/\__/\__/___/
-#                                 /_/
-#
 
 # Check if command exists
 _checkCommandExists() {
@@ -14,7 +8,6 @@ _checkCommandExists() {
         return
     fi
     echo 0
-    return
 }
 
 _isInstalled() {
@@ -30,80 +23,64 @@ _isInstalled() {
     esac
 
     if [ -n "${check}" ]; then
-        echo 0 #'0' means 'true' in Bash
-        return #true
+        echo 0 
+        return 
     fi
-    echo 1 #'1' means 'false' in Bash
-    return #false
+    echo 1 
+    return 
 }
 
 # ------------------------------------------------------
-# Confirm Start
+# Confirm Start (SALTADO)
 # ------------------------------------------------------
-
-sleep 1
 clear
 figlet -f smslant "Updates"
-echo
-primarycolor=$(cat ~/.config/ml4w/colors/primary)
-onsurfacecolor=$(cat ~/.config/ml4w/colors/onsurface)
-onprimarycolor=$(cat ~/.config/ml4w/colors/onprimary)
-if gum confirm --selected.background=$primarycolor --selected.foreground=$onprimarycolor --prompt.foreground=$onsurfacecolor "DO YOU WANT TO START THE UPDATE NOW?"; then
-    echo
-    echo ":: Update started..."
-elif [ $? -eq 130 ]; then
-    exit 130
-else
-    echo
-    echo ":: Update canceled."
-    exit
-fi
+echo ":: Iniciando actualización automática..."
 
 # ----------------------------------------------------- 
 # Install update
 # ----------------------------------------------------- 
 
-# Arch
+# Arch Linux
 if [[ $(_checkCommandExists "pacman") == 0 ]]; then
-
-    yay_installed="false"
-    paru_installed="false"
     if [[ $(_checkCommandExists "yay") == 0 ]]; then
-        yay_installed="true"
-    fi
-    if [[ $(_checkCommandExists "paru") == 0 ]]; then
-        paru_installed="true"
-    fi
-    if [[ $yay_installed == "true" ]] && [[ $paru_installed == "false" ]]; then
-        yay
-    elif [[ $yay_installed == "false" ]] && [[ $paru_installed == "true" ]]; then
+        # Actualiza todo (incluido AUR) sin preguntar
+        yay -Syu --noconfirm
+    elif [[ $(_checkCommandExists "paru") == 0 ]]; then
+        # Actualiza todo (incluido AUR) sin preguntar
         paru -Syu --noconfirm
     else
-        yay
+        # Si no hay helper, usa pacman (necesitará sudo)
+        sudo pacman -Syu --noconfirm
     fi
 
 # Fedora
 elif [[ $(_checkCommandExists "dnf") == 0 ]]; then
-    sudo dnf upgrade
+    # -y acepta todo automáticamente
+    sudo dnf upgrade -y
 else
-    echo ":: ERROR - Platform not supported"
-    echo "Press [ENTER] to close."
-    read
+    echo ":: ERROR - Plataforma no soportada"
+    exit 1
 fi
-echo
 
 # Flatpak
-echo ":: Searching for Flatpak updates..."
-flatpak update
-echo
+if [[ $(_checkCommandExists "flatpak") == 0 ]]; then
+    echo ":: Buscando actualizaciones de Flatpak..."
+    # -y para no confirmar
+    flatpak update -y
+fi
 
 # Reload Waybar
 pkill -RTMIN+1 waybar
 
-# Guardar la fecha del último éxito (capitalizada)
+# Guardar la fecha del último éxito
 mkdir -p ~/.cache/ml4w
 date +"%A, %d de %B" | sed 's/./\U&/' > ~/.cache/ml4w/last_update.txt
 
-# Finishing
-echo ":: Update complete! Press [ENTER] to close."
-read
+# Notificación visual
+if [[ $(_checkCommandExists "notify-send") == 0 ]]; then
+    notify-send -i software-update-available "Actualización completada" "Tu sistema se ha actualizado correctamente."
+fi
+
+echo ":: ¡Todo listo! El sistema está al día."
+# Quitamos el 'read' final para que la terminal se cierre sola o termine el proceso.

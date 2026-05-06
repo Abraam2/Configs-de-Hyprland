@@ -24,6 +24,8 @@ alias rm='rm -v'
 alias mkdir='mkdir -p'
 alias f='finder'
 alias i='yay -S'
+alias n='nvim'
+alias nv='nvim'
 alias ..='z ..'
 alias ...='z ../..'
 

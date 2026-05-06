@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Nvim
+Exec=/home/abraham/.local/bin/nv %F
+Terminal=false
+Type=Application
+Icon=nvim
+Categories=TextEditor;Development;
+MimeType=text/plain;text/markdown;
