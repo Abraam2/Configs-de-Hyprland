@@ -13,7 +13,7 @@ alias shutdown='systemctl poweroff'
 # Random
 # -----------------------------------------------------
 
-alias ospina='ssh batoi@172.17.222.20'
+
 alias suso='sudo'
 # -----------------------------------------------------
 # ARCHIVOS Y NAVEGACIÓN
@@ -56,4 +56,14 @@ alias htop='btop'
 alias disco='ncdu'
 alias man='tldr'
 
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias gp="git push"
+alias gpl="git pull"
+alias gst="git stash"
+alias gsp="git stash; git pull"
+alias gfo="git fetch origin"
+alias gcheck="git checkout"
+alias gcredential="git config credential.helper store"
 
