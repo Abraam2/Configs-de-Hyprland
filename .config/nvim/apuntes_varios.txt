@@ -1,0 +1,24 @@
+Cuando tenga la conf, tengo que instalar los lsp de los lenguajes, lo óptimo es buscarlos en Lazzy Extras porque viene todo configurado y ya.
+
+Luego hay que instalar los colores de los lenguajes que no tengan colores chulos con TSInstall python java bash …
+
+Hay que instalar el soporte para Markdown, si cuando abres el markdown sale un error, hay que instalar ese paquete en mason
+
+Importante, antes de hacer nada, tener instalado nodejs y npm
+
+:checkhealth para ver log de lo que está instalado y lo que falta y ponerlo todo a punto
+
+:ConformInfo para ver vainas del formateador activo y TSInstall
+
+IMPORTANTE: Para java, instalar clang-format
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+
+Setup nvim ubuntu
+
+# 1. Aseguramos que existe tu carpeta de binarios local
+mkdir -p ~/.local/bin
+
+# 2. Creamos el enlace simbólico para que 'fd' apunte a 'fdfind'
+ln -s $(which fdfind) ~/.local/bin/fd

@@ -1,0 +1,24 @@
+{
+  "System.out.printf": {
+    "prefix": "printf",
+    "body": ["System.out.printf(\"$1%n\", $2);$0"],
+    "description": "System.out.printf() con salto de línea limpio"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": ["if ($1) {", "\t$0", "}"],
+    "description": "Estructura limpia para condicional IF"
+  },
+
+  "Else If Statement": {
+    "prefix": "elif",
+    "body": ["else if ($1) {", "\t$0", "}"],
+    "description": "Estructura limpia para condicional ELSE IF"
+  },
+
+  "Else Statement": {
+    "prefix": "else",
+    "body": ["else {", "\t$0", "}"],
+    "description": "Estructura limpia para condicional ELSE IF"
+  }
+}

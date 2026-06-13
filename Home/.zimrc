@@ -1,0 +1,49 @@
+#
+# Modules
+#
+
+zmodule environment
+zmodule git
+zmodule input
+zmodule termtitle
+zmodule utility
+
+# --- [AÑADIDOS: LOS INDISPENSABLES] ---
+# Atajos específicos para Pacman (ideal para CachyOS)
+zmodule pacman
+# El buscador ultra rápido (necesitas tener 'fzf' instalado en el sistema)
+zmodule fzf
+# El mejor reemplazo para 'cd', aprende de tus rutas
+# zmodule antoineco/zim-zoxide
+
+# --- [AÑADIDOS: LOS ÚTILES] ---
+# Manejo de archivos comprimidos con un solo comando (extract/archive)
+zmodule archive
+# Colores y mejores iconos para 'ls' (usa eza que ya viene en Cachy)
+# zmodule exa
+# Te avisa si has escrito mal un alias y te sugiere el correcto
+zmodule shanwker1223/zim-alias-finder
+
+#
+# Prompt
+#
+
+zmodule duration-info
+zmodule git-info
+# He cambiado asciiship por Starship, que en Cachy luce mucho más
+zmodule joke/zim-starship 
+
+#
+# Completion
+#
+
+zmodule zsh-users/zsh-completions --fpath src
+zmodule completion
+
+#
+# Modules that must be initialized last
+#
+
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-history-substring-search
+zmodule zsh-users/zsh-autosuggestions
