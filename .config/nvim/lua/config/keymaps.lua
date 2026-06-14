@@ -13,7 +13,7 @@ local wk = require("which-key")
 -- 3. TERMINAL .......................................... (Toggle Inteligente)
 -- 4. SCRATCH BUFFERS ................................... (Markdown, Picker)
 -- 5. EJECUCIÓN DE CÓDIGO ............................... (Run Code)
--- 6. EDICIÓN Y MOVIMIENTO .............................. (Smart dd, Alt+hjkl)
+-- 6. EDICIÓN Y MOVIMIENTO .............................. (Smart dd, Alt+hjkl) 'e
 -- 7. LIMPIEZA Y CONFIGURACIÓN .......................... (Borrado de Teclas)
 -------------------------------------------------------------------------------
 
@@ -190,6 +190,16 @@ vim.opt.report = 999
 -- Borrado 'x' y 'Del' al agujero negro (no copian)
 vim.keymap.set({ "n", "v" }, "x", '"_x')
 vim.keymap.set("n", "<Del>", '"_x')
+
+-- La coma para saltar al bloque de código anterior (arriba)
+vim.keymap.set("n", ",", "}", { remap = false, desc = "Saltar al bloque anterior" })
+
+-- El punto y coma para saltar al bloque de código siguiente (abajo)
+vim.keymap.set("n", ";", "{", { remap = false, desc = "Saltar al bloque siguiente" })
+
+-- 2. Modo Operador (Para que 'd,', 'd;', 'y,', 'y;' funcionen como '{}')
+vim.keymap.set("o", ";", "{", { remap = false, desc = "Operar hasta el bloque anterior" })
+vim.keymap.set("o", ",", "}", { remap = false, desc = "Operar hasta el bloque siguiente" })
 
 -- Borrado inteligente 'dd' y 'cc': No copia líneas vacías
 local function smart_dd()

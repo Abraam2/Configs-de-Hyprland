@@ -8,3 +8,4 @@
 if not set -q NVIM
     fastfetch
 end
+
