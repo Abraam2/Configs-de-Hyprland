@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 hl.on("hyprland.start", function()
 	-- Environment for xdg-desktop-portal-hyprland
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
@@ -29,4 +30,3 @@ hl.on("hyprland.start", function()
 	-- Start autostart cleanup
 	hl.exec_cmd("~/.config/hypr/scripts/cleanup.sh")
 end)
-

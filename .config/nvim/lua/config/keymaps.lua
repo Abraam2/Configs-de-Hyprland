@@ -184,7 +184,18 @@ pcall(vim.keymap.del, "i", "<A-k>")
 pcall(vim.keymap.del, "v", "<A-j>")
 pcall(vim.keymap.del, "v", "<A-k>")
 
--- Silenciar avisos de cambios de línea
+-- Hacer que 'd' mande siempre al agujero negro (modo normal y visual)
+vim.keymap.set({ "n" }, "d", '"_d', { remap = false, desc = "Delete without copy" })
+
+-- Hacer que 'c' (cambiar) mande siempre al agujero negro
+vim.keymap.set({ "n" }, "c", '"_c', { remap = false, desc = "Change without copy" })
+
+-- 'XX' (dos veces Shift+x) corta la línea entera de verdad al portapapeles
+vim.keymap.set("n", "XX", "dd", { remap = false, desc = "Operar cortando al portapapeles" })
+
+-- 'X' en modo visual corta la selección entera de verdad al portapapeles
+vim.keymap.set("v", "X", "d", { remap = false, desc = "Cortar selección al portapapeles" })
+
 vim.opt.report = 999
 
 -- Borrado 'x' y 'Del' al agujero negro (no copian)
@@ -193,33 +204,15 @@ vim.keymap.set("n", "<Del>", '"_x')
 
 -- La coma para saltar al bloque de código anterior (arriba)
 vim.keymap.set("n", ",", "}", { remap = false, desc = "Saltar al bloque anterior" })
+vim.keymap.set("v", ",", "}", { remap = false, desc = "Saltar al bloque anterior" })
 
 -- El punto y coma para saltar al bloque de código siguiente (abajo)
 vim.keymap.set("n", ";", "{", { remap = false, desc = "Saltar al bloque siguiente" })
+vim.keymap.set("v", ";", "{", { remap = false, desc = "Saltar al bloque siguiente" })
 
 -- 2. Modo Operador (Para que 'd,', 'd;', 'y,', 'y;' funcionen como '{}')
 vim.keymap.set("o", ";", "{", { remap = false, desc = "Operar hasta el bloque anterior" })
 vim.keymap.set("o", ",", "}", { remap = false, desc = "Operar hasta el bloque siguiente" })
-
--- Borrado inteligente 'dd' y 'cc': No copia líneas vacías
-local function smart_dd()
-  if vim.api.nvim_get_current_line():match("^%s*$") then
-    return '"_dd'
-  else
-    return "dd"
-  end
-end
-
-local function smart_cc()
-  if vim.api.nvim_get_current_line():match("^%s*$") then
-    return '"_cc'
-  else
-    return "cc"
-  end
-end
-
-vim.keymap.set("n", "dd", smart_dd, { expr = true, desc = "Smart dd" })
-vim.keymap.set("n", "cc", smart_cc, { expr = true, desc = "Smart cc" })
 
 -- Centrado automático al navegar
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Bajar media pantalla centrado" })
@@ -271,7 +264,7 @@ vim.keymap.set("n", "<leader>y", '"0p', { remap = false, desc = "Paste Last Yank
 vim.keymap.set("v", "<leader>y", '"0p', { remap = false, desc = "Paste Last Yanked" })
 
 -- Ctrl+p en modo insertar emula tus dedos pegando abajo indentado con remap
-vim.keymap.set("i", "<C-p>", '<C-o>"+]p', { remap = true, desc = "Pegar externo abajo en modo insertar" })
+vim.keymap.set("i", "<C-p>", "<C-o>P", { remap = true, desc = "Pegar externo abajo en modo insertar" })
 
 -- Generar clase de Java con método Main usando <leader>cj en modo normal
 vim.keymap.set("n", "<leader>cj", function()
@@ -319,3 +312,10 @@ local to_del = {
 for _, key in ipairs(to_del) do
   pcall(vim.keymap.del, "n", key)
 end
+
+-------------------------------------------------------------------------------
+--                        8. RANDOMADAS QUE ESTÁ BIEN RECORDAR               --
+-------------------------------------------------------------------------------
+
+-- Ahora , se mueve al siguiente párrafo y ; al anteriror, muy útil eso
+-- Usa las marcas, con ma y luego 'a

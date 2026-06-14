@@ -427,5 +427,9 @@ hl.bind(
 
 -- F
 hl.bind(mainMod .. " + F8", hl.dsp.exec_cmd("playerctl next"), { locked = true, description = "Next track" })
-hl.bind(mainMod .. " + F7", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true, description = "Pause audio" })
+hl.bind(
+	mainMod .. " + F7",
+	hl.dsp.exec_cmd("playerctl -p spotify play-pause"),
+	{ locked = true, description = "Pause audio" }
+)
 hl.bind(mainMod .. " + F6", hl.dsp.exec_cmd("playerctl previous"), { locked = true, description = "Previous track" })
