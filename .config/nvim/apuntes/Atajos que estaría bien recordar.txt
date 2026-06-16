@@ -1,0 +1,27 @@
+
+<leader>cr -> 
+
+Código
+
+<leader>co -> Añade los imports necesarios al código
+<leader>cr -> Renombra una función o variable, o lo que sea en TODO el proyecto, para que todo funcione de locos
+<leader>B -> Busca líneas en el archivo, saliendo un menú abajo todo guapo y piola, que muestra todas las coincidencias y puedes ir ahí en un pincho
+<leader>sB -> Hace un GREP en los buffers abiertos
+<leader>si -> Permite buscar y saltar rápidamente entre funciones, con mayúsculas es en todo el proyecto
+
+Pasos prohibido
+
+Control + o -> Te mueve hacía atrás en los saltos, puede moverte incluso entre buffers. IMPORTANTE USAR ESTO.
+Control + i -> Te mueve hacía delante en los saltos, puede moverte incluso entre buffers. IMPORTANTE USAR ESTO.
+
+Nvim.surround
+
+ñsiwf -> Permite escribir algo que envolverá entre paréntesis a la palabra seleccionada
+
+Márcas
+
+mA -> Con las marcas globales se puede abrir un archivo al instante
+ma -> Las marcas locales también son útiles en archivos largos
+
+delete marks! -> Borra todas las marcas del archivo
+delm a-z -> Borra grupo de marcas

@@ -74,7 +74,7 @@ function M.run_code()
     final_exec_cmd = string.format("javac %q && java %q", file, name)
   else
     -- Lenguajes interpretados (Python, JS, Lua...)
-    final_exec_cmd = string.format("%s %q", config.cmd, file)
+    final_exec_cmd = config.cmd .. vim.fn.shellescape(file)
   end
 
   -- 4. LANZAMIENTO

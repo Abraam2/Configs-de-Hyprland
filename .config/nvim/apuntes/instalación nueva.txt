@@ -22,3 +22,14 @@ mkdir -p ~/.local/bin
 
 # 2. Creamos el enlace simbólico para que 'fd' apunte a 'fdfind'
 ln -s $(which fdfind) ~/.local/bin/fd
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+
+Las sesiones se guardan en: 
+
+~/.local/state/nvim/sessions/
+
+Si se pone tonto, borras todo y listo.
+
+rm ~/.local/state/nvim/sessions/*

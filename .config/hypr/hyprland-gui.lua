@@ -20,7 +20,7 @@ hl.config({
         workspace_swipe_create_new = true,
     },
     input = {
-        kb_options = "caps:swapescape",
+        kb_options = "caps:escape",
     },
     misc = {
         focus_on_activate = true,

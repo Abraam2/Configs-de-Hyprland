@@ -52,6 +52,9 @@ return {
 
         -- Y Ctrl + b toma el relevo para subir en la lista de sugerencias (select_prev)
         ["<C-b>"] = { "select_prev", "fallback" },
+        ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+        -- Ctrl + u SUBE la barra de info (así evitas usar la letra B)
+        ["<C-u>"] = { "scroll_documentation_up", "fallback" },
       },
     },
   },

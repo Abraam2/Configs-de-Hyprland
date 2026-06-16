@@ -4,6 +4,7 @@
     "body": ["System.out.printf(\"$1%n\", $2);$0"],
     "description": "System.out.printf() con salto de línea limpio"
   },
+
   "If Statement": {
     "prefix": "if",
     "body": ["if ($1) {", "\t$0", "}"],
@@ -19,6 +20,23 @@
   "Else Statement": {
     "prefix": "else",
     "body": ["else {", "\t$0", "}"],
-    "description": "Estructura limpia para condicional ELSE IF"
+    "description": "Estructura limpia para condicional ELSE"
+  },
+
+  "ArrayList": {
+    "prefix": "list",
+    "body": ["var $1 = new ArrayList<$2>();$0"],
+    "description": "Crear nuevo ArrayList"
+  },
+
+  "HashSet": {
+    "prefix": "hashset",
+    "body": ["var $1 = new HashSet<$2>();$0"],
+    "description": "Crear nuevo HashSet"
+  },
+  "HashMap": {
+    "prefix": "hashmap",
+    "body": ["var $1 = new HashMap<${2:TClave}, ${3:TValor}>();$0"],
+    "description": "Crear nuevo HashMap"
   }
 }

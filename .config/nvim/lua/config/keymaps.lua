@@ -49,8 +49,9 @@ vim.keymap.set("n", "<leader>fm", function()
 end, { desc = "Buscar en config ML4W" })
 
 -- Alternar entre el buffer actual y el anterior
-vim.keymap.del("n", "<leader>.")
 vim.keymap.set("n", "<leader>.", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+
+vim.keymap.set("n", "<leader>B", "<cmd>lua Snacks.picker.lines()<cr>", { desc = "Search Lines In Buffer" })
 
 -- Ver ruta absoluta del archivo actual (File Path)
 vim.keymap.set("n", "<leader>fp", function()
@@ -183,6 +184,9 @@ pcall(vim.keymap.del, "i", "<A-j>")
 pcall(vim.keymap.del, "i", "<A-k>")
 pcall(vim.keymap.del, "v", "<A-j>")
 pcall(vim.keymap.del, "v", "<A-k>")
+
+-- Borrar palabra entera hacia atrás con Ctrl + Backspace en modo insertar
+vim.keymap.set("i", "<C-H>", "<C-w>", { desc = "Borrar palabra hacia atrás" })
 
 -- Hacer que 'd' mande siempre al agujero negro (modo normal y visual)
 vim.keymap.set({ "n" }, "d", '"_d', { remap = false, desc = "Delete without copy" })
