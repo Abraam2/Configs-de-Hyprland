@@ -48,6 +48,8 @@ vim.keymap.set("n", "<leader>fm", function()
   })
 end, { desc = "Buscar en config ML4W" })
 
+vim.keymap.set("n", "<leader>fP", "<cmd>lua Snacks.picker.projects() <cr>", { desc = "Open Projects Menu" })
+
 -- Alternar entre el buffer actual y el anterior
 vim.keymap.set("n", "<leader>.", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 

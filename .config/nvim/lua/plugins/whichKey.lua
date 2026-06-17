@@ -9,6 +9,11 @@ return {
 
         -- 2. Metemos tus atajos dentro de la "d"
         { "<leader>dd", "<cmd>cd ~/Descargas<cr><cmd>lua vim.notify(vim.fn.getcwd())<cr>", desc = "Go to Descargas" },
+        {
+          "<leader>dm",
+          "<cmd>cd ~/.mydotfiles/com.ml4w.dotfiles/.config/<cr><cmd>lua vim.notify(vim.fn.getcwd())<cr>",
+          desc = "Go to ML4W Config",
+        },
         { "<leader>dh", "<cmd>cd ~<cr><cmd>lua vim.notify(vim.fn.getcwd())<cr>", desc = "Go to Home (~)" },
         { "<leader>df", "<cmd>cd %:p:h<cr><cmd>lua vim.notify(vim.fn.getcwd())<cr>", desc = "Go to current file dir" },
         { "<leader>dc", "<cmd>cd ~/.config<cr><cmd>lua vim.notify(vim.fn.getcwd())<cr>", desc = "Go to Config" },

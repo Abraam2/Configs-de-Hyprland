@@ -8,7 +8,8 @@ zoxide init fish | source
 # -----------------------------------------------------
 # Exports
 # -----------------------------------------------------
-export EDITOR=nvim
+# export EDITOR="/home/abraham/.local/bin/nv"
+set -gx EDITOR $HOME/.local/bin/nv
 
 set -U fish_user_paths /usr/lib/ccache/bin/
 set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin/

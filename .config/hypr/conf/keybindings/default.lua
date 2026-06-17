@@ -61,8 +61,13 @@ hl.bind(
 )
 hl.bind(
 	mainMod .. " + E",
-	hl.dsp.exec_cmd("nemo --tabs ~/Descargas/ ~"),
+	hl.dsp.exec_cmd("nemo --tabs ~ ~/Descargas/ /home/abraham/.mydotfiles/com.ml4w.dotfiles/.config"),
 	{ description = "Abrir el gestor de archivos" }
+)
+hl.bind(
+	mainMod .. " + Y",
+	hl.dsp.exec_cmd("env EDITOR=$HOME/.local/bin/nv kitty -e yazi"),
+	{ description = "Abrir Yazi" }
 )
 hl.bind(
 	mainMod .. " + CTRL + E",

@@ -1,0 +1,3 @@
+u script levanta Neovim con kitty --class "nvim-term".
+
+Sin embargo, el Neovim que te está abriendo Yazi tiene de clase class: nvim e initialClass: nvim.

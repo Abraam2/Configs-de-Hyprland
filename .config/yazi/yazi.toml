@@ -1,0 +1,18 @@
+[opener]
+mi_nvim = [
+    { run = '/home/abraham/.local/bin/nv "$@"', orphan = true, desc = "Nvim" }
+]
+
+[open]
+prepend_rules = [
+    # Forzamos por extensión. Da igual que tengan 0 bytes, Yazi los mandará a tu script
+    { url = "*.txt", use = [ "mi_nvim", "reveal" ] },
+    { url = "*.lua", use = [ "mi_nvim", "reveal" ] },
+    { url = "*.sh",  use = [ "mi_nvim", "reveal" ] },
+    { url = "*.md",  use = [ "mi_nvim", "reveal" ] },
+    { url = "*.json", use = [ "mi_nvim", "reveal" ] },
+    { url = "*.conf", use = [ "mi_nvim", "reveal" ] },
+
+    # Regla de seguridad por si el archivo sí tiene texto pero otra extensión
+    { mime = "text/*", use = [ "mi_nvim", "reveal" ] }
+]

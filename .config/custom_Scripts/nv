@@ -1,0 +1,25 @@
+#!/bin/bash
+SOCKET="/tmp/nvimsocket"
+CLASS="nvim"
+
+# 1. Comprobamos si nos han pasado un argumento
+if [ -n "$1" ]; then
+    FILE_PATH=$(readlink -f "$1")
+else
+    FILE_PATH=""
+fi
+
+if [ -S "$SOCKET" ]; then
+    if [ -n "$FILE_PATH" ]; then
+        # Si hay archivo, lo mandamos al servidor con :drop
+        nvim --server "$SOCKET" --remote-send "<C-\><C-n>:drop $FILE_PATH<CR>"
+    fi
+    hyprctl dispatch "hl.dsp.focus({ window = 'class:^(${CLASS})$' })"
+else
+    # Primera vez: Si hay archivo lo abrimos, si no, lanzamos nvim vacío
+    if [ -n "$FILE_PATH" ]; then
+        kitty --class "$CLASS" -e nvim --listen "$SOCKET" "$FILE_PATH"
+    else
+        kitty --class "$CLASS" -e nvim --listen "$SOCKET"
+    fi
+fi
