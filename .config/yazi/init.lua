@@ -13,15 +13,22 @@ require("recycle-bin"):setup({
 	-- trash_dir = "~/.local/share/Trash/",  -- Uncomment to use specific directory
 })
 
+-- Detectamos si estamos dentro de Neovim buscando la variable de entorno $NVIM
+local dentro_de_nvim = os.getenv("NVIM") ~= nil
+
 require("projects"):setup({
 	save = {
-		method = "lua", -- Usamos 'lua' porque el método 'yazi' es un dolor de cabeza
+		method = "lua",
 	},
 	last = {
 		update_after_save = true,
 		update_after_load = true,
-		-- update_before_quit = true, -- <-- Guarda tus pestañas automáticamente al salir
-		-- load_after_start = true, -- <-- Abre tu último proyecto automáticamente al iniciar
+		-- Si estamos en Neovim, ponemos false para que NO guarde ni pise nada.
+		-- Si estamos en Kitty normal, ponemos true para que mantenga tu sesión.
+		update_before_quit = not dentro_de_nvim,
+
+		-- Comentar para que yazi no recuerde la sesión automáticamente en kitty
+		load_after_start = not dentro_de_nvim,
 	},
 	notify = {
 		enable = true,

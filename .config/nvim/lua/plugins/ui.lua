@@ -15,6 +15,7 @@ return {
         { "<leader>e", icon = { icon = " ", hl = "@tag" }, desc = "Explorer Snacks (root dir)" },
         { "<leader>E", icon = { icon = " ", hl = "@tag" }, desc = "Explorer Snacks (cwd)" },
         { "<leader>ñ", icon = { icon = " ", hl = "@tag" }, desc = "Open Oil (Text file explorer)" },
+        { "<leader>Y", icon = { icon = " ", hl = "@tag" }, desc = "Open Yazi" },
         { "<leader>/", icon = { icon = "󰈞 ", hl = "DiagnosticHint" }, desc = "Grep (Root Dir)" },
         { "<leader>n", icon = { icon = "󰂚 ", hl = "Constant" }, desc = "Notification History" },
         { "<leader>:", icon = { icon = " ", hl = "DiagnosticWarn" }, desc = "Command History" },

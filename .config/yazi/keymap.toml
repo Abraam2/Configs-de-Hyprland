@@ -29,24 +29,47 @@ run = ["cd /home/abraham/MisDotfiles", "hidden toggle" ]
 desc = "Go MisDotfiles"
 
 [[mgr.prepend_keymap]]
-on = ["z", "u"]
+on = ["<C-z>", "u"]
 run = "shell -- ouch decompress %s"
 desc = "Descomprimir archivos seleccionados"
 
 [[mgr.prepend_keymap]]
-on = ["z", "z"]
+on = ["<C-z>", "z"]
 run = "shell -- ouch compress %s %h.zip"
 desc = "Comprimir selección en .zip"
 
 [[mgr.prepend_keymap]]
-on = ["z", "t"]
+on = ["<C-z>", "t"]
 run = "shell -- ouch compress %s %h.tar.gz"
 desc = "Comprimir selección en .tar.gz"
 
 [[mgr.prepend_keymap]]
-on = ["z", "7"]
+on = ["<C-z>", "7"]
 run = "shell -- ouch compress %s %h.7z"
 desc = "Comprimir selección en .7z"
+
+[[mgr.prepend_keymap]]
+on   = [ "z", "a" ] 
+run  = "shell 'zoxide add \"$(pwd)\"'" 
+desc = "Añadir ruta actual a Zoxide (pwd)"
+
+[[mgr.prepend_keymap]]
+on   = [ "z", "A" ] 
+run  = '''shell 'zoxide add "$0"''''
+desc = "Añadir la carpeta bajo el cursor de Zoxide"
+
+[[mgr.prepend_keymap]]
+on   = [ "z", "R" ] 
+run  = '''shell 'zoxide remove "$0"''''
+desc = "Eliminar la carpeta bajo el cursor de Zoxide"
+
+[[mgr.prepend_keymap]]
+on   = [ "z", "r" ] 
+run  = "shell 'zoxide remove \"$(pwd)\"'" 
+desc = "Eliminar ruta actual de Zoxide (pwd)"
+
+# run  = "shell 'kitty \"$(pwd)\"'"
+# Borrar base datos zoxide = zoxide remove (zoxide query -l) 
 
 [[mgr.prepend_keymap]]
 on = ["e", "a"]
@@ -209,6 +232,11 @@ run = "plugin close-and-restore-tab restore"
 desc = "Restore the previously closed tab"
 
 [[mgr.prepend_keymap]]
+on   = [ "Z", "u"]
+run = "shell -- ouch decompress %s"
+desc = "Decompress selected files"
+
+[[mgr.prepend_keymap]]
 on   = [ "Z", "a", "a" ]
 run  = "plugin compress"
 desc = "Archive selected files"
@@ -352,3 +380,8 @@ desc = "Paste"
 on = [ "y" ]
 run = "plugin ucp copy"
 desc = "Copy"
+
+[[mgr.prepend_keymap]]
+on   = [ "t", "k" ]
+run  = "shell 'kitty \"$(pwd)\"'"
+desc = "Abrir kitty en la ruta actual"

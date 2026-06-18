@@ -64,11 +64,20 @@ hl.bind(
 	hl.dsp.exec_cmd("nemo --tabs ~ ~/Descargas/ /home/abraham/.mydotfiles/com.ml4w.dotfiles/.config"),
 	{ description = "Abrir el gestor de archivos" }
 )
+
+-- hl.bind(
+-- 	mainMod .. " + Y",
+-- 	hl.dsp.exec_cmd("env EDITOR=$HOME/.local/bin/nv kitty -e yazi ~ ~/.mydotfiles/com.ml4w.dotfiles/.config ~/.config"),
+-- 	{ description = "Abrir Yazi" }
+-- )
+
 hl.bind(
 	mainMod .. " + Y",
-	hl.dsp.exec_cmd("env EDITOR=$HOME/.local/bin/nv kitty -e yazi ~ ~/.mydotfiles/com.ml4w.dotfiles/.config ~/.config"),
+	hl.dsp.exec_cmd("env EDITOR=$HOME/.local/bin/nv kitty -e yazi"),
 	{ description = "Abrir Yazi" }
 )
+
+hl.bind(mainMod .. " + n", hl.dsp.exec_cmd("$HOME/.local/bin/nv "), { description = "Abrir Nvim" })
 hl.bind(
 	mainMod .. " + CTRL + E",
 	hl.dsp.exec_cmd("~/.config/ml4w/settings/emojipicker.sh"),

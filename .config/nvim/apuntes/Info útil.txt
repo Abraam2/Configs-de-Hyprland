@@ -1,6 +1,12 @@
 
 <leader>cr -> 
 
+Básico -> Pegar en modo visual
+
+Copiar texto, seleccionas línea que sustituye
+    p -> Pega y CORTA el texto seleccionado (absoluta mierda)
+    P -> Pega y NO CORTA, repito NO CORTA, no lo hace (absoluto cine)
+
 Código
 
 <leader>co -> Añade los imports necesarios al código

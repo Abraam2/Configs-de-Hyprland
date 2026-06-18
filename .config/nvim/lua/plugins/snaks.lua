@@ -3,6 +3,51 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
+    picker = {
+      sources = {
+        files = {
+          follow = true, -- Para que también busque dentro de tus dotfiles enlazados
+
+          -- Aquí le metemos la lista negra para que ignore los binarios
+          exclude = {
+            "*/bin/*",
+            "*/.local/bin/*",
+            "*/.config/BraveSoftware/*",
+            "*/.cache/*",
+            "*/.git/*",
+            "*/node_modules/*",
+            "*/target/*",
+            "*/build/*",
+            "*.png",
+            "*.jpg",
+            "*.jpeg",
+            "*.gif",
+            "*.ico",
+            "*.webp",
+            "*.mp4",
+            "*.mkv",
+            "*.avi",
+            "*.webm",
+            "*.pdf",
+            "*.zip",
+            "*.tar.gz",
+            "*.rar",
+            "*.7z",
+            "*.exe",
+            "*.dll",
+            "*.so",
+            "*.class",
+            "*.jar",
+            "*.bin",
+            "*.o",
+            "*.out",
+          },
+        },
+      },
+
+      -- Si habías puesto la función rara de "open_symlink_or_confirm" de antes,
+      -- bórrala entera del bloque 'actions', ya no la vas a necesitar con 'follow = true'.
+    },
     bigfile = { enabled = true },
     dashboard = {
       enabled = true,
