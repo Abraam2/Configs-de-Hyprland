@@ -101,6 +101,19 @@ title_info = { fg = "#94e2d5" }
 title_warn = { fg = "#f9e2af" }
 title_error = { fg = "#f38ba8" }
 
+[git]
+deleted  = { fg = "red", bold = true }
+untracked = { fg = "#f5c2e7" }
+added     = { fg = "#a6e3a1" }
+modified  = { fg = "#f9e2af" }
+
+clean_sign    = " "
+unknown_sign  = " "
+modified_sign = "M"
+added_sign    = "A"
+untracked_sign = "?"
+deleted_sign  = "D"
+
 [filetype]
 rules = [
     # Media

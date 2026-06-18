@@ -1,6 +1,9 @@
+# [mgr]
+# show_hidden = true
+
 [opener]
 mi_nvim = [
-    { run = '/home/abraham/.local/bin/nv "$@"', orphan = true, desc = "Nvim" }
+    { run = '/home/abraham/.local/bin/nv "$@"', orphan = true, desc = "Neovim " }
 ]
 
 [open]
@@ -16,3 +19,13 @@ prepend_rules = [
     # Regla de seguridad por si el archivo sí tiene texto pero otra extensión
     { mime = "text/*", use = [ "mi_nvim", "reveal" ] }
 ]
+
+[[plugin.prepend_fetchers]]
+url   = "*"
+run   = "git"
+group = "git"
+
+[[plugin.prepend_fetchers]]
+url   = "*/"
+run   = "git"
+group = "git"

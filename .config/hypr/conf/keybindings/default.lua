@@ -66,7 +66,7 @@ hl.bind(
 )
 hl.bind(
 	mainMod .. " + Y",
-	hl.dsp.exec_cmd("env EDITOR=$HOME/.local/bin/nv kitty -e yazi"),
+	hl.dsp.exec_cmd("env EDITOR=$HOME/.local/bin/nv kitty -e yazi ~ ~/.mydotfiles/com.ml4w.dotfiles/.config ~/.config"),
 	{ description = "Abrir Yazi" }
 )
 hl.bind(

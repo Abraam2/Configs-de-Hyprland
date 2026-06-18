@@ -25,7 +25,7 @@ desc = "Go Hypr Config"
 
 [[mgr.prepend_keymap]]
 on = ["g", "."]
-run = "cd /home/abraham/MisDotfiles"
+run = ["cd /home/abraham/MisDotfiles", "hidden toggle" ]
 desc = "Go MisDotfiles"
 
 [[mgr.prepend_keymap]]
@@ -177,16 +177,15 @@ run = "plugin sudo -- chmod"
 desc = "sudo chmod"
 
 [[mgr.prepend_keymap]]
-on = ["u"]
+on = ["u", "u"]
 run = "plugin restore"
 desc = "Restore last deleted files/folders"
 
-
-# This will throw error when there is existed file/folder
-[[mgr.prepend_keymap]]
-on = ["U"]
-run = "plugin restore -- --interactive"
-desc = "Restore deleted files/folders (Interactive)"
+# # This will throw error when there is existed file/folder
+# [[mgr.prepend_keymap]]
+# on = ["u", "i"]
+# run = "plugin restore -- --interactive"
+# desc = "Restore deleted files/folders (Interactive)"
 
     # Select files/folders to restore. Input item index or range separated by comma:
     # - Restore a trashed file:
@@ -235,26 +234,6 @@ run  = "plugin compress -phl"
 desc = "Archive selected files (password+header+level)"
 
 [[mgr.prepend_keymap]]
-on = [ "b", "a" ]
-run = "plugin bookmarks save"
-desc = "Save current position as a bookmark"
-
-[[mgr.prepend_keymap]]
-on = [ "'" ]
-run = "plugin bookmarks jump"
-desc = "Jump to a bookmark"
-
-[[mgr.prepend_keymap]]
-on = [ "b", "d" ]
-run = "plugin bookmarks delete"
-desc = "Delete a bookmark"
-
-[[mgr.prepend_keymap]]
-on = [ "b", "D" ]
-run = "plugin bookmarks delete_all"
-desc = "Delete all bookmarks"
-
-[[mgr.prepend_keymap]]
 on = ["C", "p"]
 run = "plugin convert -- --extension='png'"
 desc = "Convert selected files to PNG"
@@ -270,7 +249,7 @@ run = "plugin convert -- --extension='webp'"
 desc = "Convert selected files to WebP"
 
 [[mgr.prepend_keymap]]
-on   = [ "<C-d>" ]
+on   = [ "<C-D>" ]
 run  = "plugin drag"
 desc = "Drag Files"
 
@@ -318,3 +297,58 @@ desc = "Move in relative steps"
 on = [ "9" ]
 run = "plugin relative-motions 9"
 desc = "Move in relative steps"
+
+[[mgr.prepend_keymap]]
+on = [ "u", "b" ]
+run = "plugin recycle-bin"
+desc = "Open recicle bin menu"
+
+[[mgr.prepend_keymap]]
+on = [ "<C-p>" ]
+run = "paste --force"
+desc = "Paste yanked files (overwrite if file exists in the destinatio)"
+
+[[mgr.prepend_keymap]]
+on = [ "P", "s" ]
+run = "plugin projects save"
+desc = "Save current project"
+
+[[mgr.prepend_keymap]]
+on = [ "P", "L" ]
+run = "plugin projects load"
+desc = "Load project"
+
+[[mgr.prepend_keymap]]
+on = [ "P", "l" ]
+run = "plugin projects load_last"
+desc = "Load last project"
+
+[[mgr.prepend_keymap]]
+on = [ "P", "d" ]
+run = "plugin projects delete"
+desc = "Delete project"
+
+[[mgr.prepend_keymap]]
+on = [ "P", "D" ]
+run = "plugin projects delete_all"
+desc = "Delete all projects"
+
+[[mgr.prepend_keymap]]
+on = [ "P", "m" ]
+run = "plugin projects 'merge current'"
+desc = "Merge current tab to other projects"
+
+[[mgr.prepend_keymap]]
+on = [ "P", "M" ]
+run = "plugin projects 'merge all'"
+desc = "Merge current project to other projects"
+
+[[mgr.prepend_keymap]]
+on = [ "p" ]
+run = "plugin ucp paste"
+desc = "Paste"
+
+[[mgr.prepend_keymap]]
+on = [ "y" ]
+run = "plugin ucp copy"
+desc = "Copy"

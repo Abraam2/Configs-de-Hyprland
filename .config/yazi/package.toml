@@ -19,11 +19,6 @@ rev = "e60e122"
 hash = "fbaf0adc8efc59555b748d36aab62d40"
 
 [[plugin.deps]]
-use = "dedukun/bookmarks"
-rev = "9ef1254"
-hash = "92fbb5483657fa7976cdf4e0104e18e0"
-
-[[plugin.deps]]
 use = "atareao/convert"
 rev = "ce060d9"
 hash = "1c0465351f2a344e842f065ab316f265"
@@ -37,6 +32,26 @@ hash = "4e3f1669b6454a80fdc61b2b4f9305b0"
 use = "dedukun/relative-motions"
 rev = "a603d9e"
 hash = "e02a788e5b8ae0fb47fd0193dda589cc"
+
+[[plugin.deps]]
+use = "uhs-robert/recycle-bin"
+rev = "fa68711"
+hash = "8714306b5cac6359edbacbf545fbd691"
+
+[[plugin.deps]]
+use = "MasouShizuka/projects"
+rev = "112a270"
+hash = "5a4e61f8cae42be53844acaa6c447d96"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "ae1335e"
+hash = "88e56a64b7ce7c4314427452343fef17"
+
+[[plugin.deps]]
+use = "simla33/ucp"
+rev = "a4b5ce1"
+hash = "e64d13d729d3a22f8c62893411328c79"
 
 [flavor]
 deps = []
