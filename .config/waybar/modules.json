@@ -6,10 +6,9 @@
 //
 //
 {
+  // CUSTOM
 
-// CUSTOM
-
- // Workspaces
+  // Workspaces
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace r-1",
     "on-scroll-down": "hyprctl dispatch workspace r+1",
@@ -33,7 +32,7 @@
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
-    
+
     "app_ids-mapping": {
       "firefoxdeveloperedition": "firefox-developer-edition"
     },
@@ -71,13 +70,13 @@
     "on-scroll-up": "true",
     "on-scroll-down": "true"
   },
-  
+
   "custom/fecha": {
     "exec": "~/.config/waybar/scripts/fecha.sh",
-    "interval": 1, 
+    "interval": 1,
     "tooltip": false,
     "on-click": "flatpak run com.ml4w.calendar"
-},
+  },
 
   // Now Playing
   "custom/nowplaying": {
@@ -92,7 +91,7 @@
     "on-click-middle": "playerctl previous",
     "tooltip-format": "Left: Play/Pause\nRight: Next\nMiddle: Previous"
   },
-  
+
   // Cliphist
   "custom/cliphist": {
     "format": "",
@@ -113,7 +112,6 @@
     "signal": 1,
     "hide-empty-text": true,
     "on-click": "~/.config/waybar/scripts/installupdates.sh"
-    
   },
   // Wallpaper
   "custom/wallpaper": {
@@ -165,7 +163,8 @@
   // Power Menu
   "custom/exit": {
     "format": " <span color='#f38ba8'></span>",
-    "on-click": "~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/wlogout.sh",
+    // "on-click": "~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/wlogout.sh",
+    "on-click": "quickshell -p ~/.mydotfiles/com.ml4w.dotfiles/.config/VariosXD/Persona-Quickshell/powermenu.qml",
     "on-click-right": "hyprlock",
     "tooltip-format": "Left: Power menu\nRight: Lock screen"
   },
@@ -234,11 +233,11 @@
     "locale": "es_ES.UTF-8",
     "format": "{:%H:%M - %A %d}",
     "on-click": "qs ipc call calendar toggle",
-    "on-click-right":"qs ipc call sidebar toggle",
+    "on-click-right": "qs ipc call sidebar toggle",
     "timezone": "",
     "tooltip": false
   },
-  
+
   // System
   "custom/system": {
     "format": "",
@@ -257,7 +256,7 @@
   // Memory
   "memory": {
     "interval": 2,
-    "format": "<span color='#74c7ec'></span>  {used:0.1f}GB    ", 
+    "format": "<span color='#74c7ec'></span>  {used:0.1f}GB    ",
     "tooltip-format": "RAM usage: {percentage}%",
     "on-click": "~/.config/ml4w/settings/system-monitor.sh"
   },
@@ -310,10 +309,7 @@
   // Group Links
   "group/links": {
     "orientation": "horizontal",
-    "modules": [
-      "custom/chatgpt",
-      "custom/empty"
-    ]
+    "modules": ["custom/chatgpt", "custom/empty"]
   },
   // Group Settings
   "group/settings": {
@@ -323,11 +319,7 @@
       "children-class": "not-memory",
       "transition-left-to-right": true
     },
-    "modules": [
-      "custom/settings",
-      "custom/waybarthemes",
-      "custom/wallpaper"
-    ]
+    "modules": ["custom/settings", "custom/waybarthemes", "custom/wallpaper"]
   },
   // Network
   "network": {
@@ -358,13 +350,7 @@
     "format-alt": "{icon}  {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ]
+    "format-icons": [" ", " ", " ", " ", " "]
   },
   // Power Profiles Daemon
   "power-profiles-daemon": {
@@ -380,7 +366,7 @@
     "on-scroll-up": "true",
     "on-scroll-down": "true"
   },
-// Pulseaudio (Ahora en Blue #89b4fa)
+  // Pulseaudio (Ahora en Blue #89b4fa)
   "pulseaudio": {
     "scroll-step": 1,
     "format": "<span color='#89b4fa'>{icon}</span>  {volume}%",
@@ -396,28 +382,23 @@
       "phone": " ",
       "portable": " ",
       "car": " ",
-      "default": [
-        "",
-        "",
-        "",
-        ""
-      ]
+      "default": ["", "", "", ""]
     },
     "on-click": "pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
   // Bluetooth
   "bluetooth": {
-  "format": "<span color='#89dceb'></span> {status}",
-  "format-disabled": "",
-  "format-off": "",
-  "interval": 30,
-  "on-click": "blueman-manager",
-  "on-click-right": "bluetoothctl power off",
-  "tooltip-format-connected": "Connected devices: {num_connections} connected\n\n{device_enumerate}",
-  "tooltip-format-enumerate-connected": "{device_alias}",
-  "tooltip-format-enumerate-connected-battery": "{device_alias}\t| Battery life: {device_battery_percentage}%",
-  "format-no-controller": ""
+    "format": "<span color='#89dceb'></span> {status}",
+    "format-disabled": "",
+    "format-off": "",
+    "interval": 30,
+    "on-click": "blueman-manager",
+    "on-click-right": "bluetoothctl power off",
+    "tooltip-format-connected": "Connected devices: {num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t| Battery life: {device_battery_percentage}%",
+    "format-no-controller": ""
   },
   // Other
   "user": {

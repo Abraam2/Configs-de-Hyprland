@@ -6,23 +6,14 @@
 #
 
 ARCHIVO_LOG="$HOME/Documentos/tiempos_qbittorrent.log"
-
-# Contador de intentos automático
-if [ ! -f "$ARCHIVO_LOG" ]; then
-    INTENTO=1
-else
-    VECES=$(grep -c "qbittorrent" "$ARCHIVO_LOG" || echo 0)
-    INTENTO=$((VECES + 1))
-fi
-
 terminate_clients() {
     # 1. Cierre de aplicaciones (Con el fix de Spotify)
-    client_pids=$(hyprctl clients -j | jq -r '.[] | .pid')
+    client_pids=$(hyprctl clients -j | jq -r '.[] | select(.initialClass != "quickshell") | .pid')
     if [ -n "$client_pids" ]; then
         echo ":: Cerrando aplicaciones..."
         echo "$client_pids" | xargs kill -15 2>/dev/null
-        for i in {1..5}; do
-            if ! kill -0 $client_pids 2>/dev/null; then
+        for _ in {1..5}; do
+            if ! kill -0 "$client_pids" 2 >/dev/null; then
                 break
             fi
             sleep 0.1

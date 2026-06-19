@@ -60,7 +60,7 @@ hl.bind(
 	{ description = "Abrir el navegador" }
 )
 hl.bind(
-	mainMod .. " + E",
+	mainMod .. " + SHIFT + E",
 	hl.dsp.exec_cmd("nemo --tabs ~ ~/Descargas/ /home/abraham/.mydotfiles/com.ml4w.dotfiles/.config"),
 	{ description = "Abrir el gestor de archivos" }
 )
@@ -73,7 +73,13 @@ hl.bind(
 
 hl.bind(
 	mainMod .. " + Y",
-	hl.dsp.exec_cmd("env EDITOR=$HOME/.local/bin/nv kitty -e yazi"),
+	hl.dsp.exec_cmd("env EDITOR=$HOME/.local/bin/nv kitty --class yazi -e yazi"),
+	{ description = "Abrir Yazi" }
+)
+
+hl.bind(
+	mainMod .. " + E",
+	hl.dsp.exec_cmd("env EDITOR=$HOME/.local/bin/nv kitty --class yazi -e yazi"),
 	{ description = "Abrir Yazi" }
 )
 
@@ -100,6 +106,13 @@ hl.bind(
 	hl.dsp.exec_cmd("~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/wlogout.sh"),
 	{ description = "Iniciar wlogout" }
 )
+
+hl.bind(
+	mainMod .. " + CTRL + A",
+	hl.dsp.exec_cmd("quickshell -p ~/.mydotfiles/com.ml4w.dotfiles/.config/VariosXD/Persona-Quickshell/powermenu.qml"),
+	{ description = "Iniciar p3 powermenu" }
+)
+
 hl.bind(
 	mainMod .. " + V",
 	hl.dsp.exec_cmd("~/.config/ml4w/scripts/ml4w-cliphist"),

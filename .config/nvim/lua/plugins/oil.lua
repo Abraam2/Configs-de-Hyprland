@@ -16,7 +16,7 @@ return {
       })
       -- Mapeo rápido dentro de tu sección de navegación
       -- vim.keymap.set("n", "ñ", "<CMD>Oil<CR>", { desc = "Abrir Oil (Explorador de texto)" })
-      vim.keymap.set("n", "<leader>ñ", "<CMD>Oil<CR>", { desc = "Abrir Oil (Explorador de texto)" })
+      -- vim.keymap.set("n", "<leader>ñ", "<CMD>Oil<CR>", { desc = "Abrir Oil (Explorador de texto)" })
     end,
   },
 }

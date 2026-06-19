@@ -24,3 +24,11 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.spelllang = { "es", "en" }
   end,
 })
+
+-- Forzar el tipo de archivo jsonc en la configuración de Waybar para permitir comentarios
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*/waybar/config", "*/waybar/*.json" },
+  callback = function()
+    vim.bo.filetype = "jsonc"
+  end,
+})

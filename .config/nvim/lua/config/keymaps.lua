@@ -3,10 +3,9 @@
 
 ---@diagnostic disable-next-line: undefined-global
 local LazyVim = require("lazyvim.util")
-local wk = require("which-key")
 
 -------------------------------------------------------------------------------
---                                 ÍNDICE                                    --
+--                                  ÍNDICE                                   --
 -------------------------------------------------------------------------------
 -- 1. ARCHIVOS Y NAVEGACIÓN ............................. (Búsqueda, Rutas)
 -- 2. GUARDADO INTELIGENTE .............................. (Sudo, Smart Save)
@@ -115,26 +114,30 @@ local function smart_terminal_toggle(dir)
   })
 end
 
-wk.add({
-  { "<leader>t", group = "terminal", icon = "" },
-  {
-    "<leader>tt",
-    function()
-      smart_terminal_toggle(LazyVim.root())
-    end,
-    desc = "Toggle Terminal Root",
-  },
-  {
-    "<leader>td",
-    function()
-      smart_terminal_toggle(vim.fn.expand("%:p:h"))
-    end,
-    desc = "Toggle Terminal Directory",
-  },
-})
+-- BLINDAJE DE WHICH-KEY PARA LA TERMINAL
+if not vim.g.vscode then
+  local wk = require("which-key")
+  wk.add({
+    { "<leader>t", group = "terminal", icon = "" },
+    {
+      "<leader>tt",
+      function()
+        smart_terminal_toggle(LazyVim.root())
+      end,
+      desc = "Toggle Terminal Root",
+    },
+    {
+      "<leader>td",
+      function()
+        smart_terminal_toggle(vim.fn.expand("%:p:h"))
+      end,
+      desc = "Toggle Terminal Directory",
+    },
+  })
+end
 
 -------------------------------------------------------------------------------
---                             4. SCRATCH BUFFERS                            --
+--                               4. SCRATCH BUFFERS                          --
 -------------------------------------------------------------------------------
 
 vim.keymap.del("n", "<leader>`")
@@ -163,24 +166,27 @@ vim.keymap.set("n", "<leader>bS", function()
 end, { desc = "Create New Markdown Scratch" })
 
 -------------------------------------------------------------------------------
---                            5. EJECUCIÓN DE CÓDIGO                         --
+--                             5. EJECUCIÓN DE CÓDIGO                        --
 -------------------------------------------------------------------------------
 
-local runcode = require("utils.runcode")
-
-wk.add({
-  {
-    "<leader>r",
-    function()
-      runcode.run_code()
-    end,
-    desc = "Run code",
-    icon = "󰐊 ",
-  },
-})
+-- BLINDAJE PARA EJECUTAR CÓDIGO (Solo en Neovim nativo)
+if not vim.g.vscode then
+  local runcode = require("utils.runcode")
+  local wk = require("which-key")
+  wk.add({
+    {
+      "<leader>r",
+      function()
+        runcode.run_code()
+      end,
+      desc = "Run code",
+      icon = "󰐊 ",
+    },
+  })
+end
 
 -------------------------------------------------------------------------------
---                            6. EDICIÓN Y MOVIMIENTO                        --
+--                             6. EDICIÓN Y MOVIMIENTO                       --
 -------------------------------------------------------------------------------
 
 -- 1. LIMPIEZA FORZOSA: Borramos los atajos rebeldes de Alt+j/k de LazyVim para que suelten el Alt
@@ -253,8 +259,6 @@ vim.keymap.set("i", ",", ",<C-g>u")
 -- Borrar la línea entera en modo insertar y dejarte listo para escribir
 vim.keymap.set("i", "<C-l>", "<Esc>S", { desc = "Limpiar línea y seguir escribiendo" })
 
--- Control f te pone en la identación correcta en modo insertar y no borra, en vez de hacer control l en una línea vacía, haz control f :)
-
 -- Yanky: Abrir el historial de copiado con ventana de PREVIEW usando Ctrl + y
 vim.keymap.set("i", "<C-y>", function()
   ---@diagnostic disable-next-line: undefined-field
@@ -304,7 +308,7 @@ vim.keymap.set("n", "<leader>cj", function()
 end, { desc = "Generar estructura Java con Main" })
 
 -------------------------------------------------------------------------------
---                         7. LIMPIEZA Y CONFIGURACIÓN                       --
+--                        7. LIMPIEZA Y CONFIGURACIÓN                        --
 -------------------------------------------------------------------------------
 
 -- Eliminar atajos de LazyVim que no usamos o estorban
@@ -318,13 +322,14 @@ local to_del = {
   "<leader>dps",
   "<leader>dpp",
   "<leader>D",
+  "<leader>E",
 }
 for _, key in ipairs(to_del) do
   pcall(vim.keymap.del, "n", key)
 end
 
 -------------------------------------------------------------------------------
---                        8. RANDOMADAS QUE ESTÁ BIEN RECORDAR               --
+--                         8. RANDOMADAS QUE ESTÁ BIEN RECORDAR               --
 -------------------------------------------------------------------------------
 
 -- Ahora , se mueve al siguiente párrafo y ; al anteriror, muy útil eso

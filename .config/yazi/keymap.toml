@@ -232,6 +232,11 @@ run = "plugin close-and-restore-tab restore"
 desc = "Restore the previously closed tab"
 
 [[mgr.prepend_keymap]]
+on = [ "t", "c" ]
+run = "close"
+desc = "Close active tab"
+
+[[mgr.prepend_keymap]]
 on   = [ "Z", "u"]
 run = "shell -- ouch decompress %s"
 desc = "Decompress selected files"
@@ -383,5 +388,5 @@ desc = "Copy"
 
 [[mgr.prepend_keymap]]
 on   = [ "t", "k" ]
-run  = "shell 'kitty \"$(pwd)\"'"
+run  = "shell 'kitty \"$(pwd)\"' --orphan"
 desc = "Abrir kitty en la ruta actual"
