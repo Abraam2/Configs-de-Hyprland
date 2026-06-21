@@ -32,3 +32,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.bo.filetype = "jsonc"
   end,
 })
+
+-- Forzar que Neovim respete las reglas de Stylua (2 espacios) solo en archivos Lua
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "lua",
+  callback = function()
+    vim.opt_local.shiftwidth = 2 -- Los saltos de indentación son de 2 espacios
+    vim.opt_local.tabstop = 2 -- El tamaño visual del tabulador es 2
+    vim.opt_local.expandtab = true -- Convierte los tabuladores a espacios reales
+  end,
+})

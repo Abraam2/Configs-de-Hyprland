@@ -64,6 +64,47 @@ vim.keymap.set("n", "<leader>fp", function()
   vim.notify(path, vim.log.levels.INFO, { title = "Ruta Absoluta" })
 end, { desc = "Absolute File Path" })
 
+-- Go to Descargas
+vim.keymap.set(
+  "n",
+  "<leader>Dd",
+  "<cmd>cd ~/Descargas<cr><cmd>lua vim.notify(vim.fn.getcwd())<cr>",
+  { desc = "Go to Descargas" }
+)
+
+-- Go to ML4W Config
+vim.keymap.set(
+  "n",
+  "<leader>Dm",
+  "<cmd>cd ~/.mydotfiles/com.ml4w.dotfiles/.config/<cr><cmd>lua vim.notify(vim.fn.getcwd())<cr>",
+  { desc = "Go to ML4W Config" }
+)
+
+-- Go to Home (~)
+vim.keymap.set("n", "<leader>Dh", "<cmd>cd ~<cr><cmd>lua vim.notify(vim.fn.getcwd())<cr>", { desc = "Go to Home (~)" })
+
+-- Go to current file dir
+vim.keymap.set(
+  "n",
+  "<leader>Df",
+  "<cmd>cd %:p:h<cr><cmd>lua vim.notify(vim.fn.getcwd())<cr>",
+  { desc = "Go to current file dir" }
+)
+
+-- Go to Config
+vim.keymap.set(
+  "n",
+  "<leader>Dc",
+  "<cmd>cd ~/.config<cr><cmd>lua vim.notify(vim.fn.getcwd())<cr>",
+  { desc = "Go to Config" }
+)
+
+-- Go to /etc
+vim.keymap.set("n", "<leader>De", "<cmd>cd /etc<cr><cmd>lua vim.notify(vim.fn.getcwd())<cr>", { desc = "Go to /etc" })
+
+-- Where am I? (pwd)
+vim.keymap.set("n", "<leader>Dp", "<cmd>lua vim.notify(vim.fn.getcwd())<cr>", { desc = "Where am I? (pwd)" })
+
 -------------------------------------------------------------------------------
 --                          2. GUARDADO INTELIGENTE                          --
 -------------------------------------------------------------------------------
@@ -318,11 +359,6 @@ local to_del = {
   "<leader>?",
   "<leader>K",
   "<leader>S",
-  "<leader>dph",
-  "<leader>dps",
-  "<leader>dpp",
-  "<leader>D",
-  "<leader>E",
 }
 for _, key in ipairs(to_del) do
   pcall(vim.keymap.del, "n", key)

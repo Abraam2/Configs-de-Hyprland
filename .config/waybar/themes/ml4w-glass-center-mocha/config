@@ -17,6 +17,7 @@
         "custom/exit",
         "tray",
         "wlr/taskbar",
+        //"custom/gpu-usage",
         "cpu",
         "memory",
         "disk"

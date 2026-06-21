@@ -229,25 +229,21 @@ hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }), { description 
 hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }), { description = "Mover foco arriba" })
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }), { description = "Mover foco abajo" })
 
--- Redimensionar ventanas con el teclado (SHIFT + H, L, K, J)
 hl.bind(
 	mainMod .. " + SHIFT + L",
-	hl.dsp.window.resize({ x = 100, y = 0 }),
+	hl.dsp.focus({ workspace = "m+1" }),
 	{ description = "Aumentar ancho de la ventana" }
 )
+
 hl.bind(
 	mainMod .. " + SHIFT + H",
-	hl.dsp.window.resize({ x = -100, y = 0 }),
-	{ description = "Reducir ancho de la ventana" }
+	hl.dsp.focus({ workspace = "m-1" }),
+	{ description = "Mover workspace a la izquierda" }
 )
-hl.bind(
-	mainMod .. " + SHIFT + J",
-	hl.dsp.window.resize({ x = 0, y = 100 }),
-	{ description = "Aumentar alto de la ventana" }
-)
+
 hl.bind(
 	mainMod .. " + SHIFT + K",
-	hl.dsp.window.resize({ x = 0, y = -100 }),
+	hl.dsp.focus({ workspace = "empty" }),
 	{ description = "Reducir alto de la ventana" }
 )
 
@@ -379,7 +375,7 @@ hl.bind(
 )
 
 hl.bind(
-	mainMod .. " + SHIFT + H",
+	mainMod .. " + SHIFT + U ",
 	hl.dsp.exec_cmd("~/.config/ml4w/scripts/ml4w-toggle-hyprsunset"),
 	{ description = "Alternar modo noche (Hyprsunset)" }
 )
@@ -460,3 +456,4 @@ hl.bind(
 	{ locked = true, description = "Pause audio" }
 )
 hl.bind(mainMod .. " + F6", hl.dsp.exec_cmd("playerctl previous"), { locked = true, description = "Previous track" })
+hl.bind(mainMod .. " + F5", hl.dsp.exec_cmd("blueman-manager"), { locked = true, description = "Blueman" })

@@ -10,7 +10,6 @@ zoxide init fish | source
 # -----------------------------------------------------
 # export EDITOR="/home/abraham/.local/bin/nv"
 set -gx EDITOR $HOME/.local/bin/nv
-
 set -U fish_user_paths /usr/lib/ccache/bin/
 set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin/
 set -U fish_user_paths $fish_user_paths $HOME/.local/bin/

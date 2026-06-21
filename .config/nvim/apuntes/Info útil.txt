@@ -31,3 +31,15 @@ ma -> Las marcas locales también son útiles en archivos largos
 
 delete marks! -> Borra todas las marcas del archivo
 delm a-z -> Borra grupo de marcas
+
+Persistence.nvim -> Sesiones
+
+Sesiones guardadas en -> ~/.local/state/nvim/sessions 
+
+h 'sessionoptions' para ver más info
+
+IA
+
+Archivo de config -> /home/abraham/.local/share/nvim/lazy/codecompanion.nvim/lua/codecompanion/config.lua 
+
+Language = "English" lo cambiamos con toda la polla, a Language = "Spanish" porque no me quiere pillar la conf bro xd

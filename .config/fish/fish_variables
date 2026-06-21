@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export GEMINI_API_KEY:AQ\x2eAb8RN6KgRoMn6qEa2YwKtp4HDDoWnlpKjKZDKW7O7uAmF7m5vg
 SETUVAR --export SSH_AGENT_PID:240421
 SETUVAR --export SSH_AUTH_SOCK:/run/user/1000/ssh\x2dagent\x2esocket
 SETUVAR __fish_initialized:4300

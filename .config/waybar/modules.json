@@ -400,6 +400,12 @@
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t| Battery life: {device_battery_percentage}%",
     "format-no-controller": ""
   },
+  "custom/gpu-usage": {
+    "format": "{} {icon}" /* "{text} {icon}" for nightly users */,
+    "exec": "gpu-usage-waybar",
+    "return-type": "json",
+    "format-icons": "󰾲"
+  },
   // Other
   "user": {
     "format": "{user}",

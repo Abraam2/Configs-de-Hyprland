@@ -12,17 +12,17 @@ Scope {
 
     Process {
         id: poweroffProcess
-        command: ["/home/abraham/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power2.sh", "shutdown"]
+        command: ["/home/abraham/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh", "shutdown"]
         running: false
     }
     Process {
         id: restartProcess
-        command: ["/home/abraham/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power2.sh", "reboot"]
+        command: ["/home/abraham/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh", "reboot"]
         running: false
     }
     Process {
         id: logoutProcess
-        command: ["/home/abraham/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power2.sh", "exit"]
+        command: ["/home/abraham/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh", "exit"]
         running: false
     }
 
