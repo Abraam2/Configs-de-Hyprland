@@ -5,18 +5,21 @@ CLASS="nvim"
 # 1. Comprobamos si nos han pasado un argumento
 if [ -n "$1" ]; then
     FILE_PATH=$(readlink -f "$1")
+    # Magia pura: Escapamos los espacios (transforma "mi carpeta" en "mi\ carpeta")
+    ESCAPED_PATH=$(printf "%q" "$FILE_PATH")
 else
     FILE_PATH=""
+    ESCAPED_PATH=""
 fi
 
 if [ -S "$SOCKET" ]; then
-    if [ -n "$FILE_PATH" ]; then
-        # Si hay archivo, lo mandamos al servidor con :drop
-        nvim --server "$SOCKET" --remote-send "<C-\><C-n>:drop $FILE_PATH<CR>"
+    if [ -n "$ESCAPED_PATH" ]; then
+        # Le mandamos a Neovim la ruta escapada para que no se ralle
+        nvim --server "$SOCKET" --remote-send "<C-\><C-n>:drop $ESCAPED_PATH<CR>"
     fi
     hyprctl dispatch "hl.dsp.focus({ window = 'class:^(${CLASS})$' })"
 else
-    # Primera vez: Si hay archivo lo abrimos, si no, lanzamos nvim vacío
+    # Primera vez: Aquí dejamos $FILE_PATH normal porque está protegido por las comillas de Kitty
     if [ -n "$FILE_PATH" ]; then
         kitty --class "$CLASS" -e nvim --listen "$SOCKET" "$FILE_PATH"
     else

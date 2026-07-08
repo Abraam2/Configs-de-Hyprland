@@ -23,7 +23,7 @@ mkdir -p $HOME/.cache
 mkdir -p $CACHE_FOLDER
 if [ ! -f $CACHE_FILE ]; then
     touch $CACHE_FILE
-    echo "$DEFAULT_WALLPAPER" > "$CACHE_FILE"
+    echo "$DEFAULT_WALLPAPER" >"$CACHE_FILE"
     info "Cache file created"
 fi
 
@@ -40,8 +40,8 @@ PROFILE="com.ml4w.dotfiles" qs -p $HOME/.local/share/ml4w-dotfiles-settings/quic
 info "ML4W Dotfiles Settings started"
 
 # Start Quickshell Overview
-qs -p $HOME/.config/quickshell/overview &
-info "Quickshell Overview started"
+# qs -p $HOME/.config/quickshell/overview &
+# info "Quickshell Overview started"
 
 # Start ML4W Welcome App
 if [ ! -f $HOME/.cache/ml4w-welcome-autostart ]; then

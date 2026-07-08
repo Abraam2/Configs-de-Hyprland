@@ -42,4 +42,6 @@ IA
 
 Archivo de config -> /home/abraham/.local/share/nvim/lazy/codecompanion.nvim/lua/codecompanion/config.lua 
 
+'G
+
 Language = "English" lo cambiamos con toda la polla, a Language = "Spanish" porque no me quiere pillar la conf bro xd

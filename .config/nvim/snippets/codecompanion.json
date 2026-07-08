@@ -1,0 +1,7 @@
+{
+  "Aviso Importante Espanol": {
+    "prefix": "IM",
+    "body": ["IMPORTANTE: Responde obligatoriamente en español.", "", ""],
+    "description": "Obliga al bot de CodeCompanion a hablar en cristiano"
+  }
+}

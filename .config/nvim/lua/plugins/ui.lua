@@ -9,6 +9,9 @@ return {
     opts = {
       spec = {
         { "<leader> ", icon = { icon = " ", hl = "String" }, desc = "Find Files (Root Dir)" },
+        { "<leader>m", icon = { icon = " ", hl = "String" }, desc = "Find Files (ML4W conf)" },
+        { "<leader>N", icon = { icon = " ", hl = "String" }, desc = "Find Files (Nvim Config)" },
+        { "<leader>C", icon = { icon = " ", hl = "String" }, desc = "Find Files (~/.config)" },
         { "<leader>B", icon = { icon = " ", hl = "String" }, desc = "Search Lines In Buffer" },
         { "<leader>.", icon = { icon = "󰈔 ", hl = "DiagnosticHint" }, desc = "Switch to Other Buffer" },
         { "<leader>,", icon = { icon = "󰈔 ", hl = "DiagnosticHint" }, desc = "Toggle Scratch Buffer" },

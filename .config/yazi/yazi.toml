@@ -1,9 +1,24 @@
-# [mgr]
+[mgr]
+ratio = [ 1, 3, 2 ]
+# scrolloff = 3
 # show_hidden = true
 
+[preview]
+wrap            = "no"
+tab_size        = 2
+max_width       = 600
+max_height      = 900
+
 [opener]
+extract = [
+	{ run = 'ouch d -y "$@"', desc = "Extract here", for = "unix" }
+]
 mi_nvim = [
     { run = '/home/abraham/.local/bin/nv "$@"', orphan = true, desc = "Neovim " }
+]
+
+gimp = [
+    { run = 'gimp "$@"', orphan = true, desc = "GIMP" }
 ]
 
 [open]
@@ -15,9 +30,10 @@ prepend_rules = [
     { url = "*.md",  use = [ "mi_nvim", "reveal" ] },
     { url = "*.json", use = [ "mi_nvim", "reveal" ] },
     { url = "*.conf", use = [ "mi_nvim", "reveal" ] },
+    { mime = "text/*", use = [ "mi_nvim", "reveal" ] },
+    { mime = "inode/empty", use = [ "mi_nvim", "reveal" ] },
+    { mime = "image/*", use = [ "open", "gimp" ] }
 
-    # Regla de seguridad por si el archivo sí tiene texto pero otra extensión
-    { mime = "text/*", use = [ "mi_nvim", "reveal" ] }
 ]
 
 [[plugin.prepend_fetchers]]

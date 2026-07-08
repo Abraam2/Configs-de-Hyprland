@@ -68,19 +68,34 @@ return {
                                                                                 
                                                                                 ]],
         keys = {
-          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-          { icon = " ", key = "p", desc = "Projects", action = ":lua Snacks.picker.projects()" },
           {
-            icon = " ",
+            icon = "",
             key = "c",
-            desc = "Config",
+            desc = "Search in ~/.config",
+            action = function()
+              Snacks.picker.files({ cwd = vim.fn.expand("~/.config") })
+            end,
+          },
+          {
+            icon = " ",
+            key = "m",
+            desc = "Search in ML4W config",
+            action = function()
+              Snacks.picker.files({ cwd = vim.fn.expand("~/.mydotfiles/com.ml4w.dotfiles/.config") })
+            end,
+          },
+          {
+            icon = "",
+            key = "n",
+            desc = "Nvim Config",
             action = function()
               Snacks.picker.files({ cwd = vim.fn.expand("~/.config/nvim") })
             end,
           },
+          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          { icon = " ", key = "p", desc = "Projects", action = ":lua Snacks.picker.projects()" },
           {
             icon = " ",
             key = "s",

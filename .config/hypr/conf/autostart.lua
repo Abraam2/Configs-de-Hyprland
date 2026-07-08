@@ -14,13 +14,14 @@ hl.on("hyprland.start", function()
 	-- Start polkit daemon
 	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 	-- Autostart scripts
-	hl.exec_cmd("~/.config/ml4w/scripts/ml4w-autostart")
+	-- hl.exec_cmd("~/.config/ml4w/scripts/ml4w-autostart")
+	hl.exec_cmd("~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/ml4w-autostart-recortado")
 	-- Load GTK settings
 	hl.exec_cmd("~/.config/hypr/scripts/gtk.sh")
 	-- Start swaync
 	hl.exec_cmd("swaync")
 	-- Start orbit wifi and bluetooth manager daemon
-	hl.exec_cmd("orbit daemon &")
+	-- hl.exec_cmd("orbit daemon &")
 	-- Start hypridle
 	hl.exec_cmd("hypridle")
 	-- Load cliphist history

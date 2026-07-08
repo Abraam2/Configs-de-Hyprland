@@ -41,12 +41,12 @@ hl.bind(
 -- ==========================================
 hl.bind(
 	"ALT + Tab",
-	hl.dsp.exec_cmd("snappy-switcher next"),
+	hl.dsp.exec_cmd("snappy-switcher next --mod alt"),
 	{ description = "Snappy-switcher next", repeating = false }
 )
 hl.bind(
 	"ALT + SHIFT + Tab",
-	hl.dsp.exec_cmd("snappy-switcher prev"),
+	hl.dsp.exec_cmd("snappy-switcher prev --mod alt"),
 	{ description = "Snappy-switcher prev", repeating = false }
 )
 
@@ -103,13 +103,14 @@ hl.bind(mainMod .. " + CTRL + S", hl.dsp.exec_cmd("spotify"), { description = "A
 -- ==========================================
 hl.bind(
 	mainMod .. " + CTRL + Q",
-	hl.dsp.exec_cmd("~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/wlogout.sh"),
-	{ description = "Iniciar wlogout" }
+	hl.dsp.exec_cmd("quickshell -p ~/.mydotfiles/com.ml4w.dotfiles/.config/VariosXD/Persona-Powermenu/powermenu.qml"),
+	-- hl.dsp.exec_cmd("~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/wlogout.sh"),
+	{ description = "Powermenu" }
 )
 
 hl.bind(
 	mainMod .. " + CTRL + A",
-	hl.dsp.exec_cmd("quickshell -p ~/.mydotfiles/com.ml4w.dotfiles/.config/VariosXD/Persona-Quickshell/powermenu.qml"),
+	hl.dsp.exec_cmd("quickshell -p ~/.mydotfiles/com.ml4w.dotfiles/.config/VariosXD/Persona-Powermenu/powermenu.qml"),
 	{ description = "Iniciar p3 powermenu" }
 )
 
@@ -195,11 +196,7 @@ hl.bind(
 	hl.dsp.exec_cmd("~/.config/hypr/scripts/killactive.sh"),
 	{ description = "Cerrar ventana activa" }
 )
-hl.bind(
-	mainMod .. " + SHIFT + Q",
-	hl.dsp.exec_cmd("hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"),
-	{ description = "Matar proceso de la ventana activa" }
-)
+
 hl.bind(
 	mainMod .. " + F",
 	hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }),
@@ -210,17 +207,14 @@ hl.bind(
 	hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }),
 	{ description = "Maximizar Ventana (Tiled)" }
 )
-hl.bind(mainMod .. " + A", hl.dsp.window.float({ action = "toggle" }), { description = "Alternar ventana flotante" })
-hl.bind(
-	mainMod .. " + SHIFT + A",
-	hl.dsp.exec_cmd("~/.config/ml4w/scripts/ml4w-toggle-allfloat"),
-	{ description = "Hacer flotantes todas las ventanas del escritorio" }
-)
-hl.bind(
-	mainMod .. " + ALT + A",
-	hl.dsp.exec_cmd("~/.config/ml4w/scripts/ml4w-toggle-float-pin"),
-	{ description = "Fijar ventana activa en modo flotante" }
-)
+hl.bind(mainMod .. " + SHIFT + A", hl.dsp.window.float({ action = "toggle" }), { description = "Flotante marrana" })
+--
+hl.bind(mainMod .. " + A", function()
+	hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
+	hl.dispatch(hl.dsp.window.resize({ x = 1000, y = 700 }))
+	hl.dispatch(hl.dsp.window.center({}))
+end, { description = "Flotante perfecta y centrada" })
+
 hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit"), { description = "Alternar división (split)" })
 
 -- Mover el foco de las ventanas con H, L, K, J
@@ -365,7 +359,10 @@ hl.bind(
 )
 hl.bind(
 	mainMod .. " + CTRL + L",
-	hl.dsp.exec_cmd("~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh lock"),
+	-- hl.dsp.exec_cmd("~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh lock"),
+	-- If you use quickshell-lockscreen add this line to the script to call the voices
+	-- if command -v playerctl >/dev/null 2>&1; then playerctl -a pause; fi
+	hl.dsp.exec_cmd("~/.local/share/quickshell-lockscreen/lock.sh"),
 	{ description = "Bloquear pantalla" }
 )
 hl.bind(

@@ -18,7 +18,7 @@ hl.config({
     },
     general = {
         border_size = 3,
-        gaps_out = 20,
+        gaps_out = 12,
     },
     gestures = {
         workspace_swipe_create_new = true,

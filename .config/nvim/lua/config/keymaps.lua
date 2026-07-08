@@ -19,7 +19,7 @@ local LazyVim = require("lazyvim.util")
 -------------------------------------------------------------------------------
 --                         0. ZONA DE PRUEBAS                                --
 -------------------------------------------------------------------------------
-
+---
 -------------------------------------------------------------------------------
 --                         1. ARCHIVOS Y NAVEGACIÓN                          --
 -------------------------------------------------------------------------------
@@ -32,14 +32,28 @@ end, { desc = "Find files including hidden and gitignored" })
 pcall(vim.keymap.del, "n", "<leader>fc")
 
 -- Buscar archivos en toda la carpeta .config del sistema
-vim.keymap.set("n", "<leader>fc", function()
+vim.keymap.set("n", "<leader>fC", function()
   Snacks.picker.files({
     cwd = vim.fn.expand("~/.config"),
     hidden = true,
   })
 end, { desc = "Buscar en toda la carpeta .config" })
 
-vim.keymap.set("n", "<leader>fC", function()
+-- Buscar archivos en toda la carpeta .config del sistema
+vim.keymap.set("n", "<leader>C", function()
+  Snacks.picker.files({
+    cwd = vim.fn.expand("~/.config"),
+    hidden = true,
+  })
+end, { desc = "Buscar en toda la carpeta .config" })
+
+vim.keymap.set("n", "<leader>fN", function()
+  Snacks.picker.files({
+    cwd = vim.fn.expand("~/.config/nvim"),
+  })
+end, { desc = "Buscar en la configuración de Neovim" })
+
+vim.keymap.set("n", "<leader>N", function()
   Snacks.picker.files({
     cwd = vim.fn.expand("~/.config/nvim"),
   })
@@ -47,7 +61,13 @@ end, { desc = "Buscar en la configuración de Neovim" })
 
 vim.keymap.set("n", "<leader>fm", function()
   Snacks.picker.files({
-    cwd = vim.fn.expand("/home/abraham/.mydotfiles/com.ml4w.dotfiles/.config"),
+    cwd = vim.fn.expand("~/.mydotfiles/com.ml4w.dotfiles/.config"),
+  })
+end, { desc = "Buscar en config ML4W" })
+
+vim.keymap.set("n", "<leader>m", function()
+  Snacks.picker.files({
+    cwd = vim.fn.expand("~/.mydotfiles/com.ml4w.dotfiles/.config"),
   })
 end, { desc = "Buscar en config ML4W" })
 
@@ -159,16 +179,16 @@ end
 if not vim.g.vscode then
   local wk = require("which-key")
   wk.add({
-    { "<leader>t", group = "terminal", icon = "" },
+    { "<leader>T", group = "terminal", icon = "" },
     {
-      "<leader>tt",
+      "<leader>Tt",
       function()
         smart_terminal_toggle(LazyVim.root())
       end,
       desc = "Toggle Terminal Root",
     },
     {
-      "<leader>td",
+      "<leader>Td",
       function()
         smart_terminal_toggle(vim.fn.expand("%:p:h"))
       end,

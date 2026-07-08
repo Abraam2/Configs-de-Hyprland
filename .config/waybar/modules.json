@@ -25,6 +25,7 @@
       "*": 5
     }
   },
+
   // Taskbar
   "wlr/taskbar": {
     "format": "{icon}",
@@ -164,8 +165,9 @@
   "custom/exit": {
     "format": " <span color='#f38ba8'></span>",
     // "on-click": "~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/wlogout.sh",
-    "on-click": "quickshell -p ~/.mydotfiles/com.ml4w.dotfiles/.config/VariosXD/Persona-Quickshell/powermenu.qml",
-    "on-click-right": "hyprlock",
+    "on-click": "quickshell -p ~/.mydotfiles/com.ml4w.dotfiles/.config/VariosXD/Persona-Powermenu/powermenu.qml",
+    // "on-click-right": "hyprlock",
+    "on-click-right": "~/.local/share/quickshell-lockscreen/lock.sh",
     "tooltip-format": "Left: Power menu\nRight: Lock screen"
   },
   // SwayNC
@@ -332,7 +334,7 @@
     "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-    "on-click": "orbit toggle --tab bluetooth",
+    // "on-click": "orbit toggle --tab bluetooth",
     "on-click-right": "blueman-manager"
     //"on-click-right": "nm-connection-editor"
   },
