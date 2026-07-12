@@ -4,7 +4,7 @@
 # 1. TUS RUTAS REALES (CÁMBIALAS POR LAS DE TUS DOTFILES)
 # ==========================================
 # Dónde están tus temas guardados
-THEMES_DIR="$HOME/.mydotfiles/com.ml4w.dotfiles/.config/VariosXD/quickshell-lockscreen/themes/"
+THEMES_DIR="$HOME/.local/share/quickshell-lockscreen/themes_link"
 # Dónde está tu script de bloqueo principal
 LOCK_SCRIPT="$HOME/.local/share/quickshell-lockscreen/lock.sh"
 

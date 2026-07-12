@@ -1,1 +1,1 @@
-/ml4w-glass-center-mocha;/ml4w-glass-center-mocha/default
+/ml4w-glass-center-mocha-niri;/ml4w-glass-center-mocha-niri/default

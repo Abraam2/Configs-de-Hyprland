@@ -7,33 +7,55 @@ local mainMod = "SUPER"
 -- ==========================================
 
 -- Atajo para mover todo lo de un workspace a otro
--- Hacer que bloq mayus sea escape
 
 -- ==========================================
--- CAPTURAS
+-- RANDOM
 -- ==========================================
+
+hl.bind(
+	mainMod .. " + SHIFT + C",
+	hl.dsp.exec_cmd("grim -g \"$(slurp -p)\" - | convert - -format '%[pixel:p{0,0}]' info: | tr -d '#' | wl-copy"),
+	{ description = "Selector de color" }
+)
+
+-- ==========================================
+-- CAPTURAS SCREENSHOT
+-- ==========================================
+
+hl.bind(
+	mainMod .. " + SHIFT + T",
+	hl.dsp.exec_cmd('grim -g "$(slurp)" - | tesseract stdin stdout -l eng+spa | wl-copy'),
+	{
+		description = "Captura que copiar texto",
+	}
+)
 
 hl.bind(
 	mainMod .. " + ALT + S",
 	hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh"),
 	{ description = "Script selector de capturas de pantalla con Rofi" }
 )
+
 hl.bind(
-	mainMod .. " + SHIFT + P",
+	mainMod .. " + SHIFT + S",
 	hl.dsp.exec_cmd(
-		'grim -g "$(slurp)" - | tee ~/Imágenes/$(date +"%Y-%m-%d_%H-%M-%S").png | wl-copy && notify-send "Captura completada" "Guardada en ~/Imágenes y copiada al portapapeles"'
+		'grim -g "$(slurp)" - | tee ~/Imágenes/$(date +"%Y-%m-%d_%H-%M-%S").png | wl-copy -t image/png && notify-send "Captura completada" "Guardada en ~/Imágenes y copiada al portapapeles"'
 	),
 	{ description = "Guardar y copiar captura de pantalla" }
 )
+
 hl.bind(
-	mainMod .. " + SHIFT + S",
-	hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy && notify-send "Captura copiada"'),
-	{ description = "Copiar captura de pantalla" }
+	mainMod .. " + CTRL + S",
+	hl.dsp.exec_cmd(
+		'grim -g "$(slurp)" - | satty --filename - --output-filename ~/Imágenes/$(date +%Y-%m-%d_%H-%M-%S).png'
+	),
+	{ description = "Hacer captura y editarla" }
 )
+
 hl.bind(
 	mainMod .. " + P",
-	hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy && notify-send "Captura copiada"'),
-	{ description = "Copiar captura de pantalla" }
+	hl.dsp.exec_cmd("~/.local/bin/screenshot.sh"),
+	{ description = "Captura que para el tiempo y se ve el ratón xd" }
 )
 
 -- ==========================================
@@ -53,12 +75,21 @@ hl.bind(
 -- ==========================================
 -- APLICACIONES Y TERMINAL
 -- ==========================================
+--
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("kitty"), { description = "Abrir la terminal" })
+
 hl.bind(
 	mainMod .. " + W",
 	hl.dsp.exec_cmd("brave --force-device-scale-factor=1.1 --password-store=basic"),
 	{ description = "Abrir el navegador" }
 )
+
+hl.bind(
+	mainMod .. " + SHIFT + W",
+	hl.dsp.exec_cmd("helium-browser --force-device-scale-factor=1.1"),
+	{ description = "Abrir el navegador" }
+)
+
 hl.bind(
 	mainMod .. " + SHIFT + E",
 	hl.dsp.exec_cmd("nemo --tabs ~ ~/Descargas/ /home/abraham/.mydotfiles/com.ml4w.dotfiles/.config"),
@@ -96,11 +127,10 @@ hl.bind(
 )
 hl.bind("ALT + W", hl.dsp.exec_cmd("~/.local/bin/nv"), { description = "Abrir NVIM" })
 
-hl.bind(mainMod .. " + CTRL + S", hl.dsp.exec_cmd("spotify"), { description = "Abrir Spotify" })
-
 -- ==========================================
 -- MENÚS Y SCRIPTS DEL SISTEMA
 -- ==========================================
+
 hl.bind(
 	mainMod .. " + CTRL + Q",
 	hl.dsp.exec_cmd("quickshell -p ~/.mydotfiles/com.ml4w.dotfiles/.config/VariosXD/Persona-Powermenu/powermenu.qml"),
@@ -218,28 +248,14 @@ end, { description = "Flotante perfecta y centrada" })
 hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit"), { description = "Alternar división (split)" })
 
 -- Mover el foco de las ventanas con H, L, K, J
-hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }), { description = "Mover foco a la izquierda" })
-hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }), { description = "Mover foco a la derecha" })
-hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }), { description = "Mover foco arriba" })
-hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }), { description = "Mover foco abajo" })
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.focus({ direction = "left" }), { description = "Mover foco a la izquierda" })
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.focus({ direction = "right" }), { description = "Mover foco a la derecha" })
+-- hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }), { description = "Mover foco arriba" })
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.focus({ direction = "down" }), { description = "Mover foco abajo" })
 
-hl.bind(
-	mainMod .. " + SHIFT + L",
-	hl.dsp.focus({ workspace = "m+1" }),
-	{ description = "Aumentar ancho de la ventana" }
-)
+hl.bind(mainMod .. " + L", hl.dsp.focus({ workspace = "m+1" }), { description = "Moverse workspace siguiente" })
 
-hl.bind(
-	mainMod .. " + SHIFT + H",
-	hl.dsp.focus({ workspace = "m-1" }),
-	{ description = "Mover workspace a la izquierda" }
-)
-
-hl.bind(
-	mainMod .. " + SHIFT + K",
-	hl.dsp.focus({ workspace = "empty" }),
-	{ description = "Reducir alto de la ventana" }
-)
+hl.bind(mainMod .. " + H", hl.dsp.focus({ workspace = "m-1" }), { description = "Moverse workspace anterior" })
 
 -- Intercambiar posición de ventanas (ALT + H, L, K, J)
 hl.bind(
@@ -264,7 +280,7 @@ hl.bind(
 )
 
 -- Grupos y arrastre con el ratón
-hl.bind(mainMod .. " + G", hl.dsp.group.toggle(), { description = "Alternar grupo de ventanas" })
+-- hl.bind(mainMod .. " + G", hl.dsp.group.toggle(), { description = "Alternar grupo de ventanas" })
 hl.bind(mainMod .. " + K", hl.dsp.layout("swapsplit"), { description = "Intercambiar división (swapsplit)" })
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true, description = "Mover ventana con el ratón" })
 hl.bind(
@@ -297,7 +313,7 @@ hl.bind(
 	{ description = "Abrir menú de apagado" }
 )
 hl.bind(
-	mainMod .. " + SHIFT + W",
+	mainMod .. " + ALT + W",
 	hl.dsp.exec_cmd("~/.config/ml4w/scripts/ml4w-wallpaper-app --random"),
 	{ description = "Cambiar fondo de pantalla al azar" }
 )
@@ -307,7 +323,7 @@ hl.bind(
 	{ description = "Abrir selector de fondos de pantalla" }
 )
 hl.bind(
-	mainMod .. " + ALT + W",
+	mainMod .. " + ALT + SHIFT + A",
 	hl.dsp.exec_cmd("~/.config/ml4w/scripts/ml4w-wallpaper-automation"),
 	{ description = "Iniciar script de fondos automáticos" }
 )

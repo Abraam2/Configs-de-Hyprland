@@ -73,66 +73,66 @@ fi
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        --skip)
-            SKIP=true
+    --skip)
+        SKIP=true
+        shift 1
+        ;;
+    --effect)
+        EFFECT="$2"
+        shift 2
+        ;;
+    --random)
+        if [[ -n "$2" && "$2" != -* ]]; then
+            RANDOM_FOLDER="$2"
+            shift 2
+        else
+            # Default folder if none is provided
+            RAW_FOLDER=$(cat "$SETTINGS_WALLPAPER_FOLDER")
+            # Safely expand $HOME and ~
+            RANDOM_FOLDER="${RAW_FOLDER//\$HOME/$HOME}"
+            RANDOM_FOLDER="${RANDOM_FOLDER//\~/$HOME}"
             shift 1
-            ;;
-        --effect)
-            EFFECT="$2"
-            shift 2
-            ;;
-        --random)
-            if [[ -n "$2" && "$2" != -* ]]; then
-                RANDOM_FOLDER="$2"
-                shift 2
-            else
-                # Default folder if none is provided
-                RAW_FOLDER=$(cat "$SETTINGS_WALLPAPER_FOLDER")
-                # Safely expand $HOME and ~
-                RANDOM_FOLDER="${RAW_FOLDER//\$HOME/$HOME}"
-                RANDOM_FOLDER="${RANDOM_FOLDER//\~/$HOME}"                
-                shift 1
-            fi
+        fi
 
-            if [[ -d "$RANDOM_FOLDER" ]]; then
-                # Select a random image from the resolved folder
-                IMAGE_PATH=$(find "$RANDOM_FOLDER" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | shuf -n 1)
-                
-                if [[ -z "$IMAGE_PATH" ]]; then
-                    error "No valid images (jpg, jpeg, png) found in -> $RANDOM_FOLDER"
-                    exit 1
-                fi
-                info "Random wallpaper selected: $IMAGE_PATH"
-            else
-                error "Directory does not exist -> $RANDOM_FOLDER"
-                exit 1
-            fi
-            ;;
-        --notifications)
-            if [[ "$2" == "false" ]]; then
-                NOTIFICATIONS=false
-            fi
-            shift 2
-            ;;
-        --help)
-            show_help
-            exit 0
-            ;;
-        -*)
-            echo "Error: Unknown option $1"
-            show_help
-            exit 1
-            ;;
-        *)
-            # If it's not a flag, we assume it's the image path
+        if [[ -d "$RANDOM_FOLDER" ]]; then
+            # Select a random image from the resolved folder
+            IMAGE_PATH=$(find "$RANDOM_FOLDER" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | shuf -n 1)
+
             if [[ -z "$IMAGE_PATH" ]]; then
-                IMAGE_PATH="$1"
-            else
-                echo "Error: Multiple image paths provided or unknown argument -> $1"
+                error "No valid images (jpg, jpeg, png) found in -> $RANDOM_FOLDER"
                 exit 1
             fi
-            shift
-            ;;
+            info "Random wallpaper selected: $IMAGE_PATH"
+        else
+            error "Directory does not exist -> $RANDOM_FOLDER"
+            exit 1
+        fi
+        ;;
+    --notifications)
+        if [[ "$2" == "false" ]]; then
+            NOTIFICATIONS=false
+        fi
+        shift 2
+        ;;
+    --help)
+        show_help
+        exit 0
+        ;;
+    -*)
+        echo "Error: Unknown option $1"
+        show_help
+        exit 1
+        ;;
+    *)
+        # If it's not a flag, we assume it's the image path
+        if [[ -z "$IMAGE_PATH" ]]; then
+            IMAGE_PATH="$1"
+        else
+            echo "Error: Multiple image paths provided or unknown argument -> $1"
+            exit 1
+        fi
+        shift
+        ;;
     esac
 done
 
@@ -160,20 +160,20 @@ if [ ! -d $CACHE_FOLDER ]; then
 fi
 
 # Ensure awww-daemon is running
-if ! pgrep -x "awww-daemon" > /dev/null; then
+if ! pgrep -x "awww-daemon" >/dev/null; then
     mkdir -p "$HOME/.cache/awww"
     info "Starting awww-daemon..."
     awww-daemon &
-    
+
     # Give the daemon a brief moment to initialize before sending commands
-    sleep 1 
+    sleep 1
 fi
 
 # Write image path to cache file
 if [ ! -f "$CACHE_FILE" ]; then
     touch "$CACHE_FILE"
 fi
-echo "$IMAGE_PATH" > "$CACHE_FILE"
+echo "$IMAGE_PATH" >"$CACHE_FILE"
 info "Cache file written with $IMAGE_PATH"
 
 # Process image with wallpaper effect
@@ -222,29 +222,33 @@ fi
 info "Matugen updated"
 
 # Update Quickshell theme
-qs ipc call theme-manager reload
-info "Quickshell Theme updated"
 
-# Update ML4W Dotfiles Settings theme
-qs -p $HOME/.local/share/ml4w-dotfiles-settings/quickshell ipc call theme-manager reload
-info "ML4W Dotfiles Settings Theme updated"
+if [ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]; then
+    qs ipc call theme-manager reload
+    info "Quickshell Theme updated"
+
+    # Update ML4W Dotfiles Settings theme
+    qs -p $HOME/.local/share/ml4w-dotfiles-settings/quickshell ipc call theme-manager reload
+    info "ML4W Dotfiles Settings Theme updated"
+fi
 
 # Reload Waybar
-if pgrep -x "waybar" > /dev/null
-then
+if pgrep -x "waybar" >/dev/null; then
     info "Waybar is currently running."
     pkill -SIGUSR2 waybar
 else
     info "Waybar is not running."
-    nohup bash -c "$HOME/.config/waybar/launch.sh" > /dev/null 2>&1 &
+    nohup bash -c "$HOME/.config/waybar/launch.sh" >/dev/null 2>&1 &
     disown
 fi
 info "Waybar reloaded"
 
 # Reload nwg-dock-hyprland
-nohup bash -c "$HOME/.config/nwg-dock-hyprland/launch.sh" > /dev/null 2>&1 &
-disown
-info "nwg-dock-hyprland reloaded"
+if [ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]; then
+    nohup bash -c "$HOME/.config/nwg-dock-hyprland/launch.sh" >/dev/null 2>&1 &
+    disown
+    info "nwg-dock-hyprland reloaded"
+fi
 
 # Update Pywalfox
 if type pywalfox >/dev/null 2>&1; then
@@ -273,7 +277,7 @@ info "$(basename "$SQUARE_WALLPAPER") created"
 if [ ! -f $RASI_FILE ]; then
     touch $RASI_FILE
 fi
-echo "* { current-image: url(\"$BLURRED_WALLPAPER\", height); }" > "$RASI_FILE"
+echo "* { current-image: url(\"$BLURRED_WALLPAPER\", height); }" >"$RASI_FILE"
 info "$(basename "$RASI_FILE") written with $(basename "$BLURRED_WALLPAPER")"
 
 # Apply Effects (Placeholder for your specific effect logic)

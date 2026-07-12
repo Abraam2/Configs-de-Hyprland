@@ -17,7 +17,18 @@ if [ -S "$SOCKET" ]; then
         # Le mandamos a Neovim la ruta escapada para que no se ralle
         nvim --server "$SOCKET" --remote-send "<C-\><C-n>:drop $ESCAPED_PATH<CR>"
     fi
-    hyprctl dispatch "hl.dsp.focus({ window = 'class:^(${CLASS})$' })"
+    # 2. Foco inteligente según el compositor en el que estemos
+    if [[ "$DESKTOP" == *"hyprland"* || "$XDG_CURRENT_DESKTOP" =~ [Hh]yprland ]]; then
+        # Foco para Hyprland
+        hyprctl dispatch "hl.dsp.focus({ window = 'class:^(${CLASS})$' })"
+
+    elif [[ "$DESKTOP" == *"niri"* || "$XDG_CURRENT_DESKTOP" =~ [Nn]iri ]]; then
+        # Foco para Niri: buscamos el ID por su app_id (la clase de kitty) y lo enfocamos
+        NIRI_ID=$(niri msg -j windows 2>/dev/null | jq -r ".[] | select(.app_id == \"$CLASS\") | .id" | head -n 1)
+        if [ -n "$NIRI_ID" ]; then
+            niri msg action focus-window --id "$NIRI_ID" 2>/dev/null
+        fi
+    fi
 else
     # Primera vez: Aquí dejamos $FILE_PATH normal porque está protegido por las comillas de Kitty
     if [ -n "$FILE_PATH" ]; then

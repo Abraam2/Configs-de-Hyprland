@@ -13,6 +13,14 @@ alias shutdown='systemctl poweroff'
 # -----------------------------------------------------
 alias suso='sudo'
 alias +x='chmod +x'
+alias clear-links='find . -type l ! -exec test -e {} \; -delete'
+
+# -----------------------------------------------------
+# Pacman y cachy
+# -----------------------------------------------------
+
+alias niri-apps-id='niri msg -j windows | jq -r \'.[] | "\(.title) -> \(.app_id)"\''
+alias niri-select-app-id="niri msg pick-window"
 
 # -----------------------------------------------------
 # Pacman y cachy

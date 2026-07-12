@@ -31,6 +31,7 @@ default = [
   "runner",
   "menus",
   "websearch",
+  "clipboard"
 ] # providers to be queried by default
 empty = ["desktopapplications"] # providers to be queried when query is empty
 

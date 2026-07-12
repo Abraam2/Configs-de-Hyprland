@@ -29,7 +29,7 @@ fi
 
 #~/.config/ml4w/scripts/ml4w-wallpaper "$(cat $CACHE_FILE)" &
 
-Start Quickshell
+# Start Quickshell
 killall qs
 sleep 0.5
 qs &

@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+# Set a theme.
+#
+# Examples:
+#   dfr-theme-set --list     # Print available themes
+#   dfr-theme-set --menu     # Pick from available themes
+#   dfr-theme-set --current  # Print the current theme
+#   dfr-theme-set NAME       # Provide a specific theme
+#   dfr-theme-set            # Pick the next available theme
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# shellcheck disable=SC1091
+. "${DOTFRIEDRICE_PATH}/bootstrap"
+
+# shellcheck disable=SC1091
+. "${DOTFRIEDRICE_PATH}/dotfriedrice"
+
+mapfile -t ALL_THEMES < <(find "${DOTFRIEDRICE_PATH}/_themes" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
+
+ARG="${1:-}"
+CURRENT_THEME=
+
+get_current_theme() {
+  local active_theme_path="${XDG_CONFIG_HOME}/fzf/theme.sh"
+
+  if [[ -L "${active_theme_path}" && -e "${active_theme_path}" ]]; then
+    CURRENT_THEME=$(basename "$(dirname "$(readlink -f "${active_theme_path}")")")
+  else
+    CURRENT_THEME="tokyonight-moon"
+  fi
+}
+
+if [ "${ARG}" = "--list" ]; then
+  printf "%s\n" "${ALL_THEMES[@]}"
+  exit
+elif [ "${ARG}" = "--menu" ]; then
+  walker --provider menus:themes
+  exit
+elif [ "${ARG}" = "--current" ]; then
+  get_current_theme
+  echo "${CURRENT_THEME}"
+  exit
+fi
+
+if [ -z "${ARG}" ]; then
+  get_current_theme
+
+  # Pick the first theme as a default.
+  ARG="${ALL_THEMES[0]}"
+
+  # Find the next theme, wrap back to the first one if at the end of the list.
+  # Using ! ensures this returns an index (0, 1, etc.) instead of the name.
+  for i in "${!ALL_THEMES[@]}"; do
+    if [[ "${ALL_THEMES[${i}]}" = "${CURRENT_THEME}" ]]; then
+      ARG="${ALL_THEMES[(i + 1) % ${#ALL_THEMES[@]}]}"
+      break
+    fi
+  done
+fi
+
+set_theme "${ARG}"

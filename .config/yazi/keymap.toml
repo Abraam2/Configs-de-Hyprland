@@ -97,12 +97,12 @@ desc = "Eliminar ruta actual de Zoxide (pwd)"
 
 [[mgr.prepend_keymap]]
 on = ["e", "a"]
-run = "shell -- chmod +x %h"
+run = 'shell -- chmod +x "$@"'
 desc = "Dar permiso de ejecución (+x)"
 
 [[mgr.prepend_keymap]]
 on = ["e", "r"]
-run = "shell -- chmod -x %h"
+run = 'shell -- chmod -x "$@"'
 desc = "Quitar permiso de ejecución (-x)"
 
 [[mgr.prepend_keymap]]
@@ -306,59 +306,9 @@ run  = "plugin drag"
 desc = "Drag Files"
 
 [[mgr.prepend_keymap]]
-on = [ "1" ]
-run = "plugin relative-motions 1"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "2" ]
-run = "plugin relative-motions 2"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "3" ]
-run = "plugin relative-motions 3"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "4" ]
-run = "plugin relative-motions 4"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "5" ]
-run = "plugin relative-motions 5"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "6" ]
-run = "plugin relative-motions 6"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "7" ]
-run = "plugin relative-motions 7"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "8" ]
-run = "plugin relative-motions 8"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "9" ]
-run = "plugin relative-motions 9"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
 on = [ "u", "b" ]
 run = "plugin recycle-bin"
 desc = "Open recicle bin menu"
-
-[[mgr.prepend_keymap]]
-on = [ "<C-p>" ]
-run = "paste --force"
-desc = "Paste yanked files (overwrite if file exists in the destinatio)"
 
 [[mgr.prepend_keymap]]
 on = [ "P", "s" ]
@@ -396,16 +346,16 @@ run = "plugin projects 'merge all'"
 desc = "Merge current project to other projects"
 
 [[mgr.prepend_keymap]]
-on = [ "p" ]
-run = "plugin ucp paste"
-desc = "Paste"
-
-[[mgr.prepend_keymap]]
-on = [ "y" ]
-run = "plugin ucp copy"
-desc = "Copy"
-
-[[mgr.prepend_keymap]]
 on   = [ "t", "k" ]
 run  = "shell 'kitty \"$(pwd)\"' --orphan"
 desc = "Abrir kitty en la ruta actual"
+
+[[mgr.prepend_keymap]]
+on   = [ "<C-p>" ]
+run  = "plugin padrastro-borracho"
+desc = "Pegar con gestión de colisiones (experimental)"
+
+[[mgr.prepend_keymap]]
+on   = [ "p" ]
+run  = "paste"
+desc = "Pegar nativo"

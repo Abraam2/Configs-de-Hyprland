@@ -1,0 +1,9 @@
+/* -----------------------------------------------------
+ * Import Matugen Colors
+ * ----------------------------------------------------- */
+@import "../../../../../.config/waybar/colors.css";
+
+@import "../../../../../.config/waybar/mocha.css";
+
+/* @import '../../ml4w-glass/style-mocha.css'; */
+@import "../../ml4w-glass-center-mocha-niri/style-mocha.css";

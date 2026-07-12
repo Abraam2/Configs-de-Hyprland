@@ -1,0 +1,7 @@
+
+# Placement: ~/.config/satty/config.toml
+
+[general]
+
+actions-on-escape = ["save-to-file", "save-to-clipboard", "exit"]
+copy-command = "wl-copy"
