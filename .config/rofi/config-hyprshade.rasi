@@ -29,7 +29,7 @@ configuration {
 }
 
 /* ---- Load font ---- */
-@import "~/.config/ml4w/settings/rofi-font.rasi"
+@import "~/.config/rofi/pene/rofi-font.rasi"
 
 /* ---- Load colors ---- */
 @theme "~/.config/rofi/colors.rasi"
@@ -38,11 +38,10 @@ configuration {
 @import "~/.cache/ml4w/hyprland-dotfiles/current_wallpaper.rasi"
 
 /* ---- Load border width ---- */
-@import "~/.config/ml4w/settings/rofi-border.rasi"
+@import "~/.config/rofi/pene/rofi-border.rasi"
 
 /* ---- Load border radius ---- */
-@import "~/.config/ml4w/settings/rofi-border-radius.rasi"
-
+@import "~/.config/rofi/pene/rofi-border-radius.rasi"
 // Main //
 window {
     width:                        25em;

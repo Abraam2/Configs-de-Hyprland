@@ -228,27 +228,11 @@ on = ["S", "m"]
 run = "plugin sudo -- chmod"
 desc = "sudo chmod"
 
+# Si no funciona, vacía la papelera, debe de haber algo raro que está haciendo que no fucnione.
 [[mgr.prepend_keymap]]
 on = ["u", "u"]
 run = "plugin restore"
 desc = "Restore last deleted files/folders"
-
-# # This will throw error when there is existed file/folder
-# [[mgr.prepend_keymap]]
-# on = ["u", "i"]
-# run = "plugin restore -- --interactive"
-# desc = "Restore deleted files/folders (Interactive)"
-
-    # Select files/folders to restore. Input item index or range separated by comma:
-    # - Restore a trashed file:
-    #      What file to restore [0..4]: 4
-    # - Restore multiple trashed files separated by comma, also support range:
-    #      What file to restore [0..3]: 0-2, 3
-
-# [[mgr.prepend_keymap]]
-# on = ["U", "o"]
-# run = "plugin restore -- --interactive --interactive-overwrite"
-# desc = "Restore deleted files/folders (Interactive overwrite)"
 
 [[mgr.prepend_keymap]]
 on = [ "t", "R" ]
@@ -299,11 +283,11 @@ desc = "Archive selected files (password+header+level)"
 on = ["C"]
 run = "plugin magia"
 desc = "Convertir imágenes con magia"
-
-[[mgr.prepend_keymap]]
-on   = [ "D" ]
-run  = "plugin drag"
-desc = "Drag Files"
+#
+# [[mgr.prepend_keymap]]
+# on   = [ "D" ]
+# run  = "plugin drag"
+# desc = "Drag Files"
 
 [[mgr.prepend_keymap]]
 on = [ "u", "b" ]
@@ -351,11 +335,11 @@ run  = "shell 'kitty \"$(pwd)\"' --orphan"
 desc = "Abrir kitty en la ruta actual"
 
 [[mgr.prepend_keymap]]
-on   = [ "<C-p>" ]
+on   = [ "p" ]
 run  = "plugin padrastro-borracho"
 desc = "Pegar con gestión de colisiones (experimental)"
 
 [[mgr.prepend_keymap]]
-on   = [ "p" ]
+on   = [ "<C-p>" ]
 run  = "paste"
 desc = "Pegar nativo"

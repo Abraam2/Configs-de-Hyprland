@@ -4,11 +4,6 @@ rev = "afd61ce"
 hash = "d390cd2d8b996939a695411b446f58d0"
 
 [[plugin.deps]]
-use = "boydaihungst/restore"
-rev = "0e08704"
-hash = "e4d7c06510b4fe5f64ae31fbb4e017d6"
-
-[[plugin.deps]]
 use = "MasouShizuka/close-and-restore-tab"
 rev = "b2153bc"
 hash = "1493e40f8f4f222c9ecb24cf85ccabd2"
@@ -47,6 +42,11 @@ hash = "88e56a64b7ce7c4314427452343fef17"
 use = "simla33/ucp"
 rev = "a4b5ce1"
 hash = "e64d13d729d3a22f8c62893411328c79"
+
+[[plugin.deps]]
+use = "deppess/yazi-plugins:restore"
+rev = "c660628"
+hash = "6dd3c416491c6c228596ecf1d800eacd"
 
 [flavor]
 deps = []

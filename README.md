@@ -1,4 +1,4 @@
-# Configuración personal de las dotfiles ML4W
+# Configuración personal de las dotfiles ML4W, contiene config para Hyprland y Niri
 
 [Web oficial del proyecto](https://ml4w.com/os/)
 
@@ -7,8 +7,6 @@
 ### Lockscreens (alternativas a hyprlock)
 
 [Conjunto de lockscreens que están guapísimos](https://github.com/Darkkal44/qylock/tree/main)
-
-Hay un script en VariosXD para cambiar el tema
 
 ### Temas de grub
 

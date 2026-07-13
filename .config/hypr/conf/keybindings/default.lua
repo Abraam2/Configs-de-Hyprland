@@ -54,7 +54,7 @@ hl.bind(
 
 hl.bind(
 	mainMod .. " + P",
-	hl.dsp.exec_cmd("~/.local/bin/screenshot.sh"),
+	hl.dsp.exec_cmd("screenshot_freeze.sh"),
 	{ description = "Captura que para el tiempo y se ve el ratón xd" }
 )
 
@@ -104,13 +104,13 @@ hl.bind(
 
 hl.bind(
 	mainMod .. " + Y",
-	hl.dsp.exec_cmd("env EDITOR=$HOME/.local/bin/nv kitty --class yazi -e yazi"),
+	hl.dsp.exec_cmd("env EDITOR=$HOME/scripts-global/nv kitty --class yazi -e yazi"),
 	{ description = "Abrir Yazi" }
 )
 
 hl.bind(
 	mainMod .. " + E",
-	hl.dsp.exec_cmd("env EDITOR=$HOME/.local/bin/nv kitty --class yazi -e yazi"),
+	hl.dsp.exec_cmd("env EDITOR=$HOME/scripts-global/nv kitty --class yazi -e yazi"),
 	{ description = "Abrir Yazi" }
 )
 
@@ -125,7 +125,7 @@ hl.bind(
 	hl.dsp.exec_cmd("~/.config/ml4w/settings/calculator.sh"),
 	{ description = "Abrir la calculadora" }
 )
-hl.bind("ALT + W", hl.dsp.exec_cmd("~/.local/bin/nv"), { description = "Abrir NVIM" })
+hl.bind("ALT + W", hl.dsp.exec_cmd("~/scripts-global/nv"), { description = "Abrir NVIM" })
 
 -- ==========================================
 -- MENÚS Y SCRIPTS DEL SISTEMA
@@ -133,14 +133,14 @@ hl.bind("ALT + W", hl.dsp.exec_cmd("~/.local/bin/nv"), { description = "Abrir NV
 
 hl.bind(
 	mainMod .. " + CTRL + Q",
-	hl.dsp.exec_cmd("quickshell -p ~/.mydotfiles/com.ml4w.dotfiles/.config/VariosXD/Persona-Powermenu/powermenu.qml"),
+	hl.dsp.exec_cmd("quickshell -p ~/scripts-global/Persona-Powermenu/powermenu.qml"),
 	-- hl.dsp.exec_cmd("~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/wlogout.sh"),
 	{ description = "Powermenu" }
 )
 
 hl.bind(
 	mainMod .. " + CTRL + A",
-	hl.dsp.exec_cmd("quickshell -p ~/.mydotfiles/com.ml4w.dotfiles/.config/VariosXD/Persona-Powermenu/powermenu.qml"),
+	hl.dsp.exec_cmd("quickshell -p ~/scripts-global/Persona-Powermenu/powermenu.qml"),
 	{ description = "Iniciar p3 powermenu" }
 )
 
@@ -332,11 +332,8 @@ hl.bind(
 	hl.dsp.exec_cmd("~/.config/hypr/scripts/launcher.sh"),
 	{ description = "Abrir lanzador de aplicaciones" }
 )
-hl.bind(
-	mainMod .. " + CTRL + K",
-	hl.dsp.exec_cmd("~/.config/hypr/scripts/keybindings.sh"),
-	{ description = "Mostrar lista de atajos" }
-)
+hl.bind(mainMod .. " + CTRL + K", hl.dsp.exec_cmd("hypr-keybindings.sh"), { description = "Mostrar lista de atajos" })
+
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("~/.config/waybar/launch.sh"), { description = "Recargar Waybar" })
 hl.bind(
 	mainMod .. " + CTRL + B",
