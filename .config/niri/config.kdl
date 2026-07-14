@@ -20,8 +20,9 @@ spawn-sh-at-startup "wl-paste --watch cliphist store"
 // --- 3. GESTIÓN DE ENERGÍA ---
 spawn-at-startup "hypridle"                   // Debería funcionarte igual en Niri
 
-spawn-sh-at-startup "gtk.sh"
-spawn-sh-at-startup "cacheML4W.sh"
+spawn-sh-at-startup "~/scripts-global/gtk.sh"
+spawn-sh-at-startup "~/scripts-global/cacheML4W.sh"
+spawn-sh-at-startup "~/scripts-global/tracker-ram.sh"
 // spawn-sh-at-startup "listeners.sh --startall"
 
 // ----------------------------------------------------------------------------
@@ -119,6 +120,15 @@ layout {
 }
 
 // ----------------------------------------------------------------------------
+// Workspaces
+// ----------------------------------------------------------------------------
+
+workspace "1"
+workspace "2"
+workspace "3"
+workspace "4"
+
+// ----------------------------------------------------------------------------
 // Window rules / layer rules
 // ----------------------------------------------------------------------------
 
@@ -131,6 +141,11 @@ layout {
 // niri msg pick-window
 //
 
+// window-rule {
+//     match app-id="Spotify"
+//
+//     open-on-workspace "4"
+// }
 
 window-rule {
     // Slight rounded corners.
@@ -181,7 +196,7 @@ window-rule {
 // Aplicaciones que quires que se abran maximizadas
 
 window-rule {
-    match app-id=r"(Cemu|eden|dolphin-emu|pcsx2-qt|Spotify|steam|org-jdownloader-update-launcher-JDLauncher)"
+    match app-id=r"(Cemu|eden|dolphin-emu|pcsx2-qt|steam|org-jdownloader-update-launcher-JDLauncher)"
     // match app-id=r"^brave-browser$"
     // match app-id=r"^helium$"
     open-maximized true
@@ -236,16 +251,16 @@ binds {
     Mod+Shift+E hotkey-overlay-title="File manager (floating)" { spawn "nemo" "--name=dfr.floating.thunar"; }
 
     // Lanzadores inteligentes (Evitan abrir apps duplicadas)
-    Mod+Alt+B hotkey-overlay-title="Lanzar Btop" { spawn "dfr-launch-or-focus-tui" "btop"; }
-    Mod+Alt+P hotkey-overlay-title="Passwords" { spawn "dfr-launch-or-focus" "keepassxc"; }
-    Mod+Alt+S hotkey-overlay-title="Spotify" { spawn "dfr-launch-or-focus" "spotify"; }
+    Mod+Alt+B hotkey-overlay-title="Lanzar Btop" { spawn "~/scripts-global/dfr-launch-or-focus-tui" "btop"; }
+    Mod+Alt+P hotkey-overlay-title="Passwords" { spawn "~/scripts-global/dfr-launch-or-focus" "keepassxc"; }
+    Mod+Alt+S hotkey-overlay-title="Spotify" { spawn "~/scripts-global/dfr-launch-or-focus" "spotify"; }
 
     // Capturas de pantalla y herramientas visuales
-    Mod+Shift+S hotkey-overlay-title="Screenshot (region)" { spawn-sh "capture_selection.sh"; }
-    Mod+Ctrl+S hotkey-overlay-title="Screenshot (edit)" { spawn-sh "capture_edition.sh"; }
-    Mod+Shift+T hotkey-overlay-title="Screenshot (copy text)" { spawn-sh "capture_text.sh"; }
-    Mod+P hotkey-overlay-title="Screenshot Wayfreaze" { spawn-sh "screenshot_freeze.sh"; }
-    Mod+Ctrl+Shift+S hotkey-overlay-title="Screenshot (monitor: focused)" { spawn "dfr-screenshot" "monitor-focused"; }
+    Mod+Shift+S hotkey-overlay-title="Screenshot (region)" { spawn-sh "~/scripts-global/capture_selection.sh"; }
+    Mod+Ctrl+S hotkey-overlay-title="Screenshot (edit)" { spawn-sh "~/scripts-global/capture_edition.sh"; }
+    Mod+Shift+T hotkey-overlay-title="Screenshot (copy text)" { spawn-sh "~/scripts-global/capture_text.sh"; }
+    Mod+P hotkey-overlay-title="Screenshot Wayfreaze" { spawn-sh "~/scripts-global/screenshot_freeze.sh"; }
+    Mod+Ctrl+Shift+S hotkey-overlay-title="Screenshot (monitor: focused)" { spawn "~/scripts-global/dfr-screenshot" "monitor-focused"; }
     Mod+Shift+P hotkey-overlay-title="Pick color" { spawn-sh "killall hyprpicker || hyprpicker --autocopy --lowercase-hex"; }
 
     // Sistema y Notificaciones
@@ -253,8 +268,7 @@ binds {
     Mod+Ctrl+Q hotkey-overlay-title="Powermenu" { spawn-sh "quickshell -p ~/scripts-global/Persona-Powermenu/powermenu.qml"; }
     Mod+Ctrl+A hotkey-overlay-title="Powermenu" { spawn-sh "quickshell -p ~/scripts-global/Persona-Powermenu/powermenu.qml"; }
     Mod+Shift+Ctrl+L hotkey-overlay-title="Lock screen" { spawn "~/.local/share/quickshell-lockscreen/lock.sh"; }
-    Mod+Ctrl+Shift+U hotkey-overlay-title="Toggle Hyprsunset" { spawn "ml4w-toggle-hyprsunset"; }
-    Mod+Shift+Apostrophe hotkey-overlay-title="Keybinds Menu" { spawn "niri-keybindings.sh"; }
+    Mod+Shift+Apostrophe hotkey-overlay-title="Keybinds Menu" { spawn "~/scripts-global/niri-keybindings.sh"; }
 
     // =====================================================================
     // 2. GESTIÓN DE NIRI
@@ -271,12 +285,12 @@ binds {
     // Ajustes finos de tamaño 
     Mod+Plus hotkey-overlay-title="Increase column width" { set-column-width "+5%"; }
     Mod+Minus hotkey-overlay-title="Decrease column width" { set-column-width "-5%"; }
-    Mod+Ctrl+Period hotkey-overlay-title="Increase column width" { set-column-width "+5%"; }
-    Mod+Ctrl+Comma hotkey-overlay-title="Decrease column width" { set-column-width "-5%"; }
-    Mod+Shift+Plus hotkey-overlay-title="Increase window height" { set-window-height "+10%"; }
-    Mod+Shift+Minus hotkey-overlay-title="Decrease window height" { set-window-height "-10%"; }
-    Mod+Shift+Period hotkey-overlay-title="Increase window height" { set-window-height "+10%"; }
-    Mod+Shift+Comma hotkey-overlay-title="Decrease window height" { set-window-height "-10%"; }
+    Mod+Alt+Period hotkey-overlay-title="Increase column width" { set-column-width "+5%"; }
+    Mod+Alt+Comma hotkey-overlay-title="Decrease column width" { set-column-width "-5%"; }
+    Mod+Ctrl+Plus hotkey-overlay-title="Increase window height" { set-window-height "+10%"; }
+    Mod+Ctrl+Minus hotkey-overlay-title="Decrease window height" { set-window-height "-10%"; }
+    Mod+Ctrl+Period hotkey-overlay-title="Increase window height" { set-window-height "+10%"; }
+    Mod+Ctrl+Comma hotkey-overlay-title="Decrease window height" { set-window-height "-10%"; }
 
     // Gestión de Waybar y Estética
     Mod+Shift+B hotkey-overlay-title="Reload Waybar" { spawn-sh "~/.config/waybar/launch.sh"; }

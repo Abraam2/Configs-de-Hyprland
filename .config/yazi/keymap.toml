@@ -340,6 +340,11 @@ run  = "plugin padrastro-borracho"
 desc = "Pegar con gestión de colisiones (experimental)"
 
 [[mgr.prepend_keymap]]
+on   = [ "y" ]
+run  = "plugin ucp copy"
+desc = "Copy ucp"
+
+[[mgr.prepend_keymap]]
 on   = [ "<C-p>" ]
 run  = "paste"
 desc = "Pegar nativo"

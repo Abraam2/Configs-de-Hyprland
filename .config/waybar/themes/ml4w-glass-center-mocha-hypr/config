@@ -28,7 +28,7 @@
     // Modules Center
     "modules-center": [
         "hyprland/workspaces",
-        "niri/workspaces",
+        //"niri/workspaces",
         "custom/empty"
     ],
     // Modules Right    

@@ -10,19 +10,34 @@ Scope {
     property bool shouldShow: false
     property var targetScreen: null
 
+    // Buscamos el script en la carpeta de arriba (../power.sh) y limpiamos el file://
+    function getAbsoluteScriptPath() {
+        var url = Qt.resolvedUrl("../power.sh").toString();
+        
+        if (url.indexOf("file:///") === 0) {
+            return url.substring(7); // Quita "file://" pero mantiene la barra "/" inicial de Linux
+        } else if (url.indexOf("file://") === 0) {
+            return url.substring(6);
+        }
+        return url;
+    }
+
+    // Ahora sí apunta a Persona-Powermenu/power.sh de forma absoluta
+    property string scriptPath: getAbsoluteScriptPath()
+
     Process {
         id: poweroffProcess
-        command: ["/home/abraham/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh", "shutdown"]
+        command: [root.scriptPath, "shutdown"]
         running: false
     }
     Process {
         id: restartProcess
-        command: ["/home/abraham/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh", "reboot"]
+        command: [root.scriptPath, "reboot"]
         running: false
     }
     Process {
         id: logoutProcess
-        command: ["/home/abraham/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh", "exit"]
+        command: [root.scriptPath, "exit"]
         running: false
     }
 
