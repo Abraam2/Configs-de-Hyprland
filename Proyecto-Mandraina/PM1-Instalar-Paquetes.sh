@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==============================================================================
-# PROYECTO MANDRIANA - (NIRI ENVIRONMENT)
+# PROYECTO MANDRIANA - SCRIPT DE INSTALACIÓN DEFINITIVO (NIRI ENVIRONMENT)
 # ==============================================================================
 
 VERDE="\e[32m"
@@ -53,6 +53,7 @@ GRAFICAS_Y_APPS=(
     nwg-displays
     xsettingsd
     uwsm
+    xwayland-satellite
 
     # Interfaz, Barras y Lanzadores
     waybar-git
@@ -62,6 +63,7 @@ GRAFICAS_Y_APPS=(
 
     # Audio, Red, Energía y Dispositivos
     pavucontrol
+    spotify
     network-manager-applet
     nm-connection-editor
     power-profiles-daemon
@@ -92,42 +94,43 @@ GRAFICAS_Y_APPS=(
     qt5ct
     qt6ct
 
-    # Aplicaciones Diarias
+    # Aplicaciones Diarias Gráficas
     helium-browser-bin
-    gimp
-    vlc
-    libreoffice-fresh
     brave-bin
     floorp
+    gimp
+    vlc
+    obs-studio
+    libreoffice-fresh
     telegram-desktop
     visual-studio-code-bin
     jdownloader2
     keepassxc
     virtualbox
     timeshift
-    # Me pesa el pito y añado esto
-    nushell
-    lazygit
-    duf
-    rsync
-    obs-studio
-
 )
 
 # ==============================================================================
-# CATEGORÍA 2: TERMINAL Y SISTEMA (Shells, CLI, Fuentes, Demonios y Entorno)
+# CATEGORÍA 2: TERMINAL Y SISTEMA (Shells, CLI, Herramientas de programación y Entorno)
 # ==============================================================================
 TERMINAL_Y_SISTEMA=(
-    # Shells, Multiplexores y Editores
+    # Shells y Editores
     fish
-    ncdu
     zsh
+    nushell
     tmux
     neovim
     kitty
     alacritty
 
-    # Herramientas de Terminal (TUI / CLI) - ¡Imprescindibles!
+    # Entornos de Programación (Obligatorios para Mason y desarrollo)
+    nodejs
+    npm
+    go
+    rustup
+    jdk21-openjdk
+
+    # Herramientas de Terminal (TUI / CLI)
     btop
     fastfetch
     ouch
@@ -137,6 +140,9 @@ TERMINAL_Y_SISTEMA=(
     fzf
     zoxide
     lazygit
+    duf
+    ncdu
+    rsync
     trash-cli
     cliphist
     wl-clipboard
@@ -148,15 +154,17 @@ TERMINAL_Y_SISTEMA=(
     tesseract-data-eng
     ripdrag-git
     pokemon-colorscripts-git
+    ghgrab-bin
+    wev
 
-    # Utilidades de bajo nivel de tu lista
+    # Utilidades de bajo nivel y control
     gpk-bin
+    wlrctl
     nirimod-git
     better-control-git
-    wlrctl
     libnotify
 
-    # Entorno e Intérpretes Python / Soporte
+    # Entorno, Portales e Intérpretes Python / Soporte
     polkit-gnome
     hypridle
     python-pip
@@ -164,6 +172,8 @@ TERMINAL_Y_SISTEMA=(
     python-gobject
     python-screeninfo
     python-pywalfox
+    xdg-desktop-portal-gnome
+    xdg-desktop-portal-gtk
 
     # Soporte de Capas Qt/Wayland para la UI
     qt5-wayland
@@ -178,19 +188,18 @@ TERMINAL_Y_SISTEMA=(
     ttf-meslo-nerd
     otf-font-awesome
     awesome-terminal-fonts
+    wine-cachyos
+    faugus-launcher
 )
 
 # ==============================================================================
-# CATEGORÍA 3: ZONA GAMING (Solo Escritorio - Sin rastro de flatpaks individuales)
+# CATEGORÍA 3: ZONA GAMING (Solo Escritorio)
 # ==============================================================================
 ZONA_GAMING=(
-    steam
     flatpak
     mangohud
-    faugus-launcher
     goverlay
     gamemode
-    wine-cachyos
     protontricks
     protonup-qt
     eden-preview-bin

@@ -7,6 +7,7 @@ alias pf='fastfetch'
 alias ff='fastfetch'
 alias bum='systemctl poweroff'
 alias shutdown='systemctl poweroff'
+alias copy='wl-copy'
 
 # -----------------------------------------------------
 # Random

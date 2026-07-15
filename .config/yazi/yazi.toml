@@ -21,6 +21,11 @@ gimp = [
     { run = 'gimp "$@"', orphan = true, desc = "GIMP" }
 ]
 
+# Creamos un abridor para imágenes que no bloquee la terminal (orphan = true)
+visor_imagenes = [
+    { run = 'xdg-open "$@"', orphan = true, desc = "Ver imagen" }
+]
+
 [open]
 prepend_rules = [
     # Forzamos por extensión. Da igual que tengan 0 bytes, Yazi los mandará a tu script
@@ -32,8 +37,9 @@ prepend_rules = [
     { url = "*.conf", use = [ "mi_nvim", "reveal" ] },
     { mime = "text/*", use = [ "mi_nvim", "reveal" ] },
     { mime = "inode/empty", use = [ "mi_nvim", "reveal" ] },
-    { mime = "image/*", use = [ "open", "gimp" ] }
-
+    
+    # Usamos el nuevo visor "orphan" y añadimos "reveal" a la lista
+    { mime = "image/*", use = [ "visor_imagenes", "gimp", "reveal" ] }
 ]
 
 [[plugin.prepend_fetchers]]

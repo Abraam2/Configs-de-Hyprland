@@ -22,6 +22,7 @@ spawn-at-startup "hypridle"                   // Debería funcionarte igual en N
 
 spawn-sh-at-startup "~/scripts-global/gtk.sh"
 spawn-sh-at-startup "~/scripts-global/cacheML4W.sh"
+
 spawn-sh-at-startup "~/scripts-global/tracker-ram.sh"
 // spawn-sh-at-startup "listeners.sh --startall"
 

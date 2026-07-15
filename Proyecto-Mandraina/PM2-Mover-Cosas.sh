@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==============================================================================
-# PROYECTO MANDRIANA - FASE 1.5: DESPLIEGUE DE ENLACES SIMBÓLICOS
+# PROYECTO MANDRIANA - FASE 1.5 & 2: DESPLIEGUE DE ENLACES SIMBÓLICOS
 # ==============================================================================
 
 VERDE="\e[32m"
@@ -13,13 +13,31 @@ echo -e "${AZUL}==================================================${RESET}"
 echo -e "${VERDE}    Desplegando Configuraciones - Proyecto Mandriana${RESET}"
 echo -e "${AZUL}==================================================${RESET}"
 
-# Directorio actual donde está este script (raíz de tus dotfiles)
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Directorio actual donde has ejecutado el script
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TARGET_MYDOTS="$HOME/.mydots"
 
 # Asegurar directorios base esenciales del sistema
 mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.local/share/applications"
+
+# --- COMPROBACIÓN Y AUTO-MUDANZA A ~/.mydots ---
+if [ "$CURRENT_DIR" != "$TARGET_MYDOTS" ]; then
+    echo -e "\n${AMARILLO}[!] Detectado: No estás ejecutando el script desde $TARGET_MYDOTS${RESET}"
+    echo -e "[*] Creando la carpeta central de dotfiles en $TARGET_MYDOTS..."
+    mkdir -p "$TARGET_MYDOTS"
+
+    echo -e "[*] Copiando todos los archivos de configuración a $TARGET_MYDOTS..."
+    # Copia todo el contenido (incluyendo archivos ocultos) a ~/.mydots
+    cp -r "$CURRENT_DIR"/. "$TARGET_MYDOTS/"
+
+    # Cambiamos nuestra variable de origen para que a partir de ahora enlace desde ~/.mydots
+    DOTFILES_DIR="$TARGET_MYDOTS"
+    echo -e "${VERDE}[+] Mudanza completada. Los enlaces se crearán apuntando a $TARGET_MYDOTS${RESET}"
+else
+    DOTFILES_DIR="$CURRENT_DIR"
+    echo -e "${VERDE}[+] Ejecutando directamente desde la carpeta de confianza: $TARGET_MYDOTS${RESET}"
+fi
 
 # --- FASE 1.5: MOVER Y COPIAR ARCHIVOS ESPECÍFICOS ---
 
@@ -32,7 +50,7 @@ if [ -d "$DOTFILES_DIR/Fondos" ]; then
         echo -e "${AMARILLO}[!] La carpeta ~/Fondos ya existe. Saltando para evitar sobreescribir.${RESET}"
     fi
 else
-    echo -e "${AMARILLO}[!] No se encontró la carpeta ./Fondos en los dotfiles.${RESET}"
+    echo -e "${AMARILLO}[!] No se encontró la carpeta $DOTFILES_DIR/Fondos.${RESET}"
 fi
 
 # 2. Mover nvim.desktop a ~/.local/share/applications/
@@ -40,7 +58,7 @@ if [ -f "$DOTFILES_DIR/Misc/nvim.desktop" ]; then
     echo -e "[*] Colocando nvim.desktop en las aplicaciones del sistema..."
     cp "$DOTFILES_DIR/Misc/nvim.desktop" "$HOME/.local/share/applications/nvim.desktop"
 else
-    echo -e "${AMARILLO}[!] No se encontró ./Misc/nvim.desktop. Comprueba si la ruta es correcta.${RESET}"
+    echo -e "${AMARILLO}[!] No se encontró $DOTFILES_DIR/Misc/nvim.desktop. Comprueba si la ruta es correcta.${RESET}"
 fi
 
 # --- FASE 2: GESTIÓN DE ENLACES SIMBÓLICOS (Mydots / Configs) ---
@@ -66,7 +84,6 @@ crear_enlace() {
 }
 
 # 1. Elementos que van directos a la RAÍZ de tu $HOME
-# (Tus rc de las shells, scripts globales, etc.)
 declare -A COSAS_HOME=(
     ["scripts-global"]="$HOME/scripts-global"
     ["Info_Random"]="$HOME/Info_Random"
@@ -81,7 +98,6 @@ for origen in "${!COSAS_HOME[@]}"; do
 done
 
 # 2. Elementos que van dentro de ~/.config/
-# (El resto de tus dotfiles listados)
 CONFIG_APPS=(
     autostart
     btop
@@ -117,5 +133,5 @@ for app in "${CONFIG_APPS[@]}"; do
 done
 
 echo -e "\n${VERDE}==================================================${RESET}"
-echo -e "${VERDE}    ¡Fase Completada !          ${RESET}"
+echo -e "${VERDE}    ¡Instalación y enlaces completados con éxito! ${RESET}"
 echo -e "${VERDE}==================================================${RESET}"
