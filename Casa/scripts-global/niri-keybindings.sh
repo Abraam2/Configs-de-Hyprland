@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Ruta a tu config (asegúrate de que es esta)
-CONFIG_FILE="$HOME/.config/niri/config.kdl"
+CONFIG_FILE="$HOME/.config/niri/cfg/keybinds.kdl"
 
 # Buscamos los binds con título, limpiamos argumentos raros y formateamos para Rofi
 grep 'hotkey-overlay-title=' "$CONFIG_FILE" | awk '

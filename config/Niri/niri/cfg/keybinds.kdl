@@ -29,7 +29,8 @@ binds {
     Mod+N hotkey-overlay-title="Abrir Nvim" { spawn "nv"; }
     
     // Exploradores de archivos
-    Mod+E hotkey-overlay-title="File manager (Yazi)" { spawn-sh "env EDITOR=$HOME/scripts-global/nv kitty --class yazi -e yazi"; }
+    // Mod+E hotkey-overlay-title="File manager (Yazi)" { spawn-sh "env EDITOR=$HOME/scripts-global/nv kitty --class yazi -e yazi"; }
+    Mod+E hotkey-overlay-title="File manager (Yazi)" { spawn-sh "nemo"; }
     Mod+Y hotkey-overlay-title="File manager (Yazi)" { spawn-sh "env EDITOR=$HOME/scripts-global/nv kitty --class yazi -e yazi"; }
     Mod+Shift+E hotkey-overlay-title="File manager (floating)" { spawn "nemo" "--name=dfr.floating.thunar"; }
 
@@ -127,14 +128,15 @@ binds {
     Mod+End hotkey-overlay-title="Focus last column" { focus-column-last; }
     Mod+Ctrl+Home hotkey-overlay-title="Move column to first" { move-column-to-first; }
     Mod+Ctrl+End hotkey-overlay-title="Move column to last" { move-column-to-last; }
+    Mod+TAB hotkey-overlay-title="Move prevoous workspace" { focus-workspace-previous; }
 
     // Navegación fluida con rueda del ratón
     Mod+WheelScrollDown hotkey-overlay-title="Focus column right" { focus-column-right; }
     Mod+WheelScrollUp hotkey-overlay-title="Focus column left" { focus-column-left; }
     Mod+Ctrl+WheelScrollDown hotkey-overlay-title="Move column right" { move-column-right; }
     Mod+Ctrl+WheelScrollUp hotkey-overlay-title="Move column left" { move-column-left; }
-    Mod+WheelScrollRight hotkey-overlay-title="Focus column right" { focus-column-right; }
-    Mod+WheelScrollLeft hotkey-overlay-title="Focus column left" { focus-column-left; }
+    Mod+Alt+WheelScrollDown                 cooldown-ms=150 { focus-workspace-down; }
+    Mod+Alt+WheelScrollUp                   cooldown-ms=150 { focus-workspace-up; }
     Mod+Ctrl+WheelScrollRight hotkey-overlay-title="Move column right" { move-column-right; }
     Mod+Ctrl+WheelScrollLeft hotkey-overlay-title="Move column left" { move-column-left; }
 

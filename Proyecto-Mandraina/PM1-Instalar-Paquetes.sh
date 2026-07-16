@@ -48,6 +48,7 @@ fi
 GRAFICAS_Y_APPS=(
     # Core Niri & Composición
     niri
+    ddcutil
     waypaper
     nwg-displays
     xsettingsd

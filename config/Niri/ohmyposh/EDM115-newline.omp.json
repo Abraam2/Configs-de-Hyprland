@@ -83,6 +83,9 @@
           "style": "diamond"
         },
         {
+          "properties": {
+            "cache_duration": "none"
+          },
           "leading_diamond": "",
           "trailing_diamond": "",
           "template": " {{ .Full }}",
@@ -94,9 +97,8 @@
         {
           "properties": {
             "display_mode": "files",
-            "extensions": [
-              "package-lock.json"
-            ]
+            "extensions": ["package-lock.json"],
+            "cache_duration": "none"
           },
           "leading_diamond": "",
           "trailing_diamond": "",
@@ -109,9 +111,8 @@
         {
           "properties": {
             "display_mode": "files",
-            "extensions": [
-              "pnpm-lock.yaml"
-            ]
+            "extensions": ["pnpm-lock.yaml"],
+            "cache_duration": "none"
           },
           "leading_diamond": "",
           "trailing_diamond": "",
@@ -123,7 +124,8 @@
         },
         {
           "properties": {
-            "display_mode": "files"
+            "display_mode": "files",
+            "cache_duration": "none"
           },
           "leading_diamond": "",
           "trailing_diamond": "",
@@ -134,6 +136,9 @@
           "style": "diamond"
         },
         {
+          "properties": {
+            "cache_duration": "none"
+          },
           "leading_diamond": "",
           "trailing_diamond": "",
           "template": " {{ .Full }}",
@@ -143,6 +148,9 @@
           "style": "diamond"
         },
         {
+          "properties": {
+            "cache_duration": "none"
+          },
           "leading_diamond": "",
           "trailing_diamond": "",
           "template": " {{ .Full }}",
@@ -150,6 +158,23 @@
           "background": "#6272a4",
           "type": "php",
           "style": "diamond"
+        }
+      ]
+    },
+    {
+      "type": "rprompt",
+      "overflow": "hidden",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "threshold": 2000
+          },
+          "template": "  {{ .FormattedMs }} ",
+          "foreground": "#ffb86c",
+          "background": "transparent",
+          "type": "executiontime",
+          "style": "plain"
         }
       ]
     },

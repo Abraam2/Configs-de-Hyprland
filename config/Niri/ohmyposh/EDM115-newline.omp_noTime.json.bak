@@ -1,11 +1,5 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "transient_prompt": {
-    "template": "  ❯❯ {{ .AbsolutePWD }} : ",
-    "foreground": "p:color15",
-    "background": "transparent",
-    "newline": true
-  },
   "blocks": [
     {
       "type": "prompt",
@@ -181,7 +175,7 @@
   "patch_pwsh_bleed": true,
   "final_space": true,
   "palette": {
-    "color0": "#1a110f",
+    "color0": "#101418",
     "color1": "",
     "color2": "",
     "color3": "",
@@ -191,11 +185,11 @@
     "color7": "",
     "color8": "",
     "color9": "",
-    "color10": "#ffb59f",
+    "color10": "#9acbfa",
     "color11": "",
     "color12": "",
-    "color13": "#3a0b00",
+    "color13": "#001d32",
     "color14": "",
-    "color15": "#f1dfda"
+    "color15": "#e0e2e8"
   }
 }
