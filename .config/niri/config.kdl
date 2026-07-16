@@ -148,6 +148,35 @@ workspace "4"
 //     open-on-workspace "4"
 // }
 
+// 2. Regla para el portal de escritorio GTK (Selector de archivos, etc.)
+window-rule {
+    match app-id=r"xdg-desktop-portal-gtk"
+    open-floating true
+    default-column-width { fixed 1200; }
+    default-window-height { fixed 700; }
+}
+
+// 3. Regla por títulos comunes de avisos y diálogos
+window-rule {
+    match title=r"(Open File|Confirm|Error|Warning|Settings|Preferences|Guardar como|Abrir|Confirmar)"
+    open-floating true
+}
+
+// 4. Regla específica para Nemo (Propiedades de archivos)
+window-rule {
+    match app-id=r"nemo" title=r"(Properties|Propiedades)"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 600; }
+}
+
+// 5. Regla para FileRoller (Gestor de archivadores de GNOME)
+window-rule {
+    match app-id=r"org\.gnome\.FileRoller" title=r"(Extraer|Comprimir|Añadir|Añadiendo|Creando)"
+    open-floating true
+    default-column-width { fixed 450; }
+    default-window-height { fixed 180; }
+}
 window-rule {
     // Slight rounded corners.
     geometry-corner-radius 10
@@ -166,6 +195,7 @@ window-rule {
     match app-id=r"^thunar$" title=r"^Rename "
     match app-id=r"^virt-manager$" title=r" - Connection Details"
     match app-id=r"^wev$"
+    match app-id=r"^xarchiver$"
     match app-id=r"^xarchiver$"
     match app-id=r"firefox$" title=r"^(Picture-in-Picture|Library|About Mozilla Firefox|Firefox - Choose a profile)$"
 
@@ -197,7 +227,7 @@ window-rule {
 // Aplicaciones que quires que se abran maximizadas
 
 window-rule {
-    match app-id=r"(Cemu|eden|dolphin-emu|pcsx2-qt|steam|org-jdownloader-update-launcher-JDLauncher)"
+    match app-id=r"(Cemu|vlc|eden|dolphin-emu|pcsx2-qt|steam|org-jdownloader-update-launcher-JDLauncher)"
     // match app-id=r"^brave-browser$"
     // match app-id=r"^helium$"
     open-maximized true
