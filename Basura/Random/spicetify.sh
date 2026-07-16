@@ -1,7 +1,10 @@
 #!/bin/bash
 
+bash
+
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 
+# Esto ejecutarlo con fish porque está en el path
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
 

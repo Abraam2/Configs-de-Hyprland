@@ -1,4 +1,7 @@
-include "./theme.kdl"
+// Theme
+// include "./theme.kdl"
+include "./noctalia.kdl"
+ 
 include "./cfg/animations/current_animation.kdl"
 include "./cfg/autostart.kdl"
 include "./cfg/keybinds.kdl"
@@ -7,3 +10,5 @@ include "./cfg/display.kdl"
 include "./cfg/layout.kdl"
 include "./cfg/rules.kdl"
 include "./cfg/misc.kdl"
+
+

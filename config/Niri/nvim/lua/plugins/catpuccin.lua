@@ -22,7 +22,8 @@
 -- }
 
 -- Cargamos los colores de Matugen de forma segura arriba del todo
-local matugen = pcall(require, "config.matugen_colors") and require("config.matugen_colors") or nil
+-- local matugen = pcall(require, "config.matugen_colors") and require("config.matugen_colors") or nil
+local matugen = pcall(require, "config.noctalia-custom") and require("config.noctalia-custom") or nil
 
 return {
   {
@@ -34,7 +35,7 @@ return {
       flavour = "mocha",
       transparent_background = false,
       term_colors = true,
-      
+
       custom_highlights = function(colors)
         local highlights = {
           -- Tus cambios para machacar la negrita en HTML
@@ -65,12 +66,12 @@ return {
 
         return highlights
       end,
-      
+
       integrations = {
         treesitter = true,
         native_lsp = { enabled = true },
         semantic_tokens = true,
-        -- Desactivamos la integración nativa de dashboard de Catppuccin 
+        -- Desactivamos la integración nativa de dashboard de Catppuccin
         -- para que no pise nuestros custom_highlights personalizados
         dashboard = false,
       },

@@ -17,7 +17,13 @@ binds {
 
     // Gestión básica de ventanas
     Mod+Q repeat=false hotkey-overlay-title="Close window" { close-window; }
-    Mod+Space hotkey-overlay-title="Launcher rofi" { spawn-sh "pkill rofi || rofi -show drun -replace -i"; }
+
+    // Main launcher, rofi
+    Mod+Shift+Space hotkey-overlay-title="Launcher rofi" { spawn-sh "pkill rofi || rofi -show drun -replace -i"; }
+    // Alternative launcher noctalia
+    // Mucho más guapo loquete, puedo buscar configs, ventanas, y de todo
+    Mod+Space hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+
     Mod+V repeat=false hotkey-overlay-title="Launcher (clipboard)" { spawn-sh "ml4w-cliphist"; }
     Mod+I hotkey-overlay-title="Focus previously focused window" { focus-window-previous; }
 
@@ -135,8 +141,8 @@ binds {
     Mod+WheelScrollUp hotkey-overlay-title="Focus column left" { focus-column-left; }
     Mod+Ctrl+WheelScrollDown hotkey-overlay-title="Move column right" { move-column-right; }
     Mod+Ctrl+WheelScrollUp hotkey-overlay-title="Move column left" { move-column-left; }
-    Mod+Alt+WheelScrollDown                 cooldown-ms=150 { focus-workspace-down; }
-    Mod+Alt+WheelScrollUp                   cooldown-ms=150 { focus-workspace-up; }
+    Mod+Alt+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+Alt+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
     Mod+Ctrl+WheelScrollRight hotkey-overlay-title="Move column right" { move-column-right; }
     Mod+Ctrl+WheelScrollLeft hotkey-overlay-title="Move column left" { move-column-left; }
 
@@ -212,14 +218,24 @@ binds {
     Mod+Ctrl+9 { move-column-to-workspace 9; }
 
     // Teclas multimedia con Mod+Fxx (Teclados sin teclas multimedia dedicadas)
-    Mod+F11 hotkey-overlay-title="Raise volume" { spawn-sh "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"; }
-    Mod+F10 hotkey-overlay-title="Lower volume" { spawn-sh "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"; }
-    Mod+F9 hotkey-overlay-title="Mute audio" { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    // Universal
+    
+    // Mod+F11 hotkey-overlay-title="Raise volume" allow-when-locked=true { spawn-sh "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"; }
+    // Mod+F10 hotkey-overlay-title="Lower volume" allow-when-locked=true { spawn-sh "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"; }
+    // Mod+F9 hotkey-overlay-title="Mute audio" allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+
+    // Nocatalia
+
+    Mod+F11 hotkey-overlay-title="Raise volume" allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
+    Mod+F10 hotkey-overlay-title="Lower volume" allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
+    Mod+F9 hotkey-overlay-title="Mute audio" allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
+
+
     Mod+F2 hotkey-overlay-title="Increase brightness" { spawn-sh "ddcutil setvcp 10 + 5"; }
     Mod+F1 hotkey-overlay-title="Decrease brightness" { spawn-sh "ddcutil setvcp 10 - 5"; }
-    Mod+F8 hotkey-overlay-title="Next track" { spawn-sh "playerctl next"; }
-    Mod+F7 hotkey-overlay-title="Pause track" { spawn-sh "playerctl -p spotify play-pause"; }
-    Mod+F6 hotkey-overlay-title="Previous track" { spawn-sh "playerctl previous"; }
+    Mod+F8 hotkey-overlay-title="Next track" allow-when-locked=true { spawn-sh "playerctl next"; }
+    Mod+F7 hotkey-overlay-title="Pause track" allow-when-locked=true { spawn-sh "playerctl -p spotify play-pause"; }
+    Mod+F6 hotkey-overlay-title="Previous track" allow-when-locked=true { spawn-sh "playerctl previous"; }
 
     // Teclas multimedia dedicadas estándares (XF86)
     XF86AudioRaiseVolume allow-when-locked=true hotkey-overlay-title="Raise volume" { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }

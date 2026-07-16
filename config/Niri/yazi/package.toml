@@ -47,6 +47,3 @@ hash = "e64d13d729d3a22f8c62893411328c79"
 use = "deppess/yazi-plugins:restore"
 rev = "c660628"
 hash = "6dd3c416491c6c228596ecf1d800eacd"
-
-[flavor]
-deps = []

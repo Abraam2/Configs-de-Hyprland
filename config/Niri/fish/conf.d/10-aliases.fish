@@ -15,6 +15,7 @@ alias copy='wl-copy'
 alias suso='sudo'
 alias +x='chmod +x'
 alias clear-links='find . -type l ! -exec test -e {} \; -delete'
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 
 # -----------------------------------------------------
 # Pacman y cachy
@@ -27,8 +28,10 @@ alias niri-select-app-id="niri msg pick-window"
 # Pacman y cachy
 # -----------------------------------------------------
 
-# Actualizar el sistema por completo
-alias pac-update="sudo pacman -Syu"
+# Actualizar y ordenar los mirrors de CachyOS por velocidad
+# (Usa la herramienta propia de CachyOS para ratear sus repositorios)
+alias mirrors="sudo cachyos-rate-mirrors"
+alias update-mirrors="sudo cachyos-rate-mirrors"
 
 # Buscar un paquete en los repositorios usando palabras clave
 # (Reemplaza el típico 'pacman -Ss')
@@ -53,11 +56,6 @@ alias pac-cache="sudo pacman -Sc"
 
 # Eliminar paquetes "huérfanos" (dependencias que se quedaron colgadas y ya ningún programa usa)
 alias pac-clean="sudo pacman -Rns (pacman -Qtdq)"
-
-# Actualizar y ordenar los mirrors de CachyOS por velocidad
-# (Usa la herramienta propia de CachyOS para ratear sus repositorios)
-alias mirrors="sudo cachyos-rate-mirrors"
-alias update-mirrors="sudo cachyos-rate-mirrors"
 
 # Actualizar los mirrors generales de Arch Linux usando reflector (optimizado por velocidad/país)
 alias arch-mirrors="sudo reflector --protocol https --latest 20 --sort rate --save /etc/pacman.d/mirrorlist"

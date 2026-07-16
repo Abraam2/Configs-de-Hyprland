@@ -1,0 +1,31 @@
+[config]
+
+[templates]
+
+# User-defined templates
+# Add your custom templates below
+# Example:
+# [templates.myapp]
+# input_path = "~/.config/noctalia/templates/myapp.css"
+# output_path = "~/.config/myapp/theme.css"
+# post_hook = "myapp --reload-theme"
+
+[templates.kitty]
+input_path = '~/.config/noctalia/templates/kitty.conf'
+output_path = '~/.config/kitty/themes/noctalia-custom.conf'
+post_hook = 'pkill -SIGUSR1 kitty'
+
+[templates.neovim]
+input_path = "~/.config/noctalia/templates/nvim-colors.lua"
+output_path = "~/.config/nvim/lua/config/noctalia-custom.lua"
+# post_hook = "killall -SIGUSR1 nvim || true"
+# Config on /home/abraham/.mydots/config/Niri/nvim/lua/plugins/catpuccin.lua
+
+[templates.rofi]
+input_path = '~/.config/noctalia/templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/noctalia-custom.rasi'
+
+[templates.ohmyposh]
+input_path = '~/.config/noctalia/templates/ohmyposh-colors.json'
+output_path = '~/.config/ohmyposh/noctalia-custom.json'
+post_hook = "jq --slurpfile palette ~/.config/ohmyposh/noctalia-custom.json '. + $palette[0]' ~/.config/ohmyposh/EDM115-newline.omp.json > /tmp/new_theme.json && mv -f /tmp/new_theme.json ~/.config/ohmyposh/pene.omp.json"

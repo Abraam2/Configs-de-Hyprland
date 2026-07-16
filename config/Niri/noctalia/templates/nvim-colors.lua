@@ -1,0 +1,4 @@
+return {
+	logo = "{{colors.primary.default.hex}}",
+	botones = "{{colors.tertiary.default.hex}}",
+}
