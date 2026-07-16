@@ -1,0 +1,136 @@
+
+
+
+
+___ (0) Package Manager ___
+
+# Install Paru
+sudo pacman -S --noconfirm git base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+
+# (or yay)
+sudo pacman -S --noconfirm git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+
+___ (1) Packages ___
+
+# Core Tools
+sudo pacman -S slurp grim wl-clipboard
+
+# OCR (all languages are available via pacman - ä, ü, ö, ø, etc.)
+sudo pacman -S tesseract tesseract-data-eng
+
+# Color picker
+sudo pacman -S imagemagick
+
+# Wayfreeze
+paru -S wayfreeze-git
+
+# Satty annotation tool
+paru -S satty
+
+# LaTeX OCR + uv +  mako (or dunst)
+sudo pacman -S uv mako libnotify && uv tool install --python 3.12 "pix2tex[gui]" --torch-backend=rocm6.2 # Acceleration options: rocm6.2 (AMD), cuda12 (NVIDIA), cpu (universal)
+
+
+___ (2) Correct Directories ___
+
+cd ~/Downloads/Setup_Guide_Hyprland/ #cd into the Setup_Guide directory
+
+mkdir -p ~/.config/satty/
+cp config.toml ~/.config/satty/
+
+mkdir -p ~/.local/bin/
+cp screenshot.sh ~/.local/bin/
+
+
+___ (3) Final Setup Steps ___
+
+# Make screenshot.sh executable
+chmod +x ~/.local/bin/screenshot.sh
+
+# Create the Screenshots directory
+mkdir -p ~/Documents/Screenshots/
+
+
+___ (4) Hyprland Config ___
+
+# Place the following in Hyprland Config ( ~/.config/hypr/hyprland.lua )
+
+# OCR scan area and copy text to clipboard (eng+deu+... for more languages)
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd('grim -g "$(slurp)" - | tesseract stdin stdout -l eng | wl-copy'))
+
+# Screenshot area, copy to clipboard, and save to file
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd('grim -g "$(slurp)" - | tee ~/Documents/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy -t image/png'))
+
+# Pick color from screen and copy hexcode to clipboard
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("grim -g \"$(slurp -p)\" - | convert - -format '%[pixel:p{0,0}]' info: | tr -d '#' | wl-copy"))
+
+# Screenshot area, open in Satty annotation tool and save edited version to clipboard and file with escape key
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty --filename - --output-filename ~/Documents/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png'))
+
+# Screenshot area with frozen screen. It prevents tabs collapsing on use, but is less smooth. Hyprland does not hide the cursor, but Sway does.
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("~/.local/bin/screenshot.sh"))
+
+# LaTeX OCR — scan area and copy LaTeX code to clipboard
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd('grim -g "$(slurp)" /tmp/latex-ocr-tmp.png && pix2tex /tmp/latex-ocr-tmp.png | sed "s/^[^:]*: //" | wl-copy && notify-send "LaTeX OCR" "Copied to clipboard"'))
+
+
+___ (+) Notes ____
+
+# Run 'pip2tex' in terminal before using LaTeX OCR
+
+# Keep in mind that these are my custom keybindings, and they are likely to conflict with yours
+
+# If you want other languages than English for the OCR scan, you can download them using pacman. Run this command to see their names: "sudo pacman -Ss tesseract-data-"
+
+
+___ (++) Slurp Style Examples ___
+
+# Replace slurp in any keybinding with one of the following to change its appearance.
+# The last two hex digits of each color are the alpha/opacity (ff = opaque, 00 = invisible).
+# Flags: -b background, -c border, -s selection fill, -w border weight
+# The colors can be tested in the terminal
+
+# Example: hl.bind(mainMod .. " + S", hl.dsp.exec_cmd('grim -g "$(slurp -b 1e1e2eaa -c 89b4faff -s 89b4fa22 -w 2)" - | tee ~/Documents/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy -t image/png'))
+
+# Catppuccin Mocha
+slurp -b 1e1e2eaa -c 89b4faff -s 89b4fa22 -w 2
+
+# Gruvbox
+slurp -b 282828cc -c fbf1c7ff -s fabd2f22 -w 2
+
+# Nord
+slurp -b 2e3440cc -c 88c0d0ff -s 81a1c122 -w 2
+
+# Tokyo Night
+slurp -b 1a1b26cc -c 7aa2f7ff -s 7aa2f722 -w 2
+
+# Dracula
+slurp -b 282a36cc -c ff79c6ff -s bd93f922 -w 2
+
+# Rose Pine
+slurp -b 191724cc -c ebbcbaff -s eb6f9222 -w 2
+
+# Minimal
+slurp -b 00000066 -c ffffff99 -s ffffff11 -w 1
+
+# Minimal (light theme)
+slurp -b ffffffaa -c 333333ff -s 00000011 -w 1
+
+# High contrast / no-nonsense
+slurp -b 000000cc -c ffffffff -s ffffff22 -w 3
+
+# Red crosshair feel
+slurp -b 00000099 -c ff0000ff -s ff000011 -w 1
+
+# Transparent / barely there
+slurp -b 00000044 -c ffffff88 -s ffffff11 -w 1
+
+
+

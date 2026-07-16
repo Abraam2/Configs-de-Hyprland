@@ -1,9 +1,0 @@
-// Archivo autogenerado por Matugen para Niri
-layout {
-    // Apagamos el focus-ring para usar bordes tradicionales en todas las ventanas
-    border {
-        active-color "{{colors.primary.default.hex}}"
-        
-        inactive-color "{{colors.on_primary.default.hex}}"
-    }
-}

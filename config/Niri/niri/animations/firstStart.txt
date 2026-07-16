@@ -1,0 +1,1 @@
+ln -s ~/.config/niri/animations/glide_burn_multicolor.kdl ~/.config/niri/animations/current_animation.kdl

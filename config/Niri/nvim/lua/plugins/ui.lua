@@ -1,0 +1,34 @@
+-- DiagnosticError (rojo) DiagnosticWarn (amarillo) DiagnosticInfo (azul) DiagnosticHint (turquesa) Constant (naranja) String (verde) Identifier (rosa pálido, muy pálido) Function (azul) Keyword (morado vegeta) Special Type Number Boolean Label Operator Comment
+
+return {
+  -- =========================================================================
+  -- 1. CONFIGURACIÓN DE WHICH-KEY (Tus atajos con iconos tuneados)
+  -- =========================================================================
+  {
+    "folke/which-key.nvim",
+    opts = {
+      spec = {
+        { "<leader> ", icon = { icon = " ", hl = "String" }, desc = "Find Files (Root Dir)" },
+        { "<leader>m", icon = { icon = " ", hl = "String" }, desc = "Find Files (ML4W conf)" },
+        { "<leader>N", icon = { icon = " ", hl = "String" }, desc = "Find Files (Nvim Config)" },
+        { "<leader>C", icon = { icon = " ", hl = "String" }, desc = "Find Files (~/.config)" },
+        { "<leader>B", icon = { icon = " ", hl = "String" }, desc = "Search Lines In Buffer" },
+        { "<leader>.", icon = { icon = "󰈔 ", hl = "DiagnosticHint" }, desc = "Switch to Other Buffer" },
+        { "<leader>,", icon = { icon = "󰈔 ", hl = "DiagnosticHint" }, desc = "Toggle Scratch Buffer" },
+        { "<leader>e", icon = { icon = " ", hl = "@tag" }, desc = "NeoTree" },
+        { "<leader>D", icon = { icon = "󰉖  ", hl = "@tag" }, desc = "Directories" },
+        { "<leader>Y", icon = { icon = " ", hl = "@tag" }, desc = "Open Yazi" },
+        { "<leader>/", icon = { icon = "󰈞 ", hl = "DiagnosticHint" }, desc = "Grep (Root Dir)" },
+        { "<leader>n", icon = { icon = "󰂚 ", hl = "Constant" }, desc = "Notification History" },
+        { "<leader>a", icon = { icon = " ", hl = "Constant" }, desc = "AI" },
+        { "<leader>:", icon = { icon = " ", hl = "DiagnosticWarn" }, desc = "Command History" },
+        { "<leader>r", icon = { icon = "󰐊", hl = "Keyword" }, desc = "Run Code" },
+        { "<leader>j", icon = { icon = "", hl = "DiagnosticError" }, desc = "Save file" },
+        { "<leader>J", icon = { icon = "", hl = "DiagnosticError" }, desc = "Save As Sudo" },
+        { "<leader>q", icon = { icon = "", hl = "DiagnosticError" }, desc = "quit/session" },
+        { "<leader>P", icon = { icon = "", hl = "DiagnosticWarn" }, desc = "Paste With Autoidentation" },
+        { "<leader>y", icon = { icon = "", hl = "DiagnosticWarn" }, desc = "Paste Last Yanked" },
+      },
+    },
+  },
+}

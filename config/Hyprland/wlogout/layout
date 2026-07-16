@@ -1,0 +1,30 @@
+{
+    "label" : "shutdown",
+    "action" : "~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh shutdown",
+    "text" : "Power Off",
+    "keybind" : "s"
+}
+{
+    "label" : "logout",
+    "action" : "~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh exit",
+    "text" : "Log Out",
+    "keybind" : "e"
+}
+{
+    "label" : "suspend",
+    "action" : "~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh suspend",
+    "text" : "Suspend",
+    "keybind" : "u"
+}
+{
+    "label" : "reboot",
+    "action" : "~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh reboot",
+    "text" : "Restart",
+    "keybind" : "r"
+}
+{
+    "label" : "lock",
+    "action" : "~/.mydotfiles/com.ml4w.dotfiles/.config/custom_Scripts/power.sh lock",
+    "text" : "Lock",
+    "keybind" : "l"
+}
