@@ -1,0 +1,18 @@
+layout {
+    background-color "transparent" // <- needed for noctalia-shell to set wallpaper
+
+    // Set gaps around windows in logical pixels.
+    gaps 10
+
+    focus-ring {
+        off
+    }
+
+    border {
+        on
+        width 2
+    }
+
+    always-center-single-column
+
+}

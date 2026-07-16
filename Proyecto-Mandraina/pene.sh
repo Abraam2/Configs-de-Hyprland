@@ -16,12 +16,10 @@ fi
 # 2. Descargar tu copia de seguridad de Git sin aplicarla todavía
 echo -e "[*] Descargando tus configuraciones profundas..."
 # Reemplaza con la URL de tu repositorio privado
-chezmoi init https://github.com/tu-usuario/tu-repo-privado-chezmoi.git
+chezmoi init https://github.com/Abraam2/Basurero.git
 
 # 3. EL ANTIDOTO ANTIPETADAS: Crear directorios reales que falten
 echo -e "[*] Asegurando la estructura de directorios en el nuevo sistema..."
-mkdir -p "$HOME/.config/BraveSoftware/Brave-Browser/User Data/Default"
-mkdir -p "$HOME/.config/Helium"
 mkdir -p "$HOME/.config/Code/User"
 mkdir -p "$HOME/.config/keepassxc"
 mkdir -p "$HOME/.config/Cemu"

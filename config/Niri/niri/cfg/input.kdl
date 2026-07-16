@@ -1,0 +1,33 @@
+input {
+    focus-follows-mouse
+    keyboard {
+        xkb {
+            // Swap caps lock and escape.
+            // Remap menu key to act as an extra super / mod key.
+            options "caps:escape,altwin:menu_win"
+            layout "es"
+        }
+        numlock // Enable numlock on startup
+        repeat-delay 300
+        repeat-rate 25
+    }
+
+    touchpad {
+        // Tapping anywhere registers a left click.
+        tap
+
+        // Inverted scrolling.
+        natural-scroll
+
+        // Disable acceleration.
+        accel-profile "flat"
+    }
+
+    mouse {
+        // Disable acceleration.
+        accel-profile "adaptive"
+
+        // Faster scrolling with the mouse wheel.
+        scroll-factor 1.0
+    }
+}

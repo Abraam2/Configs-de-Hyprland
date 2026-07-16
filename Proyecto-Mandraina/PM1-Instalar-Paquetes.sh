@@ -49,7 +49,6 @@ GRAFICAS_Y_APPS=(
     # Core Niri & Composición
     niri
     waypaper
-    quickshell-git
     nwg-displays
     xsettingsd
     uwsm
@@ -57,6 +56,7 @@ GRAFICAS_Y_APPS=(
 
     # Interfaz, Barras y Lanzadores
     waybar-git
+    chezmoi
     rofi
     swaync
     wlogout
@@ -85,11 +85,12 @@ GRAFICAS_Y_APPS=(
     wayfreeze-git
     hyprpicker
     hyprsunset
-    hyprsysteminfo
     hyprshutdown
     imagemagick
     gnome-themes-extra
     catppuccin-gtk-theme-mocha
+    papirus-icon-theme
+    bibata-cursor-theme
     nwg-look
     qt5ct
     qt6ct
@@ -107,7 +108,6 @@ GRAFICAS_Y_APPS=(
     jdownloader2
     keepassxc
     virtualbox
-    timeshift
 )
 
 # ==============================================================================
@@ -127,7 +127,6 @@ TERMINAL_Y_SISTEMA=(
     nodejs
     npm
     go
-    rustup
     jdk21-openjdk
 
     # Herramientas de Terminal (TUI / CLI)
@@ -190,13 +189,13 @@ TERMINAL_Y_SISTEMA=(
     awesome-terminal-fonts
     wine-cachyos
     faugus-launcher
+    flatpak
 )
 
 # ==============================================================================
 # CATEGORÍA 3: ZONA GAMING (Solo Escritorio)
 # ==============================================================================
 ZONA_GAMING=(
-    flatpak
     mangohud
     goverlay
     gamemode
@@ -210,6 +209,11 @@ ZONA_GAMING=(
 # PROCESAR INSTALACIÓN
 # ==============================================================================
 
+echo -e "\n${AZUL}[*] Quitando rust por conflicto y configurando rustup...${RESET}"
+sudo pacman -Rns --noconfirm rust
+sudo pacman -S --needed rustup
+rustup default stable
+
 echo -e "\n${AZUL}[*] Instalando Categoría 1: Entorno Gráfico y Apps...${RESET}"
 yay -S --needed --noconfirm "${GRAFICAS_Y_APPS[@]}"
 
@@ -221,6 +225,9 @@ if [ "$ES_ESCRITORIO" = true ]; then
     echo -e "\n${AZUL}[*] Instalando Categoría 3: Zona Gaming...${RESET}"
     yay -S --needed --noconfirm "${ZONA_GAMING[@]}"
 fi
+
+echo -e "\n${AZUL}[*] Sincronizando mirrors...${RESET}"
+sudo cachyos-rate-mirrors && sudo pacman -Syyu
 
 echo -e "\n${VERDE}==================================================${RESET}"
 echo -e "${VERDE}    ¡Fase 1 del Proyecto Mandriana Completada!     ${RESET}"

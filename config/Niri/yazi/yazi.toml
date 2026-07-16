@@ -14,7 +14,7 @@ extract = [
 	{ run = 'ouch d -y "$@"', desc = "Extract here", for = "unix" }
 ]
 mi_nvim = [
-    { run = '/home/abraham/.local/bin/nv "$@"', orphan = true, desc = "Neovim " }
+    { run = '~/scripts-global/nv "$@"', orphan = true, desc = "Neovim " }
 ]
 
 gimp = [

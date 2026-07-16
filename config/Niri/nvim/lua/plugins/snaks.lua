@@ -79,14 +79,14 @@ return {
           {
             icon = " ",
             key = "m",
-            desc = "Search in ML4W config",
+            desc = "Search in my dotfiles",
             action = function()
-              Snacks.picker.files({ cwd = vim.fn.expand("~/.mydotfiles/com.ml4w.dotfiles/.config") })
+              Snacks.picker.files({ cwd = vim.fn.expand("~/.mydots") })
             end,
           },
           {
             icon = "",
-            key = "n",
+            key = "N",
             desc = "Nvim Config",
             action = function()
               Snacks.picker.files({ cwd = vim.fn.expand("~/.config/nvim") })

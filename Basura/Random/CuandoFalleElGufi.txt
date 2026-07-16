@@ -1,0 +1,70 @@
+Fase 1: Recopilación de pruebas EN VIVO (Cuando se caiga la conexión)
+La próxima vez que te quedes sin internet pero Waybar siga sonriendo, no reinicies el PC ni cierres sesión. Abre una terminal y ejecuta estos comandos para ver dónde está el corte exacto:
+
+¿Quién es el router y llego hasta él?
+
+Comando: ip route show
+
+Qué buscar: Fíjate en la línea que empieza por default via X.X.X.X. Esa IP es tu router (suele ser 192.168.1.1 o similar).
+
+Prueba: Hazle un ping directo al router: ping -c 4 <IP_de_tu_router>. Si el router responde, el problema es hacia afuera (enrutamiento o firewall del sistema). Si no responde, tu tarjeta Wi-Fi ha dejado de hablar con el router aunque sigan "asociados".
+
+¿Se ha borrado mi dirección IP o la tarjeta se ha apagado sola?
+
+Comando: ip a
+
+Qué buscar: Busca tu interfaz Wi-Fi (suele llamarse wlan0 o algo que empieza por w). Verfica que tenga la etiqueta UP y que siga teniendo una dirección IP asignada en la línea que empieza por inet.
+
+¿Cómo está la salud real del enlace inalámbrico?
+
+Comando: iw dev wlan0 link (cambia wlan0 por el nombre de tu interfaz si es distinto).
+
+Qué buscar: Si te dice Not connected, Waybar te está mintiendo porque no se ha enterado del corte. Si sale información, fíjate en la señal y la velocidad de transmisión.
+
+¿Está activado el ahorro de energía agresivo?
+
+Comando: iw dev wlan0 get power_save
+
+Por qué importa: Este es el sospechoso número 1 en Linux. A veces el sistema manda la tarjeta Wi-Fi a "dormir" para ahorrar batería/energía y luego la tarjeta se queda atascada y no despierta bien, cortando el tráfico pero manteniendo el icono encendido.
+
+Fase 2: La autopsia (Revisando los registros del arranque anterior)
+Como me has dicho que al reiniciar se arregla, Linux guarda los registros de lo que pasó antes del reinicio. Vamos a leer la "caja negra" del vuelo anterior con journalctl.
+
+Buscar gritos de auxilio del kernel y del driver:
+
+Comando: sudo journalctl -k -b -1 | grep -iE "wlan|wifi|network|firmware|error|warn|fail"
+
+Qué hace: El -k mira solo el kernel, y el -b -1 le dice que mire en el arranque anterior al actual.
+
+Qué buscar: Palabras como firmware crashed, timed out, resetting adapter, o el nombre de tu tarjeta (ej. iwlwifi, mt7921, rtw89). Si el driver o el firmware se estrellaron, saldrá aquí en rojo o amarillo.
+
+Ver qué hacía el gestor de red justo en el momento del corte:
+
+Comando (si usas NetworkManager y/o iwd en CachyOS): sudo journalctl -u NetworkManager -u iwd -b -1 --no-pager | tail -n 50
+
+Qué buscar: Desconexiones silenciosas, intentos infinitos de renovar la clave WPA (re-keying), o si el servicio de red se quedó bloqueado.
+
+Fase 3: Identificar a tu hardware (Para saber a qué nos enfrentamos)
+Necesito saber qué chip exacto lleva tu PC, porque en el mundo Linux hay tres grandes sospechosos con historiales muy distintos:
+
+Comando para tarjetas internas (PCIe): lspci -k | grep -iA 3 net
+
+Comando para adaptadores USB: lsusb
+
+(Si me copias el resultado de esto, te diré qué manías tiene tu modelo exacto de tarjeta).
+
+Las 3 soluciones más probables para probar ya mismo
+Mientras esperas a que vuelva a pasar para hacer la autopsia, puedes probar a aplicar el "antídoto" al sospechoso habitual número 1:
+
+1. Desactivar el ahorro de energía del Wi-Fi
+En Arch y CachyOS, esto causa el 80% de las desconexiones fantasmas, sobre todo en tarjetas Intel y Realtek.
+Puedes probar a desactivarlo temporalmente ahora mismo con:
+sudo iw dev wlan0 set power_save off (recuerda cambiar wlan0 por tu interfaz si se llama diferente).
+Si haciendo esto notas que en un par de días no se te vuelve a cortar, el culpable era el modo energía, y te enseñaré a dejarlo desactivado para siempre.
+
+2. Reiniciar el driver sin reiniciar el PC (Para salir del paso)
+La próxima vez que se te corte, en lugar de reiniciar el ordenador entero, prueba a reiniciar solo el "cerebro" de la tarjeta Wi-Fi.
+Primero mira qué módulo usa tu tarjeta con lsmod | grep -i wifi (o con el comando lspci -k que te di antes). Luego recárgalo:
+sudo modprobe -r nombre_del_driver && sudo modprobe nombre_del_driver
+(Ejemplo para tarjetas Intel: sudo modprobe -r iwlwifi && sudo modprobe iwlwifi).
+Si esto te devuelve internet al instante, confirmamos al 100% que es un cuelgue del driver o del firmware del hardware.

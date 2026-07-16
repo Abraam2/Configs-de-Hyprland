@@ -1,0 +1,18 @@
+// ────────────── Startup Applications ──────────────
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
+
+// --- 1. ENTORNO, SEGURIDAD Y PERMISOS ---
+// El xdg-desktop-portal y el ssh-agent con tus movidas de Keepass
+spawn-sh-at-startup "qs -c noctalia-shell"
+
+spawn-sh-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+spawn-sh-at-startup "dbus-update-activation-environment --systemd SSH_AUTH_SOCK && systemctl --user import-environment SSH_AUTH_SOCK && ssh-agent -a $XDG_RUNTIME_DIR/ssh-agent.socket"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+
+spawn-sh-at-startup "wl-paste --watch cliphist store"     
+
+spawn-sh-at-startup "~/scripts-global/cacheML4W.sh"
+// spawn-sh-at-startup "~/scripts-global/tracker-ram.sh"
+spawn-sh-at-startup "listeners.sh --startall"
+
+

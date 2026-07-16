@@ -61,15 +61,15 @@ end, { desc = "Buscar en la configuración de Neovim" })
 
 vim.keymap.set("n", "<leader>fm", function()
   Snacks.picker.files({
-    cwd = vim.fn.expand("~/.mydotfiles/com.ml4w.dotfiles/.config"),
+    cwd = vim.fn.expand("~/.mydots"),
   })
-end, { desc = "Buscar en config ML4W" })
+end, { desc = "Buscar en ~/.mydots" })
 
 vim.keymap.set("n", "<leader>m", function()
   Snacks.picker.files({
-    cwd = vim.fn.expand("~/.mydotfiles/com.ml4w.dotfiles/.config"),
+    cwd = vim.fn.expand("~/.mydots"),
   })
-end, { desc = "Buscar en config ML4W" })
+end, { desc = "Buscar en ~/.mydots" })
 
 vim.keymap.set("n", "<leader>fP", "<cmd>lua Snacks.picker.projects() <cr>", { desc = "Open Projects Menu" })
 
