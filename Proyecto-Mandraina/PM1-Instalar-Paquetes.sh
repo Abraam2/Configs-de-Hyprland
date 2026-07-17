@@ -48,6 +48,8 @@ fi
 GRAFICAS_Y_APPS=(
     # Core Niri & Composición
     niri
+    yazi
+    oh-my-posh
     ddcutil
     waypaper
     nwg-displays
