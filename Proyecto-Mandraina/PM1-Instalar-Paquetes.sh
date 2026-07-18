@@ -7,6 +7,7 @@
 VERDE="\e[32m"
 AZUL="\e[34m"
 AMARILLO="\e[33m"
+ROJO="\e[31m"
 RESET="\e[0m"
 
 echo -e "${AZUL}==================================================${RESET}"
@@ -26,7 +27,7 @@ else
 fi
 
 # ==============================================================================
-# AUTO-INSTALACIÓN DE YAY
+# AUTO-INSTALACIÓN DE YAY (Necesario para las comprobaciones de AUR)
 # ==============================================================================
 if ! command -v yay &>/dev/null; then
     echo -e "\n${AMARILLO}[*] 'yay' no detectado. Instalando dependencias base y yay-bin...${RESET}"
@@ -46,174 +47,77 @@ fi
 # CATEGORÍA 1: ENTORNO GRÁFICO Y APPS (Escritorio, UI y Utilidades visuales)
 # ==============================================================================
 GRAFICAS_Y_APPS=(
-    # Core Niri & Composición
-    niri
-    yazi
-    oh-my-posh
-    ddcutil
-    waypaper
-    nwg-displays
-    xsettingsd
-    uwsm
-    xwayland-satellite
-
-    # Interfaz, Barras y Lanzadores
-    waybar-git
-    chezmoi
-    rofi
-    swaync
-    wlogout
-
-    # Audio, Red, Energía y Dispositivos
-    pavucontrol
-    spotify
-    network-manager-applet
-    nm-connection-editor
-    power-profiles-daemon
-    blueman
-    udiskie
-
-    # Gestores de Archivos y Visores
-    nemo
-    nemo-fileroller
-    loupe
-    gvfs-mtp
-    ark
-
-    # Capturas, Edición y Estética Gráfica
-    satty
-    grim
-    slurp
-    grimblast-git
-    wayfreeze-git
-    hyprpicker
-    hyprsunset
-    hyprshutdown
-    imagemagick
-    gnome-themes-extra
-    catppuccin-gtk-theme-mocha
-    papirus-icon-theme
-    bibata-cursor-theme
-    nwg-look
-    qt5ct
-    qt6ct
-
-    # Aplicaciones Diarias Gráficas
-    helium-browser-bin
-    brave-bin
-    floorp
-    gimp
-    vlc
-    obs-studio
-    libreoffice-fresh
-    telegram-desktop
-    visual-studio-code-bin
-    jdownloader2
-    keepassxc
-    virtualbox
+    niri 7zip yazi oh-my-posh ddcutil waypaper nwg-displays xsettingsd uwsm
+    xwayland-satellite waybar-git chezmoi rofi swaync wlogout pavucontrol
+    spotify network-manager-applet nm-connection-editor power-profiles-daemon
+    blueman udiskie nemo nemo-fileroller loupe gvfs-mtp ark satty grim slurp
+    grimblast-git wayfreeze-git hyprpicker hyprsunset hyprshutdown imagemagick
+    gnome-themes-extra catppuccin-gtk-theme-mocha papirus-icon-theme
+    bibata-cursor-theme nwg-look qt5ct qt6ct helium-browser-bin brave-bin
+    floorp gimp vlc obs-studio libreoffice-fresh telegram-desktop
+    visual-studio-code-bin jdownloader2 keepassxc virtualbox
 )
 
 # ==============================================================================
-# CATEGORÍA 2: TERMINAL Y SISTEMA (Shells, CLI, Herramientas de programación y Entorno)
+# CATEGORÍA 2: TERMINAL Y SISTEMA (Shells, CLI, Herramientas de programación)
 # ==============================================================================
 TERMINAL_Y_SISTEMA=(
-    # Shells y Editores
-    fish
-    zsh
-    nushell
-    tmux
-    neovim
-    kitty
-    alacritty
-
-    # Entornos de Programación (Obligatorios para Mason y desarrollo)
-    nodejs
-    npm
-    go
-    jdk21-openjdk
-
-    # Herramientas de Terminal (TUI / CLI)
-    btop
-    fastfetch
-    ouch
-    bat
-    ripgrep
-    fd
-    fzf
-    zoxide
-    lazygit
-    duf
-    ncdu
-    rsync
-    trash-cli
-    cliphist
-    wl-clipboard
-    matugen
-    playerctl
-    brightnessctl
-    pacman-contrib
-    awww
-    tesseract-data-eng
-    ripdrag-git
-    pokemon-colorscripts-git
-    ghgrab-bin
-    wev
-
-    # Utilidades de bajo nivel y control
-    gpk-bin
-    wlrctl
-    nirimod-git
-    better-control-git
-    libnotify
-
-    # Entorno, Portales e Intérpretes Python / Soporte
-    polkit-gnome
-    hypridle
-    python-pip
-    python-pipx
-    python-gobject
-    python-screeninfo
-    python-pywalfox
-    xdg-desktop-portal-gnome
-    xdg-desktop-portal-gtk
-
-    # Soporte de Capas Qt/Wayland para la UI
-    qt5-wayland
-    qt6-wayland
-    qt6-svg
-    qt6-virtualkeyboard
-    qt6-multimedia-ffmpeg
-
-    # Fuentes y Tipografías
-    ttf-jetbrains-mono-nerd
-    ttf-firacode-nerd
-    ttf-meslo-nerd
-    otf-font-awesome
-    awesome-terminal-fonts
-    wine-cachyos
-    faugus-launcher
-    flatpak
+    fish zsh nushell tmux neovim wlsunset kitty alacritty nodejs npm go jdk21-openjdk
+    btop fastfetch ouch bat ripgrep fd fzf zoxide lazygit duf ncdu rsync
+    trash-cli cliphist wl-clipboard matugen playerctl brightnessctl
+    pacman-contrib awww tesseract-data-eng ripdrag-git pokemon-colorscripts-git
+    ghgrab-bin wev gpk-bin wlrctl nirimod-git better-control-git libnotify
+    polkit-gnome hypridle python-pip python-pipx python-gobject python-screeninfo
+    python-pywalfox xdg-desktop-portal-gnome xdg-desktop-portal-gtk qt5-wayland
+    qt6-wayland qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg
+    ttf-jetbrains-mono-nerd ttf-firacode-nerd ttf-meslo-nerd otf-font-awesome
+    awesome-terminal-fonts wine-cachyos faugus-launcher flatpak
 )
 
 # ==============================================================================
 # CATEGORÍA 3: ZONA GAMING (Solo Escritorio)
 # ==============================================================================
 ZONA_GAMING=(
-    mangohud
-    goverlay
-    gamemode
-    protontricks
-    protonup-qt
-    eden-preview-bin
-    bb_launcher
+    mangohud goverlay gamemode protontricks protonup-qt eden-preview-bin bb_launcher
 )
 
 # ==============================================================================
-# PROCESAR INSTALACIÓN
+# REUNIR TODOS LOS PAQUETES A COMPROBAR
+# ==============================================================================
+PAQUETES_TOTALES=("${GRAFICAS_Y_APPS[@]}" "${TERMINAL_Y_SISTEMA[@]}")
+if [ "$ES_ESCRITORIO" = true ]; then
+    PAQUETES_TOTALES+=("${ZONA_GAMING[@]}")
+fi
+
+# ==============================================================================
+# COMPROBACIÓN BÁSICA: VERIFICAR SI LOS PAQUETES EXISTEN EN LOS REPOS / AUR
+# ==============================================================================
+echo -e "\n${AZUL}[*] Validando que todos los paquetes existan en los repositorios...${RESET}"
+PAQUETES_INVALIDOS=()
+
+for pkg in "${PAQUETES_TOTALES[@]}"; do
+    if ! pacman -Si "$pkg" &>/dev/null && ! yay -Si "$pkg" &>/dev/null; then
+        PAQUETES_INVALIDOS+=("$pkg")
+    fi
+done
+
+if [ ${#PAQUETES_INVALIDOS[@]} -ne 0 ]; then
+    echo -e "\n${ROJO}[ERR] ¡Instalación abortada! Los siguientes paquetes no existen o están mal escritos:${RESET}"
+    for pkg in "${PAQUETES_INVALIDOS[@]}"; do
+        echo -e "  - $pkg"
+    done
+    echo -e "${AMARILLO}Corrige los nombres en las listas del script antes de volver a ejecutarlo.${RESET}"
+    exit 1
+else
+    echo -e "${VERDE}[+] Todos los paquetes son válidos y existen en los repositorios.${RESET}"
+fi
+
+# ==============================================================================
+# PROCESAR INSTALACIÓN (Si todo lo anterior ha pasado con éxito)
 # ==============================================================================
 
 echo -e "\n${AZUL}[*] Quitando rust por conflicto y configurando rustup...${RESET}"
-sudo pacman -Rns --noconfirm rust
+sudo pacman -Rns --noconfirm rust 2>/dev/null || true
 sudo pacman -S --needed rustup
 rustup default stable
 

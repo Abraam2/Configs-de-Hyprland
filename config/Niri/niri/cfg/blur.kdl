@@ -1,0 +1,13 @@
+window-rule {
+    // Esto busca cualquier ventana que sea de Kitty
+    match app-id="^kitty$"
+    match title=r"kitty"
+    match app-id="^yazi$"
+    match title=r"btop"
+
+    background-effect {
+        blur true
+        xray true        // Hace que sea más rápido y eficiente
+        saturation 1.2   // Revive un poco los colores del fondo
+    }
+}

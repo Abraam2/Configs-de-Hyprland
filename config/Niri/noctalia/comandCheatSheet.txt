@@ -1,0 +1,59 @@
+Run this comando to show all options: 
+
+qs -c noctalia-shell ipc show
+
+LANZADOR Y PORTAPAPELES
+qs -c noctalia-shell ipc call launcher toggle
+qs -c noctalia-shell ipc call launcher clipboard
+qs -c noctalia-shell ipc call launcher emoji
+qs -c noctalia-shell ipc call launcher windows
+qs -c noctalia-shell ipc call launcher command
+qs -c noctalia-shell ipc call launcher settings
+
+AUDIO Y BRILLO
+qs -c noctalia-shell ipc call volume increase
+qs -c noctalia-shell ipc call volume decrease
+qs -c noctalia-shell ipc call volume muteOutput
+qs -c noctalia-shell ipc call volume togglePanel
+qs -c noctalia-shell ipc call brightness increase
+qs -c noctalia-shell ipc call brightness decrease
+
+MUSICA Y MULTIMEDIA
+qs -c noctalia-shell ipc call media playPause
+qs -c noctalia-shell ipc call media next
+
+ENERGIA Y SEGURIDAD
+qs -c noctalia-shell ipc call powerProfile cycle
+qs -c noctalia-shell ipc call powerProfile toggleNoctaliaPerformance
+qs -c noctalia-shell ipc call lockScreen lock
+qs -c noctalia-shell ipc call sessionMenu toggle
+qs -c noctalia-shell ipc call sessionMenu lockAndSuspend
+
+PANELES Y WIDGETS
+qs -c noctalia-shell ipc call calendar toggle
+qs -c noctalia-shell ipc call controlCenter toggle
+qs -c noctalia-shell ipc call systemMonitor toggle
+qs -c noctalia-shell ipc call desktopWidgets toggle
+qs -c noctalia-shell ipc call desktopWidgets edit
+qs -c noctalia-shell ipc call settings open
+
+INTERFAZ Y REPOSITORIO
+qs -c noctalia-shell ipc call bar toggle
+qs -c noctalia-shell ipc call bar peek
+qs -c noctalia-shell ipc call dock toggle
+
+CONECTIVIDAD
+qs -c noctalia-shell ipc call wifi toggle
+qs -c noctalia-shell ipc call bluetooth toggle
+qs -c noctalia-shell ipc call airplaneMode toggle
+qs -c noctalia-shell ipc call idleInhibitor toggle
+
+APARIENCIA
+qs -c noctalia-shell ipc call wallpaper random
+qs -c noctalia-shell ipc call wallpaper refresh
+qs -c noctalia-shell ipc call darkMode toggle
+
+NOTIFICACIONES
+qs -c noctalia-shell ipc call notifications toggleHistory
+qs -c noctalia-shell ipc call notifications toggleDND
+qs -c noctalia-shell ipc call notifications dismissAll

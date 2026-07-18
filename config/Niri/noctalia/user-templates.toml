@@ -25,6 +25,10 @@ output_path = "~/.config/nvim/lua/config/noctalia-custom.lua"
 input_path = '~/.config/noctalia/templates/rofi-colors.rasi'
 output_path = '~/.config/rofi/noctalia-custom.rasi'
 
+[templates.yazi]
+input_path = '~/.config/noctalia/templates/yazi-theme.toml'
+output_path = '~/.config/yazi/theme.toml'
+
 [templates.ohmyposh]
 input_path = '~/.config/noctalia/templates/ohmyposh-colors.json'
 output_path = '~/.config/ohmyposh/noctalia-custom.json'

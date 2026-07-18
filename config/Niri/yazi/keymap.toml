@@ -14,14 +14,19 @@ run = "cd ~"
 desc = "Go ~"
 
 [[mgr.prepend_keymap]]
-on = ["g", "m"]
-run = "cd ~/.mydots/config/Niri"
-desc = "Go Niri conf"
+on = ["g", "n"]
+run = "cd ~/.mydots/config/Niri/niri"
+desc = "Go niri config"
 
 [[mgr.prepend_keymap]]
 on = ["g", "."]
-run = "cd ~/.mydots"
-desc = "Go ~/mydots"
+run = "cd ~/.mydots/config/Niri"
+desc = "Go dots config"
+
+[[mgr.prepend_keymap]]
+on = ["g", "m"]
+run = "cd ~/.mydots/config/Niri"
+desc = "Go dots config"
 
 [[mgr.prepend_keymap]]
 on = ["<C-z>", "u"]

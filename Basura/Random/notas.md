@@ -4,15 +4,15 @@
 
 - Buscar un móvil para que el tonto del papa no compre el más caro para abrir WhatsApp
 
-- El gufi falla de manera aleatoria -> /home/abraham/CuandoFalleElGufi.txt
+- El gufi falla de manera aleatoria -> ./CuandoFalleElGufi.txt
 
 ## Jueguitos
 
 - Ver si Mario Odyssey funciona bien (no lo hará)
 
-## Rice
+- Configurar emuladores :(
 
-- Yazi abre los vídeos en vlc todo curseado y vlc está claro, no oscuro :(
+## Rice
 
 ## General
 

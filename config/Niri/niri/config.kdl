@@ -1,7 +1,8 @@
 // Theme
 // include "./theme.kdl"
 include "./noctalia.kdl"
- 
+include "./cfg/blur.kdl"
+
 include "./cfg/animations/current_animation.kdl"
 include "./cfg/autostart.kdl"
 include "./cfg/keybinds.kdl"

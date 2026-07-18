@@ -18,20 +18,30 @@ binds {
     // Gestión básica de ventanas
     Mod+Q repeat=false hotkey-overlay-title="Close window" { close-window; }
 
-    // Main launcher, rofi
-    Mod+Shift+Space hotkey-overlay-title="Launcher rofi" { spawn-sh "pkill rofi || rofi -show drun -replace -i"; }
-    // Alternative launcher noctalia
+    // Launcher Rofi
+    // Mod+Shift+Space hotkey-overlay-title="Launcher rofi" { spawn-sh "pkill rofi || rofi -show drun -replace -i"; }
+    // Mod+V repeat=false hotkey-overlay-title="Launcher (clipboard)" { spawn-sh "ml4w-cliphist"; }
+
+    // Launcher noctalia
     // Mucho más guapo loquete, puedo buscar configs, ventanas, y de todo
     Mod+Space hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+V repeat=false hotkey-overlay-title="Launcher (clipboard)" { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+    Mod+B repeat=false hotkey-overlay-title="Launcher (windows)" { spawn-sh "qs -c noctalia-shell ipc call launcher windows"; }
+    Mod+Alt+C repeat=false hotkey-overlay-title="Toggle config" { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
 
-    Mod+V repeat=false hotkey-overlay-title="Launcher (clipboard)" { spawn-sh "ml4w-cliphist"; }
+    Mod+Alt+A repeat=false hotkey-overlay-title="Launch calendar" { spawn-sh "qs -c noctalia-shell ipc call calendar toggle"; }
+    Mod+C repeat=false hotkey-overlay-title="Toggle control center" { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+    Mod+Ctrl+Shift+U repeat=false hotkey-overlay-title="Toggle Bluetooth" { spawn-sh "qs -c noctalia-shell ipc call bluetooth toggle"; }
+    Mod+Shift+W repeat=false hotkey-overlay-title="Random Wallpaper" { spawn-sh "qs -c noctalia-shell ipc call wallpaper random"; }
+    Mod+Ctrl+W hotkey-overlay-title="Wallpaper selector" { spawn-sh "qs -c noctalia-shell ipc call wallpaper toggle"; }
+
     Mod+I hotkey-overlay-title="Focus previously focused window" { focus-window-previous; }
 
     // Aplicaciones principales y terminales
     Mod+Return hotkey-overlay-title="Terminal" { spawn "kitty"; }
-    Mod+Shift+Return hotkey-overlay-title="Terminal (floating)" { spawn "kitty" "--class=dfr.floating.ghostty"; }
+    Mod+Shift+Return hotkey-overlay-title="Terminal (floating)" { spawn-sh "env SIN_FETCH=1 kitty --class=dfr.floating.ghostty"; }
     Mod+W hotkey-overlay-title="Browser" { spawn-sh "helium-browser "; }
-    Mod+Shift+W hotkey-overlay-title="Browser (Brave)" { spawn-sh "brave --password-store=basic"; }
+    // Mod+Shift+W hotkey-overlay-title="Browser (Brave)" { spawn-sh "brave --password-store=basic"; }
     Mod+N hotkey-overlay-title="Abrir Nvim" { spawn "nv"; }
     
     // Exploradores de archivos
@@ -54,7 +64,9 @@ binds {
     Mod+Shift+P hotkey-overlay-title="Pick color" { spawn-sh "killall hyprpicker || hyprpicker --autocopy --lowercase-hex"; }
 
     // Sistema y Notificaciones
-    Mod+Ctrl+N hotkey-overlay-title="Show notifications" { spawn "swaync-client" "-t"; }
+    // Mod+Ctrl+N hotkey-overlay-title="Show notifications" { spawn "swaync-client" "-t"; }
+    Mod+Ctrl+N hotkey-overlay-title="Show notifications" { spawn-sh "qs -c noctalia-shell ipc call notifications toggleHistory"; }
+    Mod+Ctrl+Shift+N hotkey-overlay-title="Toggle DND" { spawn-sh "qs -c noctalia-shell ipc call notifications toggleDND"; }
     Mod+Ctrl+Q hotkey-overlay-title="Powermenu" { spawn-sh "quickshell -p ~/scripts-global/Persona-Powermenu/powermenu.qml"; }
     Mod+Ctrl+A hotkey-overlay-title="Powermenu" { spawn-sh "quickshell -p ~/scripts-global/Persona-Powermenu/powermenu.qml"; }
     // Añade esto al script para que cuando bloquees todo se calle
@@ -86,7 +98,8 @@ binds {
 
     // Gestión de Waybar y Estética
     Mod+Shift+B hotkey-overlay-title="Reload Waybar" { spawn-sh "~/.config/waybar/launch.sh"; }
-    Mod+Ctrl+B hotkey-overlay-title="Toggle waybar" { spawn-sh "~/.config/waybar/toggle.sh"; }
+    // Mod+Ctrl+B hotkey-overlay-title="Toggle waybar" { spawn-sh "~/.config/waybar/toggle.sh"; }
+    Mod+Ctrl+B hotkey-overlay-title="Toggle noctalia bar" { spawn-sh "qs -c noctalia-shell ipc call bar toggle"; }
     Mod+Ctrl+T hotkey-overlay-title="Waybar theme switcher" { spawn-sh "~/.config/waybar/themeswitcher.sh"; }
     Mod+Ctrl+Shift+c hotkey-overlay-title="Cambiar animación" { spawn-sh "niri-anim-toggle.sh"; }
 
@@ -163,7 +176,6 @@ binds {
     // =====================================================================
     // 4. TU MAMÁ
     // =====================================================================
-    
     // Control de Workspaces genérico (Páginas y Desplazamiento alternativo)
     Mod+Alt+J hotkey-overlay-title="Focus next workspace" { focus-workspace-down; }
     Mod+Alt+K hotkey-overlay-title="Focus previous workspace" { focus-workspace-up; }
@@ -231,8 +243,10 @@ binds {
     Mod+F9 hotkey-overlay-title="Mute audio" allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
 
 
-    Mod+F2 hotkey-overlay-title="Increase brightness" { spawn-sh "ddcutil setvcp 10 + 5"; }
-    Mod+F1 hotkey-overlay-title="Decrease brightness" { spawn-sh "ddcutil setvcp 10 - 5"; }
+    // Mod+F2 hotkey-overlay-title="Increase brightness" { spawn-sh "ddcutil setvcp 10 + 5"; }
+    // Mod+F1 hotkey-overlay-title="Decrease brightness" { spawn-sh "ddcutil setvcp 10 - 5"; }
+    Mod+F2 hotkey-overlay-title="Increase brightness" { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
+    Mod+F1 hotkey-overlay-title="Decrease brightness" { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
     Mod+F8 hotkey-overlay-title="Next track" allow-when-locked=true { spawn-sh "playerctl next"; }
     Mod+F7 hotkey-overlay-title="Pause track" allow-when-locked=true { spawn-sh "playerctl -p spotify play-pause"; }
     Mod+F6 hotkey-overlay-title="Previous track" allow-when-locked=true { spawn-sh "playerctl previous"; }
