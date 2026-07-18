@@ -13,10 +13,18 @@ git branch -M main
 git config --global user.name "Abraam2"
 git config --global user.email "dragonamarillo25@gmail.com"
 
-### Que el sistema detecte el explorador por defecto preferido
+### Cambiar aplicaciones predeterminadas del sistema
+
+## Explorador de archivos
 
 xdg-mime default nemo.desktop inode/directory
 xdg-mime default nemo.desktop x-scheme-handler/file
+
+## Visor de imágenes
+
+for type in jpeg png webp gif bmp tiff x-avif; do xdg-mime default org.gnome.Loupe.desktop image/$type; done
+
+xdg-mime query default image/jpeg
 
 ### Que vaya el brillo en el monitor
 
@@ -25,3 +33,9 @@ sudo modprobe i2c-dev
 echo "i2c-dev" | sudo tee /etc/modules-load.d/i2c_dev.conf
 
 sudo usermod -aG i2c $USER
+
+### Hacer que VLC se abra bien
+
+Abrir VLC, pulsar Ctrl+P para ir a los ajustes y desmarcar:
+
+- Ajustar la interfaz al tamaño del vídeo

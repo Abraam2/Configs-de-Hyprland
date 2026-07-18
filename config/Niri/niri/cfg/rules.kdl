@@ -25,9 +25,9 @@ window-rule {
     default-window-height { fixed 700; }
 }
 
-// 3. Regla por títulos comunes de avisos y diálogos
+// 3. Regla por títulos comunes de avisos y diálogos (Afinada)
 window-rule {
-    match title=r"(Open File|Confirm|Error|Warning|Settings|Preferences|Guardar como|Abrir|Confirmar)"
+    match title=r"^(Open File|Confirm|Error|Warning|Settings|Preferences|Guardar como|Abrir|Confirmar)$"
     open-floating true
 }
 
@@ -59,7 +59,6 @@ window-rule {
     match app-id=r"^Pinentry-gtk$"
     match app-id=r"^Tk$"
     match app-id=r"^gimp$" title=r"Preferences"
-    match app-id=r"^mpv$"
     match app-id=r"^soffice$" title=r"^Text Import"
     match app-id=r"^thunar$" title=r"^Rename "
     match app-id=r"^virt-manager$" title=r" - Connection Details"
@@ -96,7 +95,7 @@ window-rule {
 // Aplicaciones que quires que se abran maximizadas
 
 window-rule {
-    match app-id=r"(Cemu|vlc|eden|dolphin-emu|pcsx2-qt|steam|org-jdownloader-update-launcher-JDLauncher)"
+    match app-id=r"(Cemu|vlc|mpv|eden|dolphin-emu|pcsx2-qt|steam|org-jdownloader-update-launcher-JDLauncher)"
     // match app-id=r"^brave-browser$"
     // match app-id=r"^helium$"
     open-maximized true
