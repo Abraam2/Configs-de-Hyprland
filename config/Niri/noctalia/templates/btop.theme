@@ -20,10 +20,10 @@ theme[title]="{{colors.primary.default.hex}}"
 # Highlight color for keyboard shortcuts
 theme[hi_fg]="{{colors.secondary.default.hex}}"
 
-# Background color of selected item in processes box (Usamos el foreground de Kitty)
+# Background color of selected item in processes box 
 theme[selected_bg]="#cdd6f4"
 
-# Foreground color of selected item in processes box (Usamos tu color de fondo)
+# Foreground color of selected item in processes box 
 theme[selected_fg]="#1e1e2e"
 
 # Color of inactive/disabled text
@@ -53,7 +53,7 @@ theme[temp_mid]="{{colors.primary.default.hex}}"
 theme[temp_end]="{{colors.error.default.hex}}"
 
 # CPU graph colors
-theme[cpu_start]="{{colors.secondary.default.hex}}"
+theme[cpu_start]="{{colors.primary.default.hex}}"
 theme[cpu_mid]="{{colors.primary.default.hex}}"
 theme[cpu_end]="{{colors.error.default.hex}}"
 

@@ -4,8 +4,7 @@ screenshot-path null
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     QT_QPA_PLATFORM "wayland"
-    QT_QPA_PLATFORMTHEME "qt5ct"
-    // QT_QPA_PLATFORMTHEME "gtk3"
+    QT_QPA_PLATFORMTHEME "gtk3"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_TYPE "wayland"
@@ -33,10 +32,10 @@ workspace "2"
 workspace "3"
 workspace "4"
 
-// gestures {
-//     // Disable overview when mousing over the top left of primary screen.
-//     hot-corners {
-//         off
-//     }
-// }
+gestures {
+    // Disable overview when mousing over the top left of primary screen.
+    hot-corners {
+        off
+    }
+}
 
