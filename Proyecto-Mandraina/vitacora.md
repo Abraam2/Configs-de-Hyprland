@@ -39,3 +39,29 @@ sudo usermod -aG i2c $USER
 Abrir VLC, pulsar Ctrl+P para ir a los ajustes y desmarcar:
 
 - Ajustar la interfaz al tamaño del vídeo
+
+### Set up Ollama
+
+- Instalar programa y habilitar servicio
+  sudo pacman -S ollama-rocm
+
+sudo systemctl enable --now ollama
+
+- Verificar que está detectando la GPU y no la CPU)
+  journalctl -u ollama.service -e
+
+- Instalar modelo, dependiendo de las specs del PC, hay que elegir uno u otro
+  ollama run qwen2.5-coder:14b
+
+### Descargas de Jdownloader bloqueadas por CloudFlare
+
+[Post de reddit con vídeo (Windows)](https://www.reddit.com/r/PiratedGames/comments/1u6ihck/cloudfare_siteprotection_bypass_tutorial/)
+Arch (No funciona porque me cago en la puta madre)
+
+### No va el putísimo virtualbox
+
+sudo modprobe vboxdrv
+
+sudo pacman -S virtualbox-host-dkms
+
+REINICIAR

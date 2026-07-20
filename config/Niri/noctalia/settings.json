@@ -11,7 +11,7 @@
         "enableClipboardChips": true,
         "enableClipboardHistory": true,
         "enableClipboardSmartIcons": true,
-        "enableSessionSearch": true,
+        "enableSessionSearch": false,
         "enableSettingsSearch": true,
         "enableWindowsSearch": true,
         "iconMode": "tabler",
@@ -102,13 +102,14 @@
             ],
             "left": [
                 {
-                    "clockColor": "none",
-                    "customFont": "",
-                    "formatHorizontal": "HH:mm - dd/MM",
-                    "formatVertical": "HH mm - dd MM",
-                    "id": "Clock",
-                    "tooltipFormat": "HH:mm ddd, MMM dd",
-                    "useCustomFont": false
+                    "colorizeDistroLogo": false,
+                    "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
+                    "customIconPath": "",
+                    "enableColorization": true,
+                    "icon": "noctalia",
+                    "id": "ControlCenter",
+                    "useDistroLogo": false
                 },
                 {
                     "compactMode": false,
@@ -169,7 +170,7 @@
                     "chevronColor": "none",
                     "colorizeIcons": false,
                     "drawerEnabled": true,
-                    "hidePassive": false,
+                    "hidePassive": true,
                     "id": "Tray",
                     "pinned": [
                     ]
@@ -187,14 +188,14 @@
                     "displayMode": "onhover",
                     "iconColor": "none",
                     "id": "Network",
-                    "textColor": "none"
+                    "textColor": "primary"
                 },
                 {
                     "displayMode": "onhover",
                     "iconColor": "none",
                     "id": "Volume",
                     "middleClickCommand": "pwvucontrol || pavucontrol",
-                    "textColor": "none"
+                    "textColor": "primary"
                 },
                 {
                     "hideWhenZero": false,
@@ -208,17 +209,16 @@
                     "displayMode": "onhover",
                     "iconColor": "none",
                     "id": "Bluetooth",
-                    "textColor": "none"
+                    "textColor": "primary"
                 },
                 {
-                    "colorizeDistroLogo": false,
-                    "colorizeSystemIcon": "none",
-                    "colorizeSystemText": "none",
-                    "customIconPath": "",
-                    "enableColorization": true,
-                    "icon": "noctalia",
-                    "id": "ControlCenter",
-                    "useDistroLogo": false
+                    "clockColor": "none",
+                    "customFont": "",
+                    "formatHorizontal": "HH:mm - dd/MM",
+                    "formatVertical": "HH mm - dd MM",
+                    "id": "Clock",
+                    "tooltipFormat": "HH:mm ddd, MMM dd",
+                    "useCustomFont": false
                 }
             ]
         }
@@ -536,8 +536,7 @@
         "enabledTypes": [
             0,
             1,
-            2,
-            3
+            2
         ],
         "location": "top_right",
         "monitors": [
@@ -644,6 +643,10 @@
             {
                 "enabled": true,
                 "id": "niri"
+            },
+            {
+                "enabled": true,
+                "id": "qt"
             }
         ],
         "enableUserTheming": true

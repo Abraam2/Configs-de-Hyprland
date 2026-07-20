@@ -101,7 +101,7 @@ binds {
     // Mod+Ctrl+B hotkey-overlay-title="Toggle waybar" { spawn-sh "~/.config/waybar/toggle.sh"; }
     Mod+Ctrl+B hotkey-overlay-title="Toggle noctalia bar" { spawn-sh "qs -c noctalia-shell ipc call bar toggle"; }
     Mod+Ctrl+T hotkey-overlay-title="Waybar theme switcher" { spawn-sh "~/.config/waybar/themeswitcher.sh"; }
-    Mod+Ctrl+Shift+c hotkey-overlay-title="Cambiar animación" { spawn-sh "niri-anim-toggle.sh"; }
+    Mod+Ctrl+Shift+c hotkey-overlay-title="Cambiar animación" { spawn-sh "~/scripts-global/niri-anim-toggle.sh"; }
 
     // Escalado de monitor al vuelo (Zoom)
     Mod+Ctrl+Shift+Equal hotkey-overlay-title="Increase focused monitor scale" { spawn "output-scale" "+"; }

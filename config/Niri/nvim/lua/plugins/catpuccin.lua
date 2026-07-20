@@ -42,7 +42,7 @@ return {
             highlights["DashboardCenter"] = { fg = matugen.botones }
           end
 
-          -- 2. Líneas divisorias (Se acabó el azul genérico de Catppuccin)
+          -- 2. Líneas divisorias
           if matugen.lineas then
             highlights["WinSeparator"] = { fg = matugen.lineas, bold = true }
             highlights["NeoTreeWinSeparator"] = { fg = matugen.lineas, bold = true }
@@ -52,8 +52,67 @@ return {
           if matugen.carpetas then
             highlights["NeoTreeDirectoryIcon"] = { fg = matugen.carpetas }
             highlights["NeoTreeDirectoryName"] = { fg = matugen.carpetas }
-            -- Por si quieres que los estados abiertos/cerrados también sigan el color
             highlights["NeoTreeExpander"] = { fg = matugen.carpetas }
+          end
+
+          -- 4. Color del número de la línea actual adaptado al tema
+          if matugen.linea_actual then
+            highlights["CursorLineNr"] = { fg = matugen.linea_actual, bold = true }
+          end
+
+          -- 5. LA TRAMPA TOTAL: Rutas, pestañas, barras de ventana y cabeceras de Neo-tree
+          if matugen.ruta_neotree then
+            highlights["NeoTreeRootName"] = { fg = matugen.ruta_neotree, bold = true }
+            highlights["StatusLine"] = { fg = matugen.ruta_neotree }
+            highlights["StatusLineNC"] = { fg = matugen.ruta_neotree }
+            highlights["WinBar"] = { fg = matugen.ruta_neotree }
+            highlights["WinBarNC"] = { fg = matugen.ruta_neotree }
+
+            -- Pestañas superiores
+            highlights["NeoTreeTabActive"] = { fg = matugen.ruta_neotree, bold = true }
+            highlights["NeoTreeTabInactive"] = { fg = matugen.ruta_neotree }
+            highlights["NeoTreeTabSeparatorActive"] = { fg = matugen.ruta_neotree }
+            highlights["NeoTreeTabSeparatorInactive"] = { fg = matugen.ruta_neotree }
+
+            -- Barras de título y cabeceras de la ventana del árbol
+            highlights["NeoTreeWinBar"] = { fg = matugen.ruta_neotree, bold = true }
+            highlights["NeoTreeWinBarNC"] = { fg = matugen.ruta_neotree, bold = true }
+            highlights["NeoTreeStatusLine"] = { fg = matugen.ruta_neotree }
+            highlights["NeoTreeStatusLineNC"] = { fg = matugen.ruta_neotree }
+          end
+
+          -- 6. Cambiar la línea del borde de Which Key
+          if matugen.borde_whichkey then
+            highlights["WhichKeyBorder"] = { fg = matugen.borde_whichkey }
+          end
+
+          -- 8. Cambiar el color del prompt al hacer ":"
+          if matugen.color_prompt then
+            highlights["MsgArea"] = { fg = matugen.color_prompt }
+            highlights["ModeMsg"] = { fg = matugen.color_prompt, bold = true }
+            highlights["NoiceCmdline"] = { fg = matugen.color_prompt }
+            highlights["NoiceCmdlinePopupBorder"] = { fg = matugen.color_prompt }
+          end
+
+          -- 9. Cambiar solo las notificaciones normales (INFO)
+          if matugen.notif_info then
+            highlights["SnacksNotifierInfo"] = { fg = matugen.notif_info }
+            highlights["SnacksNotifierBorderInfo"] = { fg = matugen.notif_info }
+            highlights["SnacksNotifierIconInfo"] = { fg = matugen.notif_info }
+            highlights["SnacksNotifierTitleInfo"] = { fg = matugen.notif_info, bold = true }
+            highlights["NotifyINFOBody"] = { fg = matugen.notif_info }
+            highlights["NotifyINFOBorder"] = { fg = matugen.notif_info }
+            highlights["NotifyINFOIcon"] = { fg = matugen.notif_info }
+            highlights["NotifyINFOTitle"] = { fg = matugen.notif_info, bold = true }
+          end
+
+          -- 10. Grupos oficiales de ventanas flotantes y diálogos en Neo-tree
+          if matugen.dialogos_neotree then
+            highlights["NeoTreeFloatTitle"] = { bg = matugen.dialogos_neotree, fg = "#000000", bold = true }
+            highlights["NeoTreeTitleBar"] = { bg = matugen.dialogos_neotree, fg = "#000000", bold = true }
+            highlights["NeoTreeFloatBorder"] = { fg = matugen.dialogos_neotree }
+            highlights["FloatTitle"] = { bg = matugen.dialogos_neotree, fg = "#000000", bold = true }
+            highlights["FloatBorder"] = { fg = matugen.dialogos_neotree }
           end
         end
 
@@ -65,8 +124,9 @@ return {
         native_lsp = { enabled = true },
         semantic_tokens = true,
         dashboard = false,
-        -- Aseguramos la integración nativa con Neo-tree
         neotree = true,
+        which_key = true,
+        snacks = true,
       },
     },
     config = function(_, opts)

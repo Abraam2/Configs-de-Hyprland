@@ -65,6 +65,7 @@ window-rule {
     match app-id=r"^wev$"
     match app-id=r"^xarchiver$"
     match app-id=r"^xarchiver$"
+    // match app-id=r"^VirtualBox$"
     match app-id=r"firefox$" title=r"^(Picture-in-Picture|Library|About Mozilla Firefox|Firefox - Choose a profile)$"
 
     open-floating true
@@ -96,9 +97,14 @@ window-rule {
 
 window-rule {
     match app-id=r"(Cemu|vlc|mpv|eden|dolphin-emu|pcsx2-qt|steam|org-jdownloader-update-launcher-JDLauncher)"
-    // match app-id=r"^brave-browser$"
-    // match app-id=r"^helium$"
     open-maximized true
+}
+
+window-rule {
+    // match app-id=r"^VirtualBox Manager$"
+    match app-id=r"^VirtualBox Machine$"
+    open-maximized true
+    default-column-width { proportion 1.0; }
 }
 
 // Oniri

@@ -20,8 +20,17 @@ gimp = [{ run = 'gimp "$@"', orphan = true, desc = "GIMP" }]
 # Creamos un abridor para imágenes que no bloquee la terminal (orphan = true)
 visor_imagenes = [{ run = 'xdg-open "$@"', orphan = true, desc = "Ver imagen" }]
 
+# NUEVO: Abridor para ejecutar AppImages en segundo plano sin bloquear Yazi
+appimage = [{ run = '"$@"', orphan = true, desc = "Ejecutar AppImage" }]
+
 [open]
 prepend_rules = [
+    # NUEVO: Regla para abrir los AppImage con el nuevo abridor
+    { url = "*.appimage", use = [
+        "appimage",
+        "reveal",
+    ] },
+
     # Forzamos por extensión. Da igual que tengan 0 bytes, Yazi los mandará a tu script
     { url = "*.txt", use = [
         "mi_nvim",

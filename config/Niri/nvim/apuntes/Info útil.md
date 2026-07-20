@@ -1,11 +1,12 @@
+### Info random de atajos
 
-<leader>cr -> 
+<leader>cr ->
 
 Básico -> Pegar en modo visual
 
 Copiar texto, seleccionas línea que sustituye
-    p -> Pega y CORTA el texto seleccionado (absoluta mierda)
-    P -> Pega y NO CORTA, repito NO CORTA, no lo hace (absoluto cine)
+p -> Pega y CORTA el texto seleccionado (absoluta mierda)
+P -> Pega y NO CORTA, repito NO CORTA, no lo hace (absoluto cine)
 
 Código
 
@@ -20,7 +21,9 @@ Pasos prohibido
 Control + o -> Te mueve hacía atrás en los saltos, puede moverte incluso entre buffers. IMPORTANTE USAR ESTO.
 Control + i -> Te mueve hacía delante en los saltos, puede moverte incluso entre buffers. IMPORTANTE USAR ESTO.
 
-Nvim.surround
+### Plugins
+
+## Nvim.surround
 
 ñsiwf -> Permite escribir algo que envolverá entre paréntesis a la palabra seleccionada
 
@@ -32,16 +35,20 @@ ma -> Las marcas locales también son útiles en archivos largos
 delete marks! -> Borra todas las marcas del archivo
 delm a-z -> Borra grupo de marcas
 
-Persistence.nvim -> Sesiones
+## Persistence.nvim -> Sesiones
 
-Sesiones guardadas en -> ~/.local/state/nvim/sessions 
+Sesiones guardadas en -> ~/.local/state/nvim/sessions
 
 h 'sessionoptions' para ver más info
 
-IA
+## IA
 
-Archivo de config -> /home/abraham/.local/share/nvim/lazy/codecompanion.nvim/lua/codecompanion/config.lua 
+Archivo de config -> /home/abraham/.local/share/nvim/lazy/codecompanion.nvim/lua/codecompanion/config.lua
 
 'G
 
 Language = "English" lo cambiamos con toda la polla, a Language = "Spanish" porque no me quiere pillar la conf bro xd
+
+## Persistence
+
+Si antes pillaba una carpeta con repo de git pero ahora no, solo añade un archivo para que despierte y la detecte, salu2

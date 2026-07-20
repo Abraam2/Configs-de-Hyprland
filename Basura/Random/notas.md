@@ -6,19 +6,20 @@
 
 - El gufi falla de manera aleatoria -> ./CuandoFalleElGufi.txt
 
+- No puedo poner la máquina de virtualbox en pantalla completa xd
+
 ## Jueguitos
 
-- Ver si Mario Odyssey funciona bien (no lo hará)
-
-- Configurar emuladores :(
+- Servicios chupón qbitorrent-nox
 
 ## Rice
+
+- Las ventanas de virtualbox salen curseadas
 
 ## General
 
 Investigación:
 
-- Helium y Zen
 - Txmux
 - KdeConect
 
