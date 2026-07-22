@@ -8,6 +8,8 @@
 
 - No puedo poner la máquina de virtualbox en pantalla completa xd
 
+- Puto virtualbox de polla
+
 ## Jueguitos
 
 - Servicios chupón qbitorrent-nox

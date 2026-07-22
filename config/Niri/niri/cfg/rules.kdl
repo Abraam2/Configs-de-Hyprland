@@ -101,11 +101,21 @@ window-rule {
 }
 
 window-rule {
-    // match app-id=r"^VirtualBox Manager$"
     match app-id=r"^VirtualBox Machine$"
-    open-maximized true
     default-column-width { proportion 1.0; }
 }
+
+// Window ID 67: (focused)
+//   Title: "Tiny10 [Corriendo] - Oracle VirtualBox"
+//   App ID: "VirtualBox Machine"
+//   Is floating: no
+//   PID: 1822
+//   Workspace ID: 3
+//   Layout:
+//     Tile size: 945 x 1030
+//     Scrolling position: column 2, tile 1
+//     Window size: 939 x 1024
+//     Window offset in tile: 3 x 3
 
 // Oniri
 
