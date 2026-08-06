@@ -248,7 +248,7 @@ binds {
     Mod+F2 hotkey-overlay-title="Increase brightness" { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
     Mod+F1 hotkey-overlay-title="Decrease brightness" { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
     Mod+F8 hotkey-overlay-title="Next track" allow-when-locked=true { spawn-sh "playerctl next"; }
-    Mod+F7 hotkey-overlay-title="Pause track" allow-when-locked=true { spawn-sh "playerctl -p spotify play-pause"; }
+    Mod+F7 hotkey-overlay-title="Pause track" allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     Mod+F6 hotkey-overlay-title="Previous track" allow-when-locked=true { spawn-sh "playerctl previous"; }
 
     // Teclas multimedia dedicadas estándares (XF86)

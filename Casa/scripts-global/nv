@@ -2,6 +2,16 @@
 SOCKET="/tmp/nvimsocket"
 CLASS="nvim"
 
+# Si el script se ejecuta como root (usando sudo), usamos nano y le pasamos todo tal cual
+if [ "$EUID" -eq 0 ]; then
+    if [ $# -gt 0 ]; then
+        nano "$@"
+    else
+        nano
+    fi
+    exit 0
+fi
+
 # 1. Comprobamos si nos han pasado un argumento
 if [ -n "$1" ]; then
     FILE_PATH=$(readlink -f "$1")

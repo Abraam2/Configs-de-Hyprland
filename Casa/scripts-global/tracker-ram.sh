@@ -2,9 +2,8 @@
 
 # --- CONFIGURACIÓN ---
 LOG_FILE="$HOME/registro_ram.log"
-# Lista de apps "buscadas" para vigilar (separa con espacios, usa nombres del proceso)
-APPS_BUSCADAS=("qbittorrent-nox")
-# Límite en Megabytes para saltar el aviso (ejemplo: 2048 MB = 2GB)
+# Corregido el nombre a "sddm-greeter" para que pille cualquier variante (qt, qt6, etc)
+APPS_BUSCADAS=("qbittorrent-nox" "sddm-greeter")
 LIMITE_MB=800
 
 # Función para pillar los datos y registrar
@@ -14,13 +13,10 @@ registrar_consumo() {
     echo "==================================================" >>"$LOG_FILE"
     echo "TOP 10 CONSUMO RAM:" >>"$LOG_FILE"
 
-    # Pillamos el TOP 10 (PID, % MEM, MEM en MB, Comando)
     ps axo pid,%mem,rss,comm --sort=-rss | head -n 11 | tail -n +2 | while read -r pid mem rss comm; do
-        # Convertimos RSS (kilobytes) a Megabytes
         mem_mb=$((rss / 1024))
-
-        # Comprobamos si la app está en la lista de buscadas
         es_buscada=false
+
         for app in "${APPS_BUSCADAS[@]}"; do
             if [[ "$comm" == *"$app"* ]]; then
                 es_buscada=true
@@ -28,12 +24,19 @@ registrar_consumo() {
             fi
         done
 
-        # Formateamos la línea
+        # --- ZONA DEL FRANCOTIRADOR ---
+        if [[ "$comm" == *"sddm-greeter"* ]]; then
+            # Lo matamos sin piedad y lo registramos
+            sudo kill -9 "$pid" 2>/dev/null
+            echo "[💀 FULMINADO] El camino del hombre recto está por todos lados rodeado por la avaricia de los egoístas y la tiranía de los hombres malos.$comm (PID: $pid)" >>"$LOG_FILE"
+            continue # Saltamos al siguiente proceso para no registrarlo abajo
+        fi
+        # ------------------------------
+
         linea="[PID: $pid] $comm - $mem_mb MB ($mem% RAM)"
 
         if [ "$es_buscada" = true ]; then
             if [ "$mem_mb" -gt "$LIMITE_MB" ]; then
-                # Si supera el límite, metemos el WARN gordo y mandamos notificación al escritorio
                 echo "[⚠️ ALERTA EXCESO] $linea" >>"$LOG_FILE"
                 notify-send "¡Alerta de RAM!" "La app '$comm' está usando $mem_mb MB" --urgency=critical
             else
@@ -47,13 +50,8 @@ registrar_consumo() {
 }
 
 # --- FLUJO DE TIEMPOS ---
-# 1. Al arrancar
 registrar_consumo "Arranque del sistema"
-
-# 2. A los 5 minutos (300 segundos)
 sleep 300
 registrar_consumo "5 minutos después del arranque"
-
-# 3. A los 15 minutos más (para llegar al minuto 20 en total)
 sleep 900
 registrar_consumo "20 minutos después del arranque"

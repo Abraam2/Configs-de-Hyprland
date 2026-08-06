@@ -65,3 +65,10 @@ sudo modprobe vboxdrv
 sudo pacman -S virtualbox-host-dkms
 
 REINICIAR
+
+### El puto sddm greater aparece de la puta nada
+
+sudo visudo
+
+Abajo del todo del archivo añadir:
+abraham ALL=(ALL) NOPASSWD: /home/abraham/scripts-global/tracker-ram.sh

@@ -17,6 +17,14 @@ alias +x='chmod +x'
 alias clear-links='find . -type l ! -exec test -e {} \; -delete'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 
+alias mc-start='docker compose -f ~/ServerMaincra/docker-compose.yml up -d'
+alias mc-stop='docker compose -f ~/ServerMaincra/docker-compose.yml down'
+alias mc-logs='docker logs -f mc'
+alias mc-errors='docker logs mc 2>&1 | grep -E "WARN|ERROR" > erroresMC.txt'
+alias mc-console='docker exec -it mc rcon-cli'
+alias tailu='sudo tailscale up'
+alias taild='sudo tailscale down'
+
 # -----------------------------------------------------
 # Pacman y cachy
 # -----------------------------------------------------
@@ -104,7 +112,7 @@ alias bat='bat --style=grid,header --paging=never'
 alias cat='bat --style=grid,header --paging=never'
 alias batn='bat'
 alias catn='bat'
-alias grep='rg'
+# alias grep='rg'
 alias df='duf'
 alias du='dust'
 alias top='btop'
