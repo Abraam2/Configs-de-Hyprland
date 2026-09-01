@@ -105,11 +105,15 @@ title_error = { fg = "#f38ba8" }
 deleted = { fg = "red", bold = true }
 untracked = { fg = "#f5c2e7" }
 added = { fg = "#a6e3a1" }
-modified = { fg = "#f9e2af" }
+unstaged = { fg = "#f9e2af" }
+staged = { fg = "#f9e2af" }
+updated = { fg = "#f9e2af" }
 
 clean_sign = " "
 unknown_sign = " "
-modified_sign = "M"
+unstaged_sign = "M"
+staged_sign = "M"
+updated_sign = "M"
 added_sign = "A"
 untracked_sign = "?"
 deleted_sign = "D"

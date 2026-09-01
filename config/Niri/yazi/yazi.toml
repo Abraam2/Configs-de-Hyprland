@@ -25,7 +25,7 @@ appimage = [{ run = '"$@"', orphan = true, desc = "Ejecutar AppImage" }]
 
 [open]
 prepend_rules = [
-    # NUEVO: Regla para abrir los AppImage con el nuevo abridor
+    #  Regla para abrir los AppImage con el nuevo abridor
     { url = "*.appimage", use = [
         "appimage",
         "reveal",
@@ -72,6 +72,10 @@ prepend_rules = [
         "reveal",
     ] },
 ]
+
+[[plugin.prepend_previewers]]
+mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}"
+run = "ouch"
 
 [[plugin.prepend_fetchers]]
 url = "*"

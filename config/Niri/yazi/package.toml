@@ -34,11 +34,6 @@ rev = "112a270"
 hash = "5a4e61f8cae42be53844acaa6c447d96"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:git"
-rev = "ae1335e"
-hash = "88e56a64b7ce7c4314427452343fef17"
-
-[[plugin.deps]]
 use = "simla33/ucp"
 rev = "a4b5ce1"
 hash = "e64d13d729d3a22f8c62893411328c79"
@@ -47,3 +42,16 @@ hash = "e64d13d729d3a22f8c62893411328c79"
 use = "deppess/yazi-plugins:restore"
 rev = "c660628"
 hash = "6dd3c416491c6c228596ecf1d800eacd"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "406ce6c"
+hash = "f5afc904d5106ee368c8aa2ded43bd74"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "c591a36"
+hash = "5bb0bfab901d3601c370eafdd66edd31"
+
+[flavor]
+deps = []

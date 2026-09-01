@@ -17,9 +17,22 @@ alias +x='chmod +x'
 alias clear-links='find . -type l ! -exec test -e {} \; -delete'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 
+# -----------------------------------------------------
+# Maincra
+# -----------------------------------------------------
+
 alias mc-start='docker compose -f ~/ServerMaincra/docker-compose.yml up -d'
 alias mc-stop='docker compose -f ~/ServerMaincra/docker-compose.yml down'
 alias mc-logs='docker logs -f mc'
+
+alias mc-afk='MEMORY=4G INIT_MEMORY=1G docker compose -f ~/ServerMaincra/docker-compose.yml up -d'
+
+alias afk-fe='docker exec -i mc rcon-cli -- player VEGETTA777 spawn at 5540 142 -3093 && sleep 1 && docker exec -i mc rcon-cli -- gamemode spectator VEGETTA777'
+alias afk-aldeanos='docker exec -i mc rcon-cli -- player ElRichMC spawn at 5607 95 -3264 && sleep 1 && docker exec -i mc rcon-cli -- gamemode spectator ElRichMC'
+alias afk-all='docker exec -i mc rcon-cli -- player VEGETTA777 spawn at 5540 143 -3093 && sleep 1 && docker exec -i mc rcon-cli -- gamemode spectator VEGETTA777 && docker exec -i mc rcon-cli -- player ElRichMC spawn at 5607 95 -3264 && sleep 1 && docker exec -i mc rcon-cli -- gamemode spectator ElRichMC'
+alias afk-oro='docker exec -i mc rcon-cli -- execute in minecraft:the_nether run player elrubius spawn at 639 309 -420 && sleep 2 && docker exec -i mc rcon-cli -- gamemode creative elrubius'
+alias afk-stop='docker exec -i mc rcon-cli -- player VEGETTA777 kill && docker exec -i mc rcon-cli -- player ElRichMC kill && docker exec -i mc rcon-cli -- player elrubius kill'
+alias afk-list='docker exec -i mc rcon-cli -- list'
 alias mc-errors='docker logs mc 2>&1 | grep -E "WARN|ERROR" > erroresMC.txt'
 alias mc-console='docker exec -it mc rcon-cli'
 alias tailu='sudo tailscale up'

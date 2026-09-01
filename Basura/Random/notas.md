@@ -4,19 +4,27 @@
 
 - Buscar un móvil para que el tonto del papa no compre el más caro para abrir WhatsApp
 
-- Virtualbox sale como le sale de la punta de la puta polla, programa de puta mierda, antes funcionaba y se habría bien y ahora vuelve a no hacerlo
+- Buscar impresora decente
+
+- Virtualbox sale como le sale de la punta de la puta polla, programa de puta mierda, antes funcionaba y se abría bien y ahora vuelve a no hacerlo
 
 ## Jueguitos
 
-- Servicios chupón qbitorrent-nox
+- Encontrar más sitios de donde descargar juegos.
+
+Ahora jdownloader no le apetece descargar de los host de fitgirl y tengo que usar torrent, y si hay algún torrent muerto, me como un pene
+
+- Buscar mods para tele y cuadros personalizados en Minecraft.
 
 ## Rice
 
-- Don pollo, no puedo mantener contol u para ir arriba en la página xd
+Arreglar yazi
+Cuando haces ls con la terminal dividida, por la puta cara, sale todo vertical
 
-- No puedo renombrar varios archivos a la vez en yazi xd
+## Chamba actual
 
-## Maincra
+- Pasar las dots al portátil y probar que funcione y ver los atajos de FN
+- Investigar porque chucha está bug virtualbox y averiguar que lo causa
 
 ## General
 

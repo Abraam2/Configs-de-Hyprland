@@ -53,7 +53,8 @@ binds {
     // Lanzadores inteligentes (Evitan abrir apps duplicadas)
     Mod+Alt+B hotkey-overlay-title="Lanzar Btop" { spawn "~/scripts-global/dfr-launch-or-focus-tui" "btop"; }
     Mod+Alt+P hotkey-overlay-title="Passwords" { spawn "~/scripts-global/dfr-launch-or-focus" "keepassxc"; }
-    Mod+Alt+S hotkey-overlay-title="Spotify" { spawn "~/scripts-global/dfr-launch-or-focus" "spotify"; }
+    // Mod+Alt+S hotkey-overlay-title="Spotify" { spawn "~/scripts-global/dfr-launch-or-focus" "spotify"; }
+    Mod+Alt+S hotkey-overlay-title="Spotify" { spawn "~/scripts-global/dfr-launch-or-focus" "pear-desktop"; }
 
     // Capturas de pantalla y herramientas visuales
     Mod+Shift+S hotkey-overlay-title="Screenshot (region)" { spawn-sh "~/scripts-global/capture_selection.sh"; }
@@ -160,18 +161,18 @@ binds {
     Mod+Ctrl+WheelScrollLeft hotkey-overlay-title="Move column left" { move-column-left; }
 
     // Configuración Multi-monitor
-    Mod+Ctrl+Shift+Left hotkey-overlay-title="Move column to left monitor" { move-column-to-monitor-left; }
-    Mod+Ctrl+Shift+Down hotkey-overlay-title="Move column to lower monitor" { move-column-to-monitor-down; }
-    Mod+Ctrl+Shift+Up hotkey-overlay-title="Move column to upper monitor" { move-column-to-monitor-up; }
-    Mod+Ctrl+Shift+Right hotkey-overlay-title="Move column to right monitor" { move-column-to-monitor-right; }
-    Mod+Ctrl+Shift+H hotkey-overlay-title="Move column to left monitor" { move-column-to-monitor-left; }
-    Mod+Ctrl+Shift+J hotkey-overlay-title="Move column to lower monitor" { move-column-to-monitor-down; }
-    Mod+Ctrl+Shift+K hotkey-overlay-title="Move column to upper monitor" { move-column-to-monitor-up; }
-    // Mod+Ctrl+Shift+L hotkey-overlay-title="Move column to right monitor" { move-column-to-monitor-right; }
-    Mod+MouseBack hotkey-overlay-title="Focus left monitor" { focus-monitor-left; }
-    Mod+MouseForward hotkey-overlay-title="Focus right monitor" { focus-monitor-right; }
-    Mod+Ctrl+Shift+MouseBack hotkey-overlay-title="Move column to left monitor" { move-column-to-monitor-left; }
-    Mod+Ctrl+Shift+MouseForward hotkey-overlay-title="Move column to right monitor" { move-column-to-monitor-right; }
+    // Mod+Ctrl+Shift+Left hotkey-overlay-title="Move column to left monitor" { move-column-to-monitor-left; }
+    // Mod+Ctrl+Shift+Down hotkey-overlay-title="Move column to lower monitor" { move-column-to-monitor-down; }
+    // Mod+Ctrl+Shift+Up hotkey-overlay-title="Move column to upper monitor" { move-column-to-monitor-up; }
+    // Mod+Ctrl+Shift+Right hotkey-overlay-title="Move column to right monitor" { move-column-to-monitor-right; }
+    // Mod+Ctrl+Shift+H hotkey-overlay-title="Move column to left monitor" { move-column-to-monitor-left; }
+    // Mod+Ctrl+Shift+J hotkey-overlay-title="Move column to lower monitor" { move-column-to-monitor-down; }
+    // Mod+Ctrl+Shift+K hotkey-overlay-title="Move column to upper monitor" { move-column-to-monitor-up; }
+    // // Mod+Ctrl+Shift+L hotkey-overlay-title="Move column to right monitor" { move-column-to-monitor-right; }
+    // Mod+MouseBack hotkey-overlay-title="Focus left monitor" { focus-monitor-left; }
+    // Mod+MouseForward hotkey-overlay-title="Focus right monitor" { focus-monitor-right; }
+    // Mod+Ctrl+Shift+MouseBack hotkey-overlay-title="Move column to left monitor" { move-column-to-monitor-left; }
+    // Mod+Ctrl+Shift+MouseForward hotkey-overlay-title="Move column to right monitor" { move-column-to-monitor-right; }
 
     // =====================================================================
     // 4. TU MAMÁ
@@ -181,10 +182,9 @@ binds {
     Mod+Alt+K hotkey-overlay-title="Focus previous workspace" { focus-workspace-up; }
     Mod+Page_Down hotkey-overlay-title="Focus next workspace" { focus-workspace-down; }
     Mod+Page_Up hotkey-overlay-title="Focus previous workspace" { focus-workspace-up; }
-    Mod+Shift+WheelScrollDown cooldown-ms=150 hotkey-overlay-title="Focus next workspace" { focus-workspace-down; }
-    Mod+Shift+WheelScrollUp cooldown-ms=150 hotkey-overlay-title="Focus previous workspace" { focus-workspace-up; }
-    Mod+Ctrl+Shift+WheelScrollDown cooldown-ms=150 hotkey-overlay-title="Move column to next workspace" { move-column-to-workspace-down; }
-    Mod+Ctrl+Shift+WheelScrollUp cooldown-ms=150 hotkey-overlay-title="Move column to previous workspace" { move-column-to-workspace-up; }
+    
+    Mod+Shift+WheelScrollDown hotkey-overlay-title="Focus column up" { focus-window-up; }
+    Mod+Shift+WheelScrollUp hotkey-overlay-title="Focus column down" { focus-window-down; }
     
     // Movimientos avanzados de Workspaces enteros
     Mod+Ctrl+D hotkey-overlay-title="Move column to next workspace" { move-column-to-workspace-down; }
