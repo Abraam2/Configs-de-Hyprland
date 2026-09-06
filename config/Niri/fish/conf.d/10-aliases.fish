@@ -16,6 +16,7 @@ alias suso='sudo'
 alias +x='chmod +x'
 alias clear-links='find . -type l ! -exec test -e {} \; -delete'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias gparted='xhost +si:localuser:root && sudo gparted && xhost -si:localuser:root'
 
 # -----------------------------------------------------
 # Maincra
@@ -25,11 +26,39 @@ alias mc-start='docker compose -f ~/ServerMaincra/docker-compose.yml up -d'
 alias mc-stop='docker compose -f ~/ServerMaincra/docker-compose.yml down'
 alias mc-logs='docker logs -f mc'
 
-alias mc-afk='MEMORY=4G INIT_MEMORY=1G docker compose -f ~/ServerMaincra/docker-compose.yml up -d'
+alias lucky-start='docker compose -f ~/ServerMaincra/docker-compose.luck.yml up -d'
+alias lucky-stop='docker compose -f ~/ServerMaincra/docker-compose.luck.yml down'
+alias lucky-logs='docker logs -f lucky'
+alias lucky-death='docker exec -i lucky rcon-cli scoreboard objectives add Muertes deathCount Muertes && docker exec -i lucky rcon-cli scoreboard objectives setdisplay sidebar Muertes'
+alias lucky-deathr='docker exec -i lucky rcon-cli scoreboard objectives remove Muertes && docker exec -i lucky rcon-cli scoreboard objectives add Muertes deathCount Muertes && docker exec -i lucky rcon-cli scoreboard objectives setdisplay sidebar Muertes'
 
+## Comandos lucky block (World Edit)
+
+# -----------------------------
+# Borrar basura
+# -----------------------------
+
+# Seleccionar aréa, esquina (un bloque encima) y esquina 2, la torre
+# // set 0
+
+# -----------------------------
+# Cargar casa
+# -----------------------------
+
+# //schematic load casita
+# //paste
+
+# -----------------------------
+# Crear base
+# -----------------------------
+
+# Seleccionar área
+# //set bedrock
+
+alias mc-afk='MEMORY=4G INIT_MEMORY=1G docker compose -f ~/ServerMaincra/docker-compose.yml up -d'
 alias afk-fe='docker exec -i mc rcon-cli -- player VEGETTA777 spawn at 5540 142 -3093 && sleep 1 && docker exec -i mc rcon-cli -- gamemode spectator VEGETTA777'
 alias afk-aldeanos='docker exec -i mc rcon-cli -- player ElRichMC spawn at 5607 95 -3264 && sleep 1 && docker exec -i mc rcon-cli -- gamemode spectator ElRichMC'
-alias afk-all='docker exec -i mc rcon-cli -- player VEGETTA777 spawn at 5540 143 -3093 && sleep 1 && docker exec -i mc rcon-cli -- gamemode spectator VEGETTA777 && docker exec -i mc rcon-cli -- player ElRichMC spawn at 5607 95 -3264 && sleep 1 && docker exec -i mc rcon-cli -- gamemode spectator ElRichMC'
+alias afk-all='docker exec -i mc rcon-cli -- player VEGETTA777 spawn at 5540 143 -3093 && sleep 1 && docker exec -i mc rcon-cli -- gamemode spectator VEGETTA777 && docker exec -i mc rcon-cli -- player LuzuVlogs spawn at 5569 65 -3185 && sleep 2 && docker exec -i mc rcon-cli -- gamemode spectator LuzuVlogs'
 alias afk-oro='docker exec -i mc rcon-cli -- execute in minecraft:the_nether run player elrubius spawn at 639 309 -420 && sleep 2 && docker exec -i mc rcon-cli -- gamemode creative elrubius'
 alias afk-stop='docker exec -i mc rcon-cli -- player VEGETTA777 kill && docker exec -i mc rcon-cli -- player ElRichMC kill && docker exec -i mc rcon-cli -- player elrubius kill'
 alias afk-list='docker exec -i mc rcon-cli -- list'
@@ -127,6 +156,7 @@ alias batn='bat'
 alias catn='bat'
 # alias grep='rg'
 alias df='duf'
+alias lsdisco='duf'
 alias du='dust'
 alias top='btop'
 alias htop='btop'

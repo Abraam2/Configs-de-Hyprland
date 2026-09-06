@@ -147,3 +147,16 @@ WantedBy=default.target
 
 systemctl --user daemon-reload
 systemctl --user enable --now transmission
+
+### Arreglar falsos positivos de yazi con las plantillas
+
+cd ~/.mydots
+git update-index --skip-worktree $(realpath ~/.config/kitty/themes/noctalia-custom.conf)
+git update-index --skip-worktree $(realpath ~/.config/nvim/lua/config/noctalia-custom.lua)
+git update-index --skip-worktree $(realpath ~/.config/rofi/noctalia-custom.rasi)
+git update-index --skip-worktree $(realpath ~/.config/btop/themes/noctalia-custom.theme)
+git update-index --skip-worktree $(realpath ~/.config/yazi/theme.toml)
+git update-index --skip-worktree $(realpath ~/.config/ohmyposh/noctalia-custom.json)
+git update-index --skip-worktree $(realpath ~/.config/ohmyposh/pene.omp.json)git update-index --skip-worktree $(realpath ~/.config/ohmyposh/pene.omp.json)
+git update-index --skip-worktree $(realpath /home/abraham/.config/noctalia/colors.json)
+git update-index --skip-worktree $(realpath /home/abraham/.config/niri/noctalia.kdl)

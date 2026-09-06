@@ -34,12 +34,8 @@ end
 local get_state = ya.sync(function(_, cmd)
 	if cmd == "paste" or cmd == "link" or cmd == "hardlink" then
 		local yanked = {}
-		for _, item in pairs(cx.yanked) do
-			local ok, url = pcall(function()
-				return item.url
-			end)
-			local path = (ok and url) and tostring(url) or tostring(item)
-			table.insert(yanked, path)
+		for _, url in pairs(cx.yanked) do
+			table.insert(yanked, tostring(url))
 		end
 
 		if #yanked == 0 then

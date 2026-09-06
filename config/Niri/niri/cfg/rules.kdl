@@ -11,12 +11,6 @@
 // niri msg pick-window
 //
 
-// window-rule {
-//     match app-id="Spotify"
-//
-//     open-on-workspace "4"
-// }
-
 // 2. Regla para el portal de escritorio GTK (Selector de archivos, etc.)
 window-rule {
     match app-id=r"xdg-desktop-portal-gtk"

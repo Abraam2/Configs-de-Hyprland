@@ -8,6 +8,11 @@ run = "cd ~"
 desc = "Go ~"
 
 [[mgr.prepend_keymap]]
+on = ["g", "m"]
+run = "cd /run/media/$USER"
+desc = "Ir a dispositivos montados"
+
+[[mgr.prepend_keymap]]
 on = ["g", "d"]
 run = "cd ~/Descargas/"
 desc = "Go ~/Descargas/"
@@ -24,11 +29,6 @@ desc = "Go niri config"
 
 [[mgr.prepend_keymap]]
 on = ["g", "."]
-run = "cd ~/.mydots/config/Niri"
-desc = "Go dots config"
-
-[[mgr.prepend_keymap]]
-on = ["g", "m"]
 run = "cd ~/.mydots/config/Niri"
 desc = "Go dots config"
 
@@ -73,10 +73,6 @@ desc = "Restore the previously closed tab"
 # ==============================================================================
 
 # --- Descompresión (Ouch) ---
-[[mgr.prepend_keymap]]
-on = ["<C-z>", "u"]
-run = 'shell -- ouch decompress "$@" --dir .'
-desc = "Descomprimir archivos seleccionados"
 
 [[mgr.prepend_keymap]]
 on = ["<C-z>", "x"]
@@ -89,21 +85,29 @@ on = ["<C-z>", "c"]
 run = "plugin compress"
 desc = ".zip con nombre"
 
-# --- Compresión rápida (Ouch) ---
+## EXPERIMENTAL
 [[mgr.prepend_keymap]]
 on = ["<C-z>", "z"]
-run = 'shell -- ouch compress "$@" %h.zip'
+run = 'shell -- ouch compress %s %h.zip'
 desc = "Comprimir en .zip"
 
 [[mgr.prepend_keymap]]
 on = ["<C-z>", "t"]
-run = 'shell -- ouch compress "$@" %h.tar.gz'
+run = 'shell -- ouch compress %s %h.tar.gz'
 desc = "Comprimir en .tar.gz"
 
 [[mgr.prepend_keymap]]
 on = ["<C-z>", "7"]
-run = 'shell -- ouch compress --fast "$@" %h.7z'
+run = 'shell -- ouch compress --fast %s %h.7z'
 desc = "Comprimir en .7z (Modo rápido)"
+
+# --- Descompresión (Ouch) ---
+[[mgr.prepend_keymap]]
+on = ["<C-z>", "u"]
+run = 'shell -- ouch decompress %s --dir .'
+desc = "Descomprimir archivos seleccionados"
+
+# --- Compresión rápida (Ouch) ---
 
 [[mgr.prepend_keymap]]
 on = ["<C-z>", "p"]
@@ -157,9 +161,8 @@ desc = "Convertir imágenes con magia"
 
 [[mgr.prepend_keymap]]
 on = ["t", "k"]
-run = "shell 'kitty \"$(pwd)\"' --orphan"
+run = 'shell --orphan kitty "$PWD"'
 desc = "Abrir kitty en la ruta actual"
-
 
 # ==============================================================================
 # 5. PERMISOS Y PROPIEDADES (Chmod)
@@ -167,12 +170,12 @@ desc = "Abrir kitty en la ruta actual"
 
 [[mgr.prepend_keymap]]
 on = ["e", "a"]
-run = 'shell -- chmod +x "$@"'
+run = 'shell -- chmod +x %s %h'
 desc = "Dar permiso de ejecución (+x)"
 
 [[mgr.prepend_keymap]]
 on = ["e", "r"]
-run = 'shell -- chmod -x "$@"'
+run = 'shell -- chmod -x %s %h'
 desc = "Quitar permiso de ejecución (-x)"
 
 [[mgr.prepend_keymap]]
@@ -218,20 +221,9 @@ run = "shell 'zoxide add \"$(pwd)\"'"
 desc = "Añadir ruta actual a Zoxide (pwd)"
 
 [[mgr.prepend_keymap]]
-on = ["z", "A"]
-run = '''shell 'zoxide add "$0"''''
-desc = "Añadir la carpeta bajo el cursor de Zoxide"
-
-[[mgr.prepend_keymap]]
 on = ["z", "r"]
 run = "shell 'zoxide remove \"$(pwd)\"'"
 desc = "Eliminar ruta actual de Zoxide (pwd)"
-
-[[mgr.prepend_keymap]]
-on = ["z", "R"]
-run = '''shell 'zoxide remove "$0"''''
-desc = "Eliminar la carpeta bajo el cursor de Zoxide"
-
 
 # ==============================================================================
 # 7. ACCIONES CON PRIVILEGIOS (Plugin Sudo)

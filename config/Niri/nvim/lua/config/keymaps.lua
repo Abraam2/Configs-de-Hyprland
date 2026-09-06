@@ -130,28 +130,44 @@ vim.keymap.set("n", "<leader>Dp", "<cmd>lua vim.notify(vim.fn.getcwd())<cr>", { 
 -------------------------------------------------------------------------------
 
 -- Comando y atajo para guardar con SUDO (usando Suda.vim)
+
 vim.api.nvim_create_user_command("SW", function()
+
   vim.cmd("SudaWrite")
+
 end, { desc = "Guardar con Suda" })
 
 vim.keymap.set("n", "<leader>J", "<cmd>SW<cr>", { desc = "Save As Sudo" })
 
 -- Función de guardado que pide nombre si el archivo es nuevo
+
 local function smart_save()
+
   local filename = vim.api.nvim_buf_get_name(0)
+
   if filename == "" then
+
     vim.ui.input({ prompt = "Nombre para el nuevo archivo: " }, function(input)
+
       if input and input ~= "" then
+
         vim.cmd("write " .. input)
+
         vim.notify("Archivo guardado como: " .. input)
+
       end
+
     end)
+
   else
+
     vim.cmd("write")
+
   end
+
 end
 
-vim.keymap.set("n", "<leader>j", smart_save, { desc = "Smart Save (asks for name)" })
+vim.keymap.set("n", "<leader>j", smart_save, { desc = "Smart Save (asks for name)" }) 
 
 -- Cerrar todos los buffers
 vim.keymap.set("n", "<leader>ba", "<cmd>%bd<cr>", { desc = "Delete all buffers" })

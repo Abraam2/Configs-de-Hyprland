@@ -10,79 +10,43 @@ ratio = [1, 2, 2]
 # max_height      = 900
 
 [opener]
-extract = [{ run = 'ouch d -y "$@"', desc = "Extract here", for = "unix" }]
-mi_nvim = [
-    { run = '~/scripts-global/nv "$@"', orphan = true, desc = "Neovim " },
-]
+extract = [{ run = 'ouch d -y %s', desc = "Extract here", for = "unix" }]
 
-gimp = [{ run = 'gimp "$@"', orphan = true, desc = "GIMP" }]
+mi_nvim = [{ run = '~/scripts-global/nv %s', orphan = true, desc = "Neovim" }]
 
-# Creamos un abridor para imágenes que no bloquee la terminal (orphan = true)
-visor_imagenes = [{ run = 'xdg-open "$@"', orphan = true, desc = "Ver imagen" }]
+gimp = [{ run = 'gimp %s', orphan = true, desc = "GIMP" }]
 
-# NUEVO: Abridor para ejecutar AppImages en segundo plano sin bloquear Yazi
-appimage = [{ run = '"$@"', orphan = true, desc = "Ejecutar AppImage" }]
+visor_imagenes = [{ run = 'xdg-open %s1', orphan = true, desc = "Ver imagen" }]
+
+appimage = [{ run = '%s1', orphan = true, desc = "Ejecutar AppImage" }]
 
 [open]
 prepend_rules = [
-    #  Regla para abrir los AppImage con el nuevo abridor
-    { url = "*.appimage", use = [
-        "appimage",
-        "reveal",
-    ] },
+    { url = "*.appimage", use = ["appimage", "reveal"] },
 
-    # Forzamos por extensión. Da igual que tengan 0 bytes, Yazi los mandará a tu script
-    { url = "*.txt", use = [
-        "mi_nvim",
-        "reveal",
-    ] },
-    { url = "*.lua", use = [
-        "mi_nvim",
-        "reveal",
-    ] },
-    { url = "*.sh", use = [
-        "mi_nvim",
-        "reveal",
-    ] },
-    { url = "*.md", use = [
-        "mi_nvim",
-        "reveal",
-    ] },
-    { url = "*.json", use = [
-        "mi_nvim",
-        "reveal",
-    ] },
-    { url = "*.conf", use = [
-        "mi_nvim",
-        "reveal",
-    ] },
-    { mime = "text/*", use = [
-        "mi_nvim",
-        "reveal",
-    ] },
-    { mime = "inode/empty", use = [
-        "mi_nvim",
-        "reveal",
-    ] },
+    { url = "*.txt", use = ["mi_nvim", "reveal"] },
+    { url = "*.lua", use = ["mi_nvim", "reveal"] },
+    { url = "*.sh", use = ["mi_nvim", "reveal"] },
+    { url = "*.md", use = ["mi_nvim", "reveal"] },
+    { url = "*.json", use = ["mi_nvim", "reveal"] },
+    { url = "*.conf", use = ["mi_nvim", "reveal"] },
+    { mime = "text/*", use = ["mi_nvim", "reveal"] },
+    { mime = "inode/empty", use = ["mi_nvim", "reveal"] },
 
     # Usamos el nuevo visor "orphan" y añadimos "reveal" a la lista
-    { mime = "image/*", use = [
-        "visor_imagenes",
-        "gimp",
-        "reveal",
-    ] },
+    { mime = "image/*", use = ["visor_imagenes", "gimp", "reveal"] },
 ]
 
 [[plugin.prepend_previewers]]
 mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}"
 run = "ouch"
 
-[[plugin.prepend_fetchers]]
-url = "*"
-run = "git"
-group = "git"
-
-[[plugin.prepend_fetchers]]
-url = "*/"
-run = "git"
-group = "git"
+# [[plugin.prepend_fetchers]]
+# url = "*"
+# run = "git"
+# group = "git"
+#
+# [[plugin.prepend_fetchers]]
+# url = "*/"
+# run = "git"
+# group = "git"
