@@ -18,6 +18,8 @@ alias clear-links='find . -type l ! -exec test -e {} \; -delete'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias gparted='xhost +si:localuser:root && sudo gparted && xhost -si:localuser:root'
 
+alias metrolist='~/repos/Metrolist/gradlew :app:assembleDebug && adb install -r app/build/outputs/apk/foss/debug/app-foss-debug.apk'
+
 # -----------------------------------------------------
 # Maincra
 # -----------------------------------------------------

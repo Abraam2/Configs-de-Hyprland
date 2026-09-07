@@ -185,10 +185,9 @@ binds {
     Mod+Alt+K hotkey-overlay-title="Focus previous workspace" { focus-workspace-up; }
     Mod+Page_Down hotkey-overlay-title="Focus next workspace" { focus-workspace-down; }
     Mod+Page_Up hotkey-overlay-title="Focus previous workspace" { focus-workspace-up; }
-    
-    Mod+Shift+WheelScrollDown hotkey-overlay-title="Focus column up" { focus-window-up; }
-    Mod+Shift+WheelScrollUp hotkey-overlay-title="Focus column down" { focus-window-down; }
-    
+    Mod+Shift+WheelScrollDown hotkey-overlay-title="Focus column down (wrap)" { focus-window-down-or-top; }
+    Mod+Shift+WheelScrollUp hotkey-overlay-title="Focus column up (wrap)"   { focus-window-up-or-bottom; }
+
     // Movimientos avanzados de Workspaces enteros
     Mod+Ctrl+D hotkey-overlay-title="Move column to next workspace" { move-column-to-workspace-down; }
     Mod+Ctrl+U hotkey-overlay-title="Move column to previous workspace" { move-column-to-workspace-up; }

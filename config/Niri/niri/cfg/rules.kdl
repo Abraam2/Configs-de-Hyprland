@@ -96,7 +96,8 @@ window-rule {
 
 window-rule {
     match app-id=r"^VirtualBox Machine$"
-    default-column-width { proportion 1.0; }
+    open-maximized true
+    // default-column-width { proportion 1.0; }
 }
 
 // Window ID 67: (focused)
