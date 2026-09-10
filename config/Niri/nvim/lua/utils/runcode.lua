@@ -9,6 +9,7 @@ function M.run_code()
     c = { exe = "gcc", cmd = "gcc -fdiagnostics-color=always " },
     cpp = { exe = "g++", cmd = "g++ -fdiagnostics-color=always " },
     java = { exe = "javac", cmd = "javac " },
+    cs = { exe = "dotnet", cmd = "dotnet run --file " },
     lua = { exe = "lua", cmd = "lua " },
     bash = { exe = "bash", cmd = "bash " },
     sh = { exe = "bash", cmd = "bash " },
@@ -64,16 +65,21 @@ function M.run_code()
     end
   end
 
-  -- Construcción del comando (CON COMILLAS PARA EVITAR ERRORES DE RUTA)
   local final_exec_cmd = ""
 
   if ft == "c" or ft == "cpp" or ft == "rust" then
     final_exec_cmd = string.format("%s %q -o %q/%q && %q/%q", config.cmd, file, cwd, name, cwd, name)
   elseif ft == "java" then
-    -- Java necesita compilar el archivo (.java) y luego ejecutar la clase (sin extensión)
     final_exec_cmd = string.format("javac %q && java %q", file, name)
+  elseif ft == "cs" then
+    local has_proj = #vim.fn.globpath(cwd, "*.csproj") > 0
+    if has_proj then
+      final_exec_cmd = string.format("dotnet run --project %q -v q", cwd)
+    else
+      -- Ruta directa al binario para que Bash no se pierda
+      final_exec_cmd = string.format("~/.dotnet/tools/dotnet-script %q", file)
+    end
   else
-    -- Lenguajes interpretados (Python, JS, Lua...)
     final_exec_cmd = string.format("%s %q", config.cmd, file)
   end
 

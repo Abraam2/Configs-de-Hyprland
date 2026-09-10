@@ -26,6 +26,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Evitar asteriscos automáticos en comentarios de Java y C#
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "java", "cs" },
+  callback = function()
+    vim.opt_local.formatoptions:remove({ "r", "o" })
+  end,
+})
 -- ==============================================================
 -- FORZAR INDENTACIÓN PERFECTA DE 4 ESPACIOS (Sincronizado con Conform)
 -- ==============================================================

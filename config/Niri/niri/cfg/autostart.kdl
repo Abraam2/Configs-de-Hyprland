@@ -13,7 +13,7 @@ spawn-sh-at-startup "qs -c noctalia-shell"
 spawn-sh-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 spawn-sh-at-startup "dbus-update-activation-environment --systemd SSH_AUTH_SOCK && systemctl --user import-environment SSH_AUTH_SOCK && ssh-agent -a $XDG_RUNTIME_DIR/ssh-agent.socket"
 
-spawn-sh-at-startup "~/scripts-global/tracker-ram.sh"
+// spawn-sh-at-startup "~/scripts-global/tracker-ram.sh"
 // spawn-sh-at-startup "~/scripts-global/cacheML4W.sh"
 
 // Prueba demonio de montado xd

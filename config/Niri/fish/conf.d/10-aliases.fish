@@ -28,11 +28,11 @@ alias mc-start='docker compose -f ~/ServerMaincra/docker-compose.yml up -d'
 alias mc-stop='docker compose -f ~/ServerMaincra/docker-compose.yml down'
 alias mc-logs='docker logs -f mc'
 
-alias lucky-start='docker compose -f ~/ServerMaincra/docker-compose.luck.yml up -d'
-alias lucky-stop='docker compose -f ~/ServerMaincra/docker-compose.luck.yml down'
-alias lucky-logs='docker logs -f lucky'
-alias lucky-death='docker exec -i lucky rcon-cli scoreboard objectives add Muertes deathCount Muertes && docker exec -i lucky rcon-cli scoreboard objectives setdisplay sidebar Muertes'
-alias lucky-deathr='docker exec -i lucky rcon-cli scoreboard objectives remove Muertes && docker exec -i lucky rcon-cli scoreboard objectives add Muertes deathCount Muertes && docker exec -i lucky rcon-cli scoreboard objectives setdisplay sidebar Muertes'
+alias lc-start='docker compose -f ~/ServerMaincra/docker-compose.luck.yml up -d'
+alias lc-stop='docker compose -f ~/ServerMaincra/docker-compose.luck.yml down'
+alias lc-logs='docker logs -f lucky'
+alias lc-death='docker exec -i lucky rcon-cli scoreboard objectives add Muertes deathCount Muertes && docker exec -i lucky rcon-cli scoreboard objectives setdisplay sidebar Muertes'
+alias lc-deathr='docker exec -i lucky rcon-cli scoreboard objectives remove Muertes && docker exec -i lucky rcon-cli scoreboard objectives add Muertes deathCount Muertes && docker exec -i lucky rcon-cli scoreboard objectives setdisplay sidebar Muertes'
 
 ## Comandos lucky block (World Edit)
 
@@ -42,6 +42,9 @@ alias lucky-deathr='docker exec -i lucky rcon-cli scoreboard objectives remove M
 
 # Seleccionar aréa, esquina (un bloque encima) y esquina 2, la torre
 # // set 0
+
+# Items del suelo
+# /kill @e[type=Item]
 
 # -----------------------------
 # Cargar casa
