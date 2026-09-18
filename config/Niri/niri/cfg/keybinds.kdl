@@ -34,7 +34,7 @@ binds {
 
     Mod+Alt+A repeat=false hotkey-overlay-title="Launch calendar" { spawn-sh "qs -c noctalia-shell ipc call calendar toggle"; }
     Mod+C repeat=false hotkey-overlay-title="Toggle control center" { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
-    Mod+Ctrl+Shift+U repeat=false hotkey-overlay-title="Toggle Bluetooth" { spawn-sh "qs -c noctalia-shell ipc call bluetooth toggle"; }
+    // Mod+Ctrl+Shift+U repeat=false hotkey-overlay-title="Toggle Bluetooth" { spawn-sh "qs -c noctalia-shell ipc call bluetooth toggle"; }
     Mod+Shift+W repeat=false hotkey-overlay-title="Random Wallpaper" { spawn-sh "qs -c noctalia-shell ipc call wallpaper random"; }
     Mod+Ctrl+W hotkey-overlay-title="Wallpaper selector" { spawn-sh "qs -c noctalia-shell ipc call wallpaper toggle"; }
 
@@ -75,7 +75,13 @@ binds {
     Mod+Ctrl+A hotkey-overlay-title="Powermenu" { spawn-sh "quickshell -p ~/scripts-global/Persona-Powermenu/powermenu.qml"; }
     // Añade esto al script para que cuando bloquees todo se calle
 	// if command -v playerctl >/dev/null 2>&1; then playerctl -a pause; fi
-    Mod+Shift+Ctrl+L hotkey-overlay-title="Lock screen" { spawn "~/.local/share/quickshell-lockscreen/lock.sh"; }
+    // Mod+Shift+Ctrl+L hotkey-overlay-title="Lock screen" { spawn-sh "~/.local/share/quickshell-lockscreen/lock.sh"; }
+
+    // No le apetece al puto portátil de mierda bloquear bien, su puta madre
+    // Mod+Shift+Ctrl+L hotkey-overlay-title="Lock screen" { spawn-sh "~/.local/share/quickshell-lockscreen/lock.sh"; }
+    Mod+Shift+Ctrl+L hotkey-overlay-title="Lock screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
+
+    Mod+Shift+Ctrl+U hotkey-overlay-title="Suspend system" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock && systemctl suspend"; }
     Mod+Shift+Apostrophe hotkey-overlay-title="Keybinds Menu" { spawn "~/scripts-global/niri-keybindings.sh"; }
 
     // =====================================================================

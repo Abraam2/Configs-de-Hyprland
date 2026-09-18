@@ -17,8 +17,8 @@ No hacer script que detecte si tiene que usar sudo o suda, explota xD
 
 ## Chamba
 
-- Investigar porque chucha está bug virtualbox y averiguar que lo causa
 - El plugin de git ahora no muestra ni mierda xD
+- Abro terminal en una ruta con git y el fukin tema de Oh-my-posh tarda 4 meses en cargar
 
 ## General
 

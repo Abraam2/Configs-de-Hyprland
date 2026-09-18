@@ -14,7 +14,6 @@ spawn-sh-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLA
 spawn-sh-at-startup "dbus-update-activation-environment --systemd SSH_AUTH_SOCK && systemctl --user import-environment SSH_AUTH_SOCK && ssh-agent -a $XDG_RUNTIME_DIR/ssh-agent.socket"
 
 spawn-sh-at-startup "~/scripts-global/tracker-ram.sh"
-// spawn-sh-at-startup "~/scripts-global/cacheML4W.sh"
 
 // Prueba demonio de montado xd
 spawn-at-startup "udiskie" "--no-notify"

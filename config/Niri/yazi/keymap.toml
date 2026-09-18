@@ -8,6 +8,11 @@ run = "cd ~"
 desc = "Go ~"
 
 [[mgr.prepend_keymap]]
+on = ["g", "s"]
+run = "cd ~/Documentos/Clase/"
+desc = "Go clase"
+
+[[mgr.prepend_keymap]]
 on = ["g", "m"]
 run = "cd /run/media/$USER"
 desc = "Ir a dispositivos montados"

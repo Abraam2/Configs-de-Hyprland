@@ -1,0 +1,20 @@
+{
+  "Estructura Base C#": {
+    "prefix": "cbase",
+    "body": [
+      "using System;",
+      "",
+      "namespace Aplicacion",
+      "{",
+      "    internal class Program",
+      "    {",
+      "        static void Main(string[] args)",
+      "        {",
+      "            $0",
+      "        }",
+      "    }",
+      "}"
+    ],
+    "description": "Plantilla clásica con Main para C#"
+  }
+}

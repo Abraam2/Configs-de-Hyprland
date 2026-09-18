@@ -12,15 +12,19 @@ input {
         repeat-rate 25
     }
 
+    // touchpad {
+    //     // // Tapping anywhere registers a left click.
+    //     // tap
+    //     //
+    //     // // Inverted scrolling.
+    //     // natural-scroll
+    //     //
+    //     // // Disable acceleration.
+    //     // accel-profile "flat"
+    // }
+
     touchpad {
-        // Tapping anywhere registers a left click.
-        tap
-
-        // Inverted scrolling.
-        natural-scroll
-
-        // Disable acceleration.
-        accel-profile "flat"
+        disabled-on-external-mouse
     }
 
     mouse {
