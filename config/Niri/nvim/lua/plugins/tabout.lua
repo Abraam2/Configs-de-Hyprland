@@ -11,10 +11,10 @@ return {
       backwards_tabkey = "<S-Tab>",
       act_as_tab = true,
       act_as_shift_tab = false,
-      default_tab = "<C-t>",
-      default_shift_tab = "<C-d>",
+      default_tab = "<Tab>", -- Cámbialo aquí a <Tab>
+      default_shift_tab = "<S-Tab>", -- Opcional, pero más natural que <C-d>
       enable_backwards = true,
-      completion = false, -- Con Blink.cmp o snacks es mejor dejarlo en false para evitar conflictos
+      completion = false,
       tabouts = {
         { open = "'", close = "'" },
         { open = '"', close = '"' },
@@ -23,7 +23,7 @@ return {
         { open = "[", close = "]" },
         { open = "{", close = "}" },
       },
-      ignore_beginning = true,
+      ignore_beginning = true, -- Mantén esto en true para que idente al inicio
       exclude = {},
     },
   },

@@ -5,6 +5,9 @@ return {
       formatters_by_ft = {
         java = { "clang-format" },
         cs = { "csharpier" },
+        html = { "prettier" },
+        css = { "prettier" },
+        javascript = { "prettier" },
         -- kdl = { "kdlfmt" },
       },
 
