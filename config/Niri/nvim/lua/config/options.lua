@@ -43,3 +43,14 @@ vim.opt.expandtab = true -- Transforma los tabuladores en espacios reales para q
 
 -- Evitar que smartindent de Java se vuelva loco con los bloques
 vim.opt.smartindent = true
+
+-- Vaina para que html no me toque el pie con las tabulaciones maquiavélicas
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "html",
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.expandtab = true
+    vim.opt_local.smartindent = false
+  end,
+})
