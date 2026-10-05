@@ -22,3 +22,7 @@ return {
     vim.keymap.set("x", "ñs", "<Plug>(nvim-surround-visual)", { desc = "Add surround (visual)" })
   end,
 }
+
+-- usar t para añadir una tag de html y la cierre y abra perfe
+--
+-- Ejemplo: ñsiwt -> Esto te permite poner una tag, por ejemplo <strong>pene</strong>

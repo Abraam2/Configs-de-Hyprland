@@ -4,7 +4,7 @@ return {
     opts = {
       formatters_by_ft = {
         java = { "clang-format" },
-        cs = { "csharpier" },
+        cs = { "clang-format" },
         html = { "prettier" },
         css = { "prettier" },
         javascript = { "prettier" },
