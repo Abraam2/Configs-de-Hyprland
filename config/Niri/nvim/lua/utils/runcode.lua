@@ -1,6 +1,7 @@
 local M = {}
 
-function M.run_code()
+-- Función genérica: external = true (abre Kitty), false (terminal inferior Snacks)
+local function execute(external)
   -- 1. DICCIONARIO DE LENGUAJES
   local configs = {
     python = { exe = "python3", cmd = "export PYTHON_COLORS=1; python3 -u " },
@@ -54,19 +55,13 @@ function M.run_code()
     return
   end
 
-  -- 3. PROCEDER CON LA EJECUCIÓN
+  -- Guardar cambios antes de compilar
   vim.api.nvim_buf_call(target_buf, function()
     vim.cmd("silent! write")
   end)
 
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buftype == "terminal" then
-      vim.cmd("noautocmd bdelete! " .. buf)
-    end
-  end
-
+  -- Construir el comando según lenguaje
   local final_exec_cmd = ""
-
   if ft == "c" or ft == "cpp" or ft == "rust" then
     final_exec_cmd = string.format("%s %q -o %q/%q && %q/%q", config.cmd, file, cwd, name, cwd, name)
   elseif ft == "java" then
@@ -76,47 +71,77 @@ function M.run_code()
     if has_proj then
       final_exec_cmd = string.format("dotnet run --project %q -v q", cwd)
     else
-      -- Compila al vuelo el .cs con clase/Main y lo ejecuta con mono al instante
       final_exec_cmd = string.format("mcs -out:%q/%q.exe %q && mono %q/%q.exe", cwd, name, file, cwd, name)
     end
   else
     final_exec_cmd = string.format("%s %q", config.cmd, file)
   end
 
-  -- 4. LANZAMIENTO
-  local cmd_final = string.format(
-    "bash -c 'export TERM=xterm-256color; %s; echo; echo \"--- Proceso terminado. Intro para cerrar ---\"; read'",
+  local bash_wrapper = string.format(
+    "export TERM=xterm-256color; %s; echo; echo '--- Proceso terminado. Intro para cerrar ---'; read",
     final_exec_cmd
   )
 
-  require("snacks").terminal.open(cmd_final, {
-    win = {
-      position = "bottom",
-      height = 12,
-      wo = { winbar = "", number = false, relativenumber = false },
-    },
-    cwd = cwd,
-  })
+  -- 3. LANZAMIENTO SEGÚN MODO
+  if external then
+    -- Abre una ventana flotante/independiente de Kitty en segundo plano sin bloquear Neovim
+    local kitty_cmd = {
+      "kitty",
+      "--directory",
+      cwd,
+      "--title",
+      "Ejecución: " .. name,
+      "bash",
+      "-c",
+      bash_wrapper,
+    }
+    vim.fn.jobstart(kitty_cmd, { detach = true })
+  else
+    -- Limpiar terminales previas de Snacks
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buftype == "terminal" then
+        vim.cmd("noautocmd bdelete! " .. buf)
+      end
+    end
 
-  -- 5. CONFIGURACIÓN DEL RESULTADO
-  vim.schedule(function()
-    local buf = vim.api.nvim_get_current_buf()
-    pcall(vim.api.nvim_buf_set_name, buf, "Ejecución: " .. ft)
-    vim.cmd("stopinsert")
-    vim.api.nvim_feedkeys("G", "n", false)
-    vim.keymap.set("n", "<CR>", "i<CR>", { buffer = buf, remap = true })
+    local cmd_final = string.format("bash -c %q", bash_wrapper)
 
-    vim.api.nvim_create_autocmd("TermClose", {
-      buffer = buf,
-      callback = function()
-        pcall(function()
-          if vim.api.nvim_buf_is_valid(buf) then
-            vim.cmd("bdelete!")
-          end
-        end)
-      end,
+    require("snacks").terminal.open(cmd_final, {
+      win = {
+        position = "bottom",
+        height = 12,
+        wo = { winbar = "", number = false, relativenumber = false },
+      },
+      cwd = cwd,
     })
-  end)
+
+    vim.schedule(function()
+      local buf = vim.api.nvim_get_current_buf()
+      pcall(vim.api.nvim_buf_set_name, buf, "Ejecución: " .. ft)
+      vim.cmd("stopinsert")
+      vim.api.nvim_feedkeys("G", "n", false)
+      vim.keymap.set("n", "<CR>", "i<CR>", { buffer = buf, remap = true })
+
+      vim.api.nvim_create_autocmd("TermClose", {
+        buffer = buf,
+        callback = function()
+          pcall(function()
+            if vim.api.nvim_buf_is_valid(buf) then
+              vim.cmd("bdelete!")
+            end
+          end)
+        end,
+      })
+    end)
+  end
+end
+
+function M.run_code()
+  execute(false)
+end
+
+function M.run_kitty()
+  execute(true)
 end
 
 return M

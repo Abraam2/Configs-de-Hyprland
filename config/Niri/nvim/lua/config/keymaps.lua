@@ -24,10 +24,24 @@ local LazyVim = require("lazyvim.util")
 --                         1. ARCHIVOS Y NAVEGACIÓN                          --
 -------------------------------------------------------------------------------
 
+-- En modo visual: Tab sangra a la derecha, Shift+Tab a la izquierda
+vim.keymap.set("v", "<Tab>", ">gv", { desc = "Indentar a la derecha y mantener selección" })
+vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Indentar a la izquierda y mantener selección" })
+
+vim.keymap.set("v", "L", ">gv", { desc = "Indentar a la derecha" })
+vim.keymap.set("v", "H", "<gv", { desc = "Indentar a la izquierda" })
+
 -- Buscar archivos (incluyendo ocultos e ignorados por git)
 vim.keymap.set("n", "<leader>fa", function()
   Snacks.picker.files({ hidden = true, ignored = true })
 end, { desc = "Find files including hidden and gitignored" })
+
+-- Autoidentar
+vim.keymap.set("n", "<leader>=", function()
+  local view = vim.fn.winsaveview()
+  vim.cmd("normal! gg=G")
+  vim.fn.winrestview(view)
+end, { desc = "Autoidentar el documento" })
 
 pcall(vim.keymap.del, "n", "<leader>fc")
 
@@ -246,6 +260,14 @@ if not vim.g.vscode then
       end,
       desc = "Run code",
       icon = "󰐊 ",
+    },
+    {
+      "<leader>R",
+      function()
+        runcode.run_kitty()
+      end,
+      desc = "Run code (Kitty)",
+      icon = " ",
     },
   })
 end
