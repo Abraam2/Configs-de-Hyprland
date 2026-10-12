@@ -1,0 +1,29 @@
+[theme.templates]
+enable_builtin_templates = false
+enable_community_templates = false
+
+[theme.templates.user.kitty]
+input_path = "~/.config/noctalia/templates/kitty.conf"
+output_path = "~/.config/kitty/themes/noctalia-custom.conf"
+post_hook = "pkill -SIGUSR1 kitty"
+
+[theme.templates.user.neovim]
+input_path = "~/.config/noctalia/templates/nvim-colors.lua"
+output_path = "~/.config/nvim/lua/config/noctalia-custom.lua"
+
+[theme.templates.user.rofi]
+input_path = "~/.config/noctalia/templates/rofi-colors.rasi"
+output_path = "~/.config/rofi/noctalia-custom.rasi"
+
+[theme.templates.user.btop]
+input_path = "~/.config/noctalia/templates/btop.theme"
+output_path = "~/.config/btop/themes/noctalia-custom.theme"
+
+[theme.templates.user.yazi]
+input_path = "~/.config/noctalia/templates/yazi-theme.toml"
+output_path = "~/.config/yazi/theme.toml"
+
+[theme.templates.user.ohmyposh]
+input_path = "~/.config/noctalia/templates/ohmyposh-colors.json"
+output_path = "~/.config/ohmyposh/noctalia-custom.json"
+post_hook = "jq --slurpfile palette ~/.config/ohmyposh/noctalia-custom.json '. + $palette[0]' ~/.config/ohmyposh/EDM115-newline.omp.json > /tmp/new_theme.json && mv -f /tmp/new_theme.json ~/.config/ohmyposh/pene.omp.json"

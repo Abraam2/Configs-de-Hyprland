@@ -1,0 +1,214 @@
+config_version = 14
+
+[accessibility]
+ui_scale = 1.1000000089406967
+
+[bar.default]
+capsule = true
+center = [ "workspaces" ]
+end = [ "tray", "cat", "bluetooth", "notifications", "clipboard", "network", "volume", "battery", "clock", "session" ]
+icon_color = "primary"
+start = [ "control-center", "taskbar", "group:g1", "media" ]
+widget_spacing = 8
+
+    [bar.default.dead_zone.actions]
+    left = "exec noctalia msg panel-toggle control-center calendar"
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    border_width = 1.0
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "cpu", "ram", "temp" ]
+    opacity = 1.0
+    padding = 6.0
+
+[brightness]
+enable_ddcutil = true
+
+[calendar]
+enabled = true
+
+    [calendar.account.personal_google]
+    type = "google"
+
+[control_center]
+hidden_tabs = [ "monitor", "weather" ]
+width = 850
+
+    [[control_center.shortcuts]]
+    type = "wifi"
+
+    [[control_center.shortcuts]]
+    type = "bluetooth"
+
+    [[control_center.shortcuts]]
+    type = "caffeine"
+
+    [[control_center.shortcuts]]
+    type = "notification"
+
+    [[control_center.shortcuts]]
+    type = "clipboard"
+
+    [[control_center.shortcuts]]
+    type = "nightlight"
+
+[desktop_widgets]
+enabled = false
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[hot_corners.top_left]
+action = "control_center"
+
+[idle]
+pre_action_fade_seconds = 0
+
+[keybinds]
+down = [ "Down", "Ctrl+j" ]
+left = [ "Left", "Ctrl+h" ]
+right = [ "Right", "Ctrl+l" ]
+up = [ "Up", "Ctrl+k" ]
+
+[location]
+auto_locate = true
+
+[lockscreen]
+blur_intensity = 0.19999999552965164
+lock_before_suspend = false
+transition_duration = 400
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-widget-0000000000000001" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "DP-2"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 160.0
+    box_width = 272.0
+    cx = 960.0
+    cy = 316.0
+    output = "DP-2"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        clock_style = "digital"
+        color = "on_surface"
+        shadow = true
+
+[nightlight]
+enabled = true
+temperature_night = 5000
+
+[osd.kinds]
+media = false
+
+[plugins]
+enabled = [ "noctalia/bongocat" ]
+
+[shell]
+app_icon_color = "primary"
+password_style = "random"
+polkit_agent = true
+screen_time_enabled = true
+
+    [shell.panel]
+    borders = false
+
+    [shell.screen_corners]
+    enabled = true
+
+    [shell.window_switcher]
+    style = "compact"
+
+[system.monitor]
+cpu_poll_seconds = 1
+memory_poll_seconds = 1
+
+[theme]
+builtin = "Catppuccin"
+community_palette = "Oxocarbon"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-rainbow"
+
+[wallpaper]
+directory = "/home/abraham/Fondos"
+
+    [wallpaper.default]
+    path = "/home/abraham/Fondos/ign_unsplash28.png"
+
+    [wallpaper.last]
+    path = "/home/abraham/Fondos/ign_unsplash31.png"
+
+    [wallpaper.monitors.DP-2]
+    path = "/home/abraham/Fondos/ign_unsplash31.png"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/abraham/Fondos/ign_unsplash31.png"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-rainbow"
+
+    [[wallpaper.favorite]]
+    path = "/home/abraham/Fondos/totoro.png"
+
+    [[wallpaper.favorite]]
+    path = "/home/abraham/Fondos/spider.png"
+
+[widget.cat]
+color = "primary"
+type = "noctalia/bongocat:cat"
+
+[widget.session]
+enabled = false
+
+[widget.taskbar]
+group_by_workspace = true
+icon_scale = 1.2000000000000002
+workspace_group_capsule = false
