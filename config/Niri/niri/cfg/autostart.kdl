@@ -1,8 +1,8 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
 
 // Modo con noctalia-shell
-spawn-sh-at-startup "qs -c noctalia-shell"
-
+// spawn-sh-at-startup "qs -c noctalia-shell"
+spawn-at-startup "noctalia" "-d"
 // Modo sin noctalia-shell
 // spawn-at-startup "hypridle"
 // spawn-at-startup "waypaper" "--restore"
