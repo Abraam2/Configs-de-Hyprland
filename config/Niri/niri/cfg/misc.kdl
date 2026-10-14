@@ -31,8 +31,6 @@ hotkey-overlay {
 
 workspace "1"
 workspace "2"
-workspace "3"
-workspace "4"
 
 gestures {
     // Disable overview when mousing over the top left of primary screen.
