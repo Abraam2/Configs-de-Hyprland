@@ -6,7 +6,7 @@ ui_scale = 1.1000000089406967
 [bar.default]
 capsule = true
 center = [ "workspaces" ]
-end = [ "tray", "cat", "bluetooth", "notifications", "clipboard", "network", "volume", "battery", "clock", "session" ]
+end = [ "tray", "cat", "bluetooth", "notifications", "network", "volume", "battery", "clock", "session" ]
 icon_color = "primary"
 start = [ "control-center", "taskbar", "group:g1", "media" ]
 widget_spacing = 8
@@ -203,7 +203,19 @@ directory = "/home/abraham/Fondos"
 
 [widget.cat]
 color = "primary"
+input_devices = [ "/dev/input/by-id/usb-Logitech_LogiG_TKL_MKeyboard-event-kbd" ]
 type = "noctalia/bongocat:cat"
+
+[widget.media]
+art_size = 35
+hide_when_no_media = true
+max_length = 294
+min_length = 102
+show_progress = true
+title_scroll = "on_hover"
+
+[widget.network]
+show_label = false
 
 [widget.session]
 enabled = false
