@@ -6,7 +6,7 @@
 
 vim.opt.spell = false -- Activa el corrector por defecto al arrancar
 
-vim.opt.mouse = ""
+vim.opt.mouse = "a"
 
 -- Activa el ajuste de línea visual
 vim.opt.wrap = true
