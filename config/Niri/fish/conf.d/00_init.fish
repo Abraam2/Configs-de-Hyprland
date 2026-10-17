@@ -14,3 +14,4 @@ set -U fish_user_paths $fish_user_paths $HOME/.cargo/bin/
 set -U fish_user_paths $fish_user_paths $HOME/.local/bin/
 set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
 fish_add_path --path --prepend /home/abraham/scripts-global
+fish_add_path --path --prepend /home/abraham/.dotnet/tools

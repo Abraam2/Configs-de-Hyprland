@@ -73,7 +73,7 @@ alias tailu='sudo tailscale up'
 alias taild='sudo tailscale down'
 
 # -----------------------------------------------------
-# Pacman y cachy
+# Niri
 # -----------------------------------------------------
 
 alias niri-apps-id='niri msg -j windows | jq -r \'.[] | "\(.title) -> \(.app_id)"\''
@@ -87,6 +87,7 @@ alias niri-select-app-id="niri msg pick-window"
 # (Usa la herramienta propia de CachyOS para ratear sus repositorios)
 alias mirrors="sudo cachyos-rate-mirrors"
 alias update-mirrors="sudo cachyos-rate-mirrors"
+alias keyring="sudo pacman -Sy archlinux-keyring cachyos-keyring"
 
 # Buscar un paquete en los repositorios usando palabras clave
 # (Reemplaza el típico 'pacman -Ss')

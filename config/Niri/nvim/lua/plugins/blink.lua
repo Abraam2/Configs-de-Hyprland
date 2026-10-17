@@ -13,31 +13,26 @@ return {
       sources = {
         default = { "lsp", "snippets", "path", "buffer" },
         providers = {
+          lsp = {
+            -- Los snippets que manda Roslyn (cw, svm, tryf...) pasan al final de la lista
+            transform_items = function(_, items)
+              local snippet_kind = vim.lsp.protocol.CompletionItemKind.Snippet
+              for _, item in ipairs(items) do
+                if item.kind == snippet_kind then
+                  item.score_offset = (item.score_offset or 0) - 100
+                end
+              end
+              return items
+            end,
+          },
           snippets = {
-            -- Bajamos el dopaje salvaje de 100 a 3. Es suficiente para ganarle al 'if' del LSP
-            -- pero no tanto como para romper la lógica del texto escrito.
-            score_offset = 20,
+            score_offset = -100,
           },
         },
-        -- TRUCO DEFINTIVO: Forzamos a Blink a que valore más las letras exactas que escribes
-        transform_items = function(_, items)
-          return items
-        end,
       },
 
-      -- Ajustes del motor de ordenación de Blink
       fuzzy = {
-        sorts = {
-          -- 1. Prioriza que el texto coincida exactamente con lo que has escrito (ej: println -> println)
-          function(a, b)
-            if a.exact ~= b.exact then
-              return a.exact
-            end
-          end,
-          -- 2. El orden por defecto de Blink (puntuación del motor + offsets)
-          "score",
-          "sort_text",
-        },
+        sorts = { "exact", "score", "sort_text" },
       },
 
       -- 2. El teclado de Blink corregido por un profesional (tú)

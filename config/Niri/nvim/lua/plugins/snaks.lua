@@ -3,6 +3,12 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
+    notifier = {
+      filter = function(notif)
+        local msg = type(notif.msg) == "string" and notif.msg or ""
+        return not msg:find("_vs_getProjectContexts", 1, true)
+      end,
+    },
     picker = {
       sources = {
         files = {
