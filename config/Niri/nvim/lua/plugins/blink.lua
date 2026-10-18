@@ -2,53 +2,56 @@ return {
   {
     "saghen/blink.cmp",
     opts = {
-      -- 1. Filtros de archivos de siempre
       enabled = function()
         return not vim.tbl_contains({ "markdown", "text" }, vim.bo.filetype)
           and vim.bo.buftype ~= "prompt"
           and vim.b.completion ~= false
       end,
 
-      -- Configuración inteligente de fuentes y ordenación
       sources = {
         default = { "lsp", "snippets", "path", "buffer" },
         providers = {
           lsp = {
-            -- Los snippets que manda Roslyn (cw, svm, tryf...) pasan al final de la lista
+            score_offset = 100,
             transform_items = function(_, items)
               local snippet_kind = vim.lsp.protocol.CompletionItemKind.Snippet
               for _, item in ipairs(items) do
                 if item.kind == snippet_kind then
-                  item.score_offset = (item.score_offset or 0) - 100
+                  item.score_offset = (item.score_offset or 0) - 150
                 end
               end
               return items
             end,
           },
           snippets = {
+            score_offset = 10,
+            -- Si estás dentro de comillas o cadenas de texto, NO muestres snippets
+            enabled = function()
+              local node = vim.treesitter.get_node()
+              if node and vim.tbl_contains({ "string", "string_content", "attribute_value" }, node:type()) then
+                return false
+              end
+              return true
+            end,
+          },
+          buffer = {
             score_offset = -100,
           },
         },
       },
 
+      -- 'score' primero para que los puntos del LSP manden sobre las coincidencias cortas
       fuzzy = {
-        sorts = { "exact", "score", "sort_text" },
+        sorts = { "score", "sort_text" },
       },
 
-      -- 2. El teclado de Blink corregido por un profesional (tú)
       keymap = {
         preset = "default",
-
-        ["<C-y>"] = {}, -- Liberado para Yanky
-        ["<C-ñ>"] = { "accept", "fallback" }, -- Tu confirmación
-
-        -- Ctrl + p se va a la calle en Blink
+        ["<C-y>"] = {},
+        ["<C-ñ>"] = { "accept", "fallback" },
         ["<C-p>"] = {},
-
-        -- Y Ctrl + b toma el relevo para subir en la lista de sugerencias (select_prev)
         ["<C-b>"] = { "select_prev", "fallback" },
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
-        -- Ctrl + u SUBE la barra de info (así evitas usar la letra B)
         ["<C-u>"] = { "scroll_documentation_up", "fallback" },
       },
     },
