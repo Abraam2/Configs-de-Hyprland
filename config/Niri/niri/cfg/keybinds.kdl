@@ -32,7 +32,7 @@ binds {
     // Launcher noctalia (v5)
     Mod+Space hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+V repeat=false hotkey-overlay-title="Launcher (clipboard)" { spawn-sh "noctalia msg panel-toggle clipboard"; }
-    Mod+B repeat=false hotkey-overlay-title="Launcher (windows)" { spawn-sh "noctalia msg panel-toggle launcher /windows"; }
+    Mod+B repeat=false hotkey-overlay-title="Launcher (windows)" { spawn-sh "noctalia msg panel-toggle launcher /win"; }
     Mod+Alt+C repeat=false hotkey-overlay-title="Toggle config" { spawn-sh "noctalia msg settings-toggle"; }
 
     Mod+Alt+A repeat=false hotkey-overlay-title="Launch calendar" { spawn-sh "noctalia msg panel-toggle calendar"; }
