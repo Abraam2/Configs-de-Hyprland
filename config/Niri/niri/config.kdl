@@ -1,6 +1,5 @@
 // Theme
 // include "./theme.kdl"
-include "./noctalia.kdl"
 include "./cfg/blur.kdl"
 
 include "./animations/current_animation.kdl"
@@ -13,3 +12,5 @@ include "./cfg/rules.kdl"
 include "./cfg/misc.kdl"
 
 
+
+include "noctalia.kdl"

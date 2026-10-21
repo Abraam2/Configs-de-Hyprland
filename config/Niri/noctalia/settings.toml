@@ -180,17 +180,21 @@ mode = "dark"
 source = "wallpaper"
 wallpaper_scheme = "m3-rainbow"
 
+    [theme.templates]
+    builtin_ids = [ "niri" ]
+    enable_builtin_templates = true
+
 [wallpaper]
 directory = "/home/abraham/Fondos"
 
     [wallpaper.default]
-    path = "/home/abraham/Fondos/ign_unsplash28.png"
+    path = "/home/abraham/Fondos/rei.jpg"
 
     [wallpaper.last]
-    path = "/home/abraham/Fondos/ign_unsplash31.png"
+    path = "/home/abraham/Fondos/rei.jpg"
 
     [wallpaper.monitors.DP-2]
-    path = "/home/abraham/Fondos/ign_unsplash31.png"
+    path = "/home/abraham/Fondos/rei.jpg"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
@@ -203,6 +207,9 @@ directory = "/home/abraham/Fondos"
 
     [[wallpaper.favorite]]
     path = "/home/abraham/Fondos/spider.png"
+
+    [[wallpaper.favorite]]
+    path = "/home/abraham/Fondos/rei.jpg"
 
 [widget.cat]
 color = "primary"
