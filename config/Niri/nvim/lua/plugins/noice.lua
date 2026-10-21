@@ -2,14 +2,13 @@ return {
   {
     "folke/noice.nvim",
     opts = {
+      lsp = {
+        signature = { auto_open = { enabled = false } },
+      },
       routes = {
         {
-          -- Ruta para filtrar los mensajes de progreso del LSP
-          filter = {
-            event = "lsp",
-            kind = "progress",
-          },
-          opts = { skip = true }, -- Esto los oculta por completo
+          filter = { event = "lsp", kind = "progress" },
+          opts = { skip = true },
         },
       },
     },

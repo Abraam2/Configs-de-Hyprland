@@ -3,7 +3,6 @@
 -- Add any additional options here
 --
 vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.expand("~/.dotnet/tools")
-
 -- TODO: Hola, esto es una cosa que hay que hacer, salu2.
 
 vim.opt.spell = false -- Activa el corrector por defecto al arrancar

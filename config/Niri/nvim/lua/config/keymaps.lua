@@ -288,7 +288,29 @@ pcall(vim.keymap.del, "v", "<A-j>")
 pcall(vim.keymap.del, "v", "<A-k>")
 
 -- Borrar palabra entera hacia atrás con Ctrl + Backspace en modo insertar
-vim.keymap.set("i", "<C-H>", "<C-w>", { desc = "Borrar palabra hacia atrás" })
+-- vim.keymap.set("i", "<C-H>", "<C-w>", { desc = "Borrar palabra hacia atrás" })
+
+-- Borrado inteligente con Ctrl + Backspace (<C-h>): borra línea/indentación si está vacía, o palabra si hay texto
+vim.keymap.set("i", "<C-h>", function()
+  local col = vim.fn.col(".") - 1
+  if col == 0 then
+    -- Si ya estás al principio absoluto de la línea, sube y une con la de arriba
+    return "<BS>"
+  end
+  local line = vim.fn.getline(".")
+  local before_cursor = line:sub(1, col)
+
+  -- Si antes del cursor solo hay espacios en blanco o tabuladores, vuela toda la sangría de golpe
+  if before_cursor:match("^%s*$") then
+    return "<C-u>"
+  else
+    -- Si hay texto o caracteres, borra la palabra
+    return "<C-w>"
+  end
+end, { expr = true, desc = "Borrado inteligente hacia atrás" })
+
+-- Mapeamos también <C-w> y <C-BS> por si tu terminal manda la secuencia directa
+vim.keymap.set("i", "<C-BS>", "<C-h>", { remap = true })
 
 -- Hacer que 'd' mande siempre al agujero negro (modo normal y visual)
 vim.keymap.set({ "n" }, "d", '"_d', { remap = false, desc = "Delete without copy" })

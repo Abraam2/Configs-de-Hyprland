@@ -30,5 +30,7 @@ class Program {
       muestre en pantalla juntas, pero en orden inverso, y entre comillas dobles. Por
       ejemplo si las letras que se teclean son a, l, o, h, escribiría "hola".
       */
-    public static void ejercicio1() {}
+    public static void ejercicio1() {
+        Console.WriteLine();
+    }
 }
