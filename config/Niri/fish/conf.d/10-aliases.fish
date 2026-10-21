@@ -12,6 +12,8 @@ alias copy='wl-copy'
 # -----------------------------------------------------
 # Random
 # -----------------------------------------------------
+#
+alias descarta='git fetch origin && git reset --hard origin/main'
 alias suso='sudo'
 alias +x='chmod +x'
 alias clear-links='find . -type l ! -exec test -e {} \; -delete'
