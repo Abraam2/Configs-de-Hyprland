@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("pene")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29559d06506798a97aac2c78a9dd38a4695a4180")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b1d28e65fe7782308838b2becd9ef688bf032d3")]
 [assembly: System.Reflection.AssemblyProductAttribute("pene")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pene")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

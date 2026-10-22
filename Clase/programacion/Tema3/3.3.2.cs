@@ -31,6 +31,15 @@ class Program {
       ejemplo si las letras que se teclean son a, l, o, h, escribiría "hola".
       */
     public static void ejercicio1() {
-        Console.WriteLine();
+        Console.Write("Inserta una letra: ");
+        char l1 = Convert.ToChar(Console.ReadLine());
+        Console.Write("Inserta una letra: ");
+        char l2 = Convert.ToChar(Console.ReadLine());
+        Console.Write("Inserta una letra: ");
+        char l3 = Convert.ToChar(Console.ReadLine());
+        Console.Write("Inserta una letra: ");
+        char l4 = Convert.ToChar(Console.ReadLine());
+
+        Console.WriteLine("\"{0}{1}{2}{3}\"", l4, l3, l2, l1);
     }
 }
