@@ -20,9 +20,17 @@ visor_imagenes = [{ run = 'xdg-open %s1', orphan = true, desc = "Ver imagen" }]
 
 appimage = [{ run = '%s1', orphan = true, desc = "Ejecutar AppImage" }]
 
+navegador = [
+    { run = 'xdg-open %s1', orphan = true, desc = "Abrir en navegador" },
+]
+
 [open]
 prepend_rules = [
     { url = "*.appimage", use = ["appimage", "reveal"] },
+
+    # HTML: debe ir antes de "text/*" para que tenga prioridad
+    { url = "*.html", use = ["navegador", "mi_nvim", "reveal"] },
+    { url = "*.htm", use = ["navegador", "mi_nvim", "reveal"] },
 
     { url = "*.txt", use = ["mi_nvim", "reveal"] },
     { url = "*.lua", use = ["mi_nvim", "reveal"] },

@@ -19,6 +19,15 @@ return {
             "-style={BasedOnStyle: Google, ColumnLimit: 10000, IndentWidth: 4, ContinuationIndentWidth: 4, BreakStringLiterals: false, AlignAfterOpenBracket: Align, IndentCaseLabels: true}",
           },
         },
+        ["prettier"] = {
+          prepend_args = {
+            -- "--print-width",
+            -- "10000",
+            "--html-whitespace-sensitivity",
+            "ignore",
+            "--bracket-same-line",
+          },
+        },
       },
 
       default_format_opts = {
