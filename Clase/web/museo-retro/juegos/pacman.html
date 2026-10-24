@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pac-Man</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap"
+          rel="stylesheet" />
+    <link href="../css/estilos.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <h1>MUSEO DE VIDEOJUEGOS RETRO</h1>
+      <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="tetris.html">Tetris</a>
+        <a href="mario.html">Mario</a>
+        <a href="pacman.html">Pac-Man</a>
+        <a href="castlevania.html">Castlevania</a>
+      </nav>
+    </header>
+    <main>
+      <h2>Pac-Man</h2>
+      <p>
+        Pac-Man rompió con los típicos juegos de naves de su época apostando por
+        una idea distinta, comer puntos y escapar de cuatro fantasmas en un
+        laberinto. Una fórmula <em>clave</em>
+        que dominó los salones recreativos y marcó la historia del
+        <span class="destacado">arcade</span>.
+      </p>
+      <section>
+        <img src="../img/pacman.jpg" alt="Ilustración del juego Pac-Man" />
+        <!-- El vídeo solo funciona si se abre con el live server, si se abre con clic dercho sobre el archivo no funciona por lo que pongo un vídeo estático para que se pueda ver -->
+        <!-- <iframe -->
+        <!--   width="560" -->
+        <!--   height="315" -->
+        <!--   src="https://www.youtube.com/embed/jeyjmJkhLb0?si=_yllx5D4u3FrScwr" -->
+        <!--   title="YouTube video player" -->
+        <!--   frameborder="0" -->
+        <!--   allow=" -->
+        <!--     accelerometer; -->
+        <!--     autoplay; -->
+        <!--     clipboard-write; -->
+        <!--     encrypted-media; -->
+        <!--     gyroscope; -->
+        <!--     picture-in-picture; -->
+        <!--     web-share; -->
+        <!--   " -->
+        <!--   referrerpolicy="strict-origin-when-cross-origin" -->
+        <!--   allowfullscreen></iframe> -->
+        <video controls preload="metadata" width="560" poster="../img/pacman.jpg">
+          <source src="../media/mario.mp4" type="video/mp4" />
+          Tu navegador no soporta vídeo HTML5.
+          <a href="../media/mario.mp4">Descarga el vídeo</a>
+          .
+        </video>
+      </section>
+      <h3>Información general</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Dato</th>
+            <th>Descripción</th>
+            <th>Enlace</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Año de lanzamiento</td>
+            <td>1980</td>
+            <td rowspan="3">
+              <a href="https://es.wikipedia.org/wiki/Pac-Man" target="_blank">Ver más en Wikipedia</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Creador</td>
+            <td>Toru Iwatani</td>
+          </tr>
+          <tr>
+            <td>Plataforma estrella</td>
+            <td>Máquina arcade</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+    <footer>
+      <p>
+        <a href="../index.html">Volver al inicio</a>
+      </p>
+      <p>© 2026 Museo del Videojuego Retro - Creado por Abraham Cruz Guillem</p>
+    </footer>
+  </body>
+</html>

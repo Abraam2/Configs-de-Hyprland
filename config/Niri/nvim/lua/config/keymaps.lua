@@ -20,9 +20,41 @@ local LazyVim = require("lazyvim.util")
 --                         0. ZONA DE PRUEBAS                                --
 -------------------------------------------------------------------------------
 
-vim.keymap.set("n", "<leader>cd", function()
+vim.keymap.set("n", "<leader>cD", function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle diagnostics (all)" })
+
+-- Al pulsar Alt + ñ en modo inserción: escribe {} y retrocede el cursor un espacio
+vim.keymap.set("i", "<M-ñ>", "{}<Left>", { desc = "Insertar llaves con cursor en medio" })
+
+-- Al pulsar Alt + d en modo inserción: escribe {} y retrocede el cursor un espacio
+vim.keymap.set("i", "<M-d>", "{}<Left>", { desc = "Insertar llaves con cursor en medio" })
+
+-- Al pulsar Alt + f en modo inserción: escribe [] y retrocede el cursor un espacio
+vim.keymap.set("i", "<M-f>", "[]<Left>", { desc = "Insertar llaves con cursor en medio" })
+
+if not vim.g.vscode then
+  local live = require("utils.liveExp")
+  local wk = require("which-key")
+  wk.add({
+    {
+      "<leader>lf",
+      function()
+        live.open()
+      end,
+      desc = "Live server (archivo)",
+      icon = "󰖟 ",
+    },
+    {
+      "<leader>lF",
+      function()
+        live.stop()
+      end,
+      desc = "Live server (parar)",
+      icon = "󰓛 ",
+    },
+  })
+end
 -------------------------------------------------------------------------------
 --                         1. ARCHIVOS Y NAVEGACIÓN                          --
 -------------------------------------------------------------------------------
@@ -251,7 +283,6 @@ end, { desc = "Create New Markdown Scratch" })
 --                             5. EJECUCIÓN DE CÓDIGO                        --
 -------------------------------------------------------------------------------
 
--- BLINDAJE PARA EJECUTAR CÓDIGO (Solo en Neovim nativo)
 if not vim.g.vscode then
   local runcode = require("utils.runcode")
   local wk = require("which-key")

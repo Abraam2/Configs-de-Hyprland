@@ -1,0 +1,198 @@
+/* =============================
+   MUSEO DEL VIDEOJUEGO RETRO
+   ============================= */
+
+/* -----------------------------
+   1. RESETEO GENERAL
+   ----------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* -----------------------------
+   2. ESTILO GENERAL
+   ----------------------------- */
+
+body {
+  /* Fuente 'Roboto' y sans-serif, color de fondo #eae6f2, color de texto #222222 */
+  font-family: "Roboto", sans-serif;
+  background-color: #eae6f2;
+  color: #222222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Selector de clase para textos destacados */
+.destacado {
+  /* Transformación de texto a mayúsculas (uppercase) y color #004080 */
+  text-transform: uppercase;
+  color: #004080;
+}
+
+/* -----------------------------
+   3. ENCABEZADO Y NAVEGACIÓN
+   ----------------------------- */
+header {
+  /* Color de fondo #1e0b36, color de texto blanco, centrado, altura de 150px y sombra de caja (0px 4px 8px 0px black) */
+  background-color: #1e0b36;
+  color: white;
+  text-align: center;
+  height: 150px;
+  box-shadow: 0px 4px 8px 0px black;
+}
+
+header h1 {
+  /* Fuente 'Orbitron' y sans-serif, y sombra de texto (2px 2px 4px black) */
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 2px 2px 4px black;
+  margin-bottom: 0.8em;
+  padding-top: 20px;
+}
+
+/* Línea decorativa bajo el título en index. Que será un párrafo vacío */
+#linea {
+  /* ancho 100px, alto 4px, color de fondo #00ff88 */
+  width: 100px;
+  height: 4px;
+  background-color: #00ff88;
+  margin: 0.5em auto 0;
+}
+
+nav a {
+  /* Fuente 'Orbitron' y sans-serif, color blanco y sin subrayado (none) */
+  font-family: "Orbitron", sans-serif;
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+/* -----------------------------
+   4. CONTENIDO PRINCIPAL
+   ----------------------------- */
+main {
+  max-width: 900px;
+  margin: 2em auto;
+  background-color: #ffffff;
+  /* Sombra de caja: 0px horizontal, 4px vertical, 10px difuminado, 0px dispersión y color gray */
+  box-shadow: 0px 4px 10px 0px gray;
+  padding: 30px;
+  flex: 1;
+}
+
+main h2,
+main h3 {
+  /* Fuente 'Orbitron' y sans-serif, color #1e0b36 */
+  font-family: "Orbitron", sans-serif;
+  color: #1e0b36;
+  height: 60px;
+  line-height: 60px;
+}
+
+main p {
+  /* Alineación justificada e interlineado de 1.5em */
+  text-align: justify;
+  line-height: 1.5em;
+  margin-bottom: 15px;
+}
+
+/* -----------------------------
+   5. IMÁGENES Y VÍDEOS
+   ----------------------------- */
+img,
+video {
+  /* ancho 600px */
+  width: 600px;
+  max-width: 100%;
+  display: block;
+  margin: 15px auto;
+}
+
+section {
+  /* Donde estará la imagen y el vídeo */
+  /* Alineado al centro */
+  text-align: center;
+}
+
+/* -----------------------------
+   6. TABLAS
+   ----------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th,
+td {
+  /* Alineado a la izquierda */
+  text-align: left;
+  border: 1px solid #cccccc;
+  padding: 10px;
+}
+
+thead {
+  /* Encabezado de la tabla de color blanco, fondo #1e0b36 y fuente 'Orbitron' */
+  color: white;
+  background-color: #1e0b36;
+  font-family: "Orbitron", sans-serif;
+}
+
+tbody {
+  /* color de fondo #f0f0f0 */
+  background-color: #f0f0f0;
+}
+
+/* Enlace de documentación oficial dentro de la tabla */
+table a {
+  /* color #1e0b36, en negrita (bold) y subrayado por encima (overline) */
+  color: #1e0b36;
+  font-weight: bold;
+  text-decoration: overline;
+}
+
+/* -----------------------------
+   7. PIE DE PÁGINA
+   ----------------------------- */
+footer {
+  /* color blanco, color de fondo #110521, centrado y de 80px de alto */
+  color: white;
+  background-color: #110521;
+  text-align: center;
+  height: 80px;
+  line-height: 35px;
+  padding-top: 10px;
+  font-size: 0.9em;
+}
+
+footer a {
+  /* color #00ff88 */
+  color: #00ff88;
+  text-decoration: none;
+}
+
+/* -----------------------------
+   8. LISTA DE ENLACES EN INDEX
+   ----------------------------- */
+main ul li {
+  /* color de fondo #ede7f6 */
+  background-color: #ede7f6;
+  line-height: 4em;
+  margin-bottom: 10px;
+  padding-left: 15px;
+  list-style-position: inside;
+}
+
+main ul li:hover {
+  /* Cambio de color al pasar el cursor por encima */
+  background-color: #dcd0f0;
+}
+
+main ul a {
+  /* color de texto #1e0b36, tipo de texto 'Orbitron' y grosor de letra 600 */
+  color: #1e0b36;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 600;
+  text-decoration: underline;
+}

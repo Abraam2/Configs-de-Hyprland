@@ -5,9 +5,9 @@ return {
       formatters_by_ft = {
         java = { "clang-format" },
         cs = { "clang-format" },
-        html = { "prettier" },
-        css = { "prettier" },
-        javascript = { "prettier" },
+        html = { "djlint" },
+        css = { "biome" },
+        javascript = { "biome" },
         -- kdl = { "kdlfmt" },
       },
 
@@ -19,13 +19,13 @@ return {
             "-style={BasedOnStyle: Google, ColumnLimit: 10000, IndentWidth: 4, ContinuationIndentWidth: 4, BreakStringLiterals: false, AlignAfterOpenBracket: Align, IndentCaseLabels: true}",
           },
         },
-        ["prettier"] = {
+        ["djlint"] = {
           prepend_args = {
-            -- "--print-width",
-            -- "10000",
-            "--html-whitespace-sensitivity",
-            "ignore",
-            "--bracket-same-line",
+            "--reformat",
+            "--indent",
+            "2",
+            "--max-line-length",
+            "120",
           },
         },
       },

@@ -1,0 +1,1005 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comparativa de Placas Base</title>
+    <style>
+      :root {
+        --bg-color: #121212;
+        --text-color: #e0e0e0;
+        --card-bg: #1e1e1e;
+        --accent-green: #2e7d32;
+        --accent-red: #c62828;
+        --accent-yellow: #f9a825;
+        --theory-bg: #263238;
+        --example-bg: #3e2723;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+
+      nav {
+        background-color: #000;
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        text-align: center;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: #4caf50;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: #fff;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .grid-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 60px;
+      }
+
+      .card {
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: center;
+        transition: transform 0.3s;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+        background-color: #fff;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+
+      .card-content {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card-tag {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: #aaa;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+      }
+
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 15px;
+      }
+
+      .card-price {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #4caf50;
+      }
+
+      .section-block {
+        margin-bottom: 60px;
+      }
+
+      .info-block {
+        margin-bottom: 50px;
+      }
+
+      .info-block p {
+        margin-bottom: 15px;
+      }
+
+      /* Estilos rescatados de la versión PENE1 */
+      .box-sencilla {
+        background-color: rgba(30, 58, 138, 0.2);
+        border-left: 4px solid #3b82f6;
+        padding: 20px;
+        margin-bottom: 15px;
+        border-radius: 0 8px 8px 0;
+      }
+
+      .box-sencilla h4 {
+        color: #60a5fa;
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+      }
+
+      .box-ejemplo {
+        background-color: rgba(88, 28, 135, 0.2);
+        border-left: 4px solid #9333ea;
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+      }
+
+      .box-ejemplo h4 {
+        color: #c084fc;
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+      }
+
+      /* Estilos de la tabla y vocabulario originales */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 20px;
+        font-size: 0.95rem;
+      }
+
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #333;
+      }
+
+      th {
+        background-color: #2c2c2c;
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .text-red {
+        color: #ef5350;
+        font-weight: bold;
+      }
+      .text-yellow {
+        color: #ffd54f;
+        font-weight: bold;
+      }
+      .text-green {
+        color: #81c784;
+        font-weight: bold;
+      }
+
+      /* Badges visuales para la sección de versiones */
+      .badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 12px;
+        font-size: 0.85em;
+        font-weight: bold;
+        margin-right: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .badge-red {
+        background-color: rgba(198, 40, 40, 0.2);
+        color: #ef5350;
+        border: 1px solid #ef5350;
+      }
+      .badge-yellow {
+        background-color: rgba(249, 168, 37, 0.2);
+        color: #ffd54f;
+        border: 1px solid #ffd54f;
+      }
+      .badge-green {
+        background-color: rgba(46, 125, 50, 0.2);
+        color: #81c784;
+        border: 1px solid #81c784;
+      }
+      .badge-blue {
+        background-color: rgba(30, 136, 229, 0.2);
+        color: #64b5f6;
+        border: 1px solid #64b5f6;
+      }
+
+      .versiones-lista li {
+        margin-bottom: 15px;
+        background-color: var(--card-bg);
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 3px solid #555;
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #4caf50;
+        color: #fff;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        font-size: 24px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 1000;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#modelos">Modelos</a>
+      <a href="#info-principal">Análisis Técnico</a>
+      <a href="#tabla">Tabla Comparativa</a>
+      <a href="#vocabulario">Vocabulario de Historia</a>
+      <a href="#versiones">Comparativa de Versiones</a>
+    </nav>
+
+    <div class="container">
+      <h1 id="modelos">Análisis y Comparativa de Placas Base</h1>
+
+      <!-- GRID DE IMÁGENES (INTACTO) -->
+      <div class="grid-cards">
+        <!-- Gama Baja -->
+        <a
+          href="https://www.pccomponentes.com/msi-b550m-pro-vdh-wifi"
+          target="_blank"
+          class="card">
+          <img src="img/baja.jpg" alt="MSI B550M PRO-VDH" />
+          <div class="card-content">
+            <div>
+              <div class="card-tag">Gama Baja</div>
+              <div class="card-title">MSI B550M PRO-VDH</div>
+            </div>
+            <div class="card-price">130.95 €</div>
+          </div>
+        </a>
+
+        <!-- Gama Media -->
+        <a
+          href="https://www.pccomponentes.com/placa-base-msi-pro-x870-p-wifi"
+          target="_blank"
+          class="card">
+          <img src="img/media.jpg" alt="MSI PRO X870-P" />
+          <div class="card-content">
+            <div>
+              <div class="card-tag">Gama Media</div>
+              <div class="card-title">MSI PRO X870-P</div>
+            </div>
+            <div class="card-price">489.95 €</div>
+          </div>
+        </a>
+
+        <!-- Gama Alta -->
+        <a
+          href="https://www.pccomponentes.com/placa-base-asus-rog-strix-x870e-e-gaming-wifi"
+          target="_blank"
+          class="card">
+          <img src="img/alta.jpg" alt="ASUS ROG STRIX X870E-E" />
+          <div class="card-content">
+            <div>
+              <div class="card-tag">Gama Alta</div>
+              <div class="card-title">ASUS ROG STRIX X870E-E</div>
+            </div>
+            <div class="card-price">889.96 €</div>
+          </div>
+        </a>
+
+        <!-- Estado del Arte -->
+        <a
+          href="https://www.pccomponentes.com/asus-pro-ws-trx50-sage-wifi"
+          target="_blank"
+          class="card">
+          <img src="img/arte.png" alt="ASUS Pro WS TRX50-SAGE" />
+          <div class="card-content">
+            <div>
+              <div class="card-tag">Estado del Arte</div>
+              <div class="card-title">ASUS Pro WS TRX50-SAGE</div>
+            </div>
+            <div class="card-price">8,146.70 €</div>
+          </div>
+        </a>
+      </div>
+
+      <hr style="border-color: #333; margin: 50px 0" />
+
+      <!-- INFO PRINCIPAL (CON ESTILO Y ESTRUCTURA DE PENE1 + APARTADOS NUEVOS) -->
+      <div id="info-principal" class="section-block">
+        <h2
+          style="
+            font-size: 2rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+          ">
+          Información Principal Explicada
+        </h2>
+
+        <!-- Apartado 1: VRM -->
+        <div class="info-block">
+          <h3>1. Fases de alimentación (VRM)</h3>
+          <p>
+            <strong>MSI B550M PRO-VDH (Gama baja):</strong>
+            4+2 fases estándar. Suficiente para procesadores de 65W a 105W. No
+            apto para procesadores topes de gama bajo cargas máximas sostenidas.
+          </p>
+          <p>
+            <strong>MSI PRO X870-P (Gama media):</strong>
+            14+2+1 fases. El primer número (14) alimenta los núcleos de la CPU,
+            el segundo (2) el controlador de memoria y el último (1) los
+            gráficos integrados.
+          </p>
+          <p>
+            <strong>ASUS ROG STRIX X870E-E (Gama alta):</strong>
+            18+2+2 fases de 110A. Esto significa que cada una de las 18 fases
+            puede entregar 110 amperios de corriente. Es una cantidad bestial de
+            energía, diseñada para mantener voltajes perfectos cuando se hace
+            overclock.
+          </p>
+          <p>
+            <strong>ASUS Pro WS TRX50-SAGE (Estado del arte):</strong>
+            36 fases directas con ventilación activa. Diseñada para procesadores
+            Threadripper que consumen más de 600W de energía ininterrumpida las
+            24 horas del día.
+          </p>
+
+          <div class="box-sencilla">
+            <h4>Explicación sencilla</h4>
+            <p style="margin: 0">
+              El VRM es como un equipo de camareros que lleva agua (energía) de
+              un grifo gigante (la fuente de alimentación) a un cliente muy
+              exigente (el procesador). Si tienes 4 camareros (gama baja) y el
+              cliente pide agua a un ritmo normal, bien. Pero si el cliente pide
+              muchísima agua de golpe, esos 4 camareros se agotarán (se
+              calientan). Si tienes 18 camareros muy fuertes o 36 camareros con
+              ventiladores (estado del arte), el cliente nunca se queda sin agua
+              y los camareros ni sudan.
+            </p>
+          </div>
+          <div class="box-ejemplo">
+            <h4>Ejemplo</h4>
+            <p style="margin: 0">
+              Imagina que intentas ponerle un motor de Ferrari a un coche sin
+              modificar el chasis. La placa de 130€ (Gama baja) encenderá un
+              procesador tope de gama, pero cuando intentes jugar o renderizar
+              un vídeo, la placa base bajará la velocidad del procesador
+              drásticamente para no derretirse. Con la placa de 889€ (Gama
+              alta), puedes pisar el acelerador a fondo todo el día.
+            </p>
+          </div>
+        </div>
+
+        <!-- Apartado 2: PCIe -->
+        <div class="info-block">
+          <h3>2. Líneas PCIe (Autopistas de Datos)</h3>
+          <p>
+            <strong>MSI B550M PRO-VDH (Gama baja):</strong>
+            Utiliza PCIe 4.0 con un número muy limitado de conexiones. Solo
+            puedes poner una tarjeta gráfica rápida y un disco duro rápido. El
+            resto irá a menor velocidad.
+          </p>
+          <p>
+            <strong>MSI PRO X870-P (Gama media):</strong>
+            Soporta PCIe 5.0, el estándar más rápido actual, permitiendo discos
+            M.2 ultrarrápidos, pero comparte ancho de banda entre las ranuras.
+          </p>
+          <p>
+            <strong>ASUS ROG STRIX X870E-E (Gama alta):</strong>
+            Muchas más ranuras M.2, pero debido a la limitación del procesador
+            doméstico (que solo tiene unas 28 líneas PCIe), si ocupas muchos
+            discos SSD, la placa divide las líneas de la tarjeta gráfica a la
+            mitad (pasa de x16 a x8).
+          </p>
+          <p>
+            <strong>ASUS Pro WS TRX50-SAGE (Estado del arte):</strong>
+            Maneja hasta 128 líneas PCIe. Esto permite conectar hasta 4 tarjetas
+            gráficas gigantes trabajando al mismo tiempo sin que ninguna pierda
+            velocidad, además de múltiples discos duros.
+          </p>
+
+          <div class="box-sencilla">
+            <h4>Explicación sencilla</h4>
+            <p style="margin: 0">
+              Las líneas PCIe son los carriles de una autopista. La tarjeta
+              gráfica es un camión ancho que ocupa 16 carriles, y cada disco
+              duro rápido ocupa 4 carriles. Un procesador normal solo tiene
+              24-28 líneas. Si metes muchos camiones y furgonetas, no caben y la
+              placa base tiene que estrechar los carriles, creando atascos. La
+              placa "Estado del Arte" es una autopista de peaje de 128 carriles
+              donde todos van a 200 km/h sin rozarse.
+            </p>
+          </div>
+          <div class="box-ejemplo">
+            <h4>Ejemplo</h4>
+            <p style="margin: 0">
+              En la placa de Gama Alta, si conectas tu gráfica y de repente
+              instalas 3 discos SSD de última generación, la placa dirá: "No
+              tengo carriles para todo, le quito velocidad a la gráfica para
+              dárselo a los discos". En la placa Estado del Arte, una empresa
+              conecta 4 tarjetas RTX 4090 para crear Inteligencia Artificial
+              simultáneamente sin perder rendimiento.
+            </p>
+          </div>
+        </div>
+
+        <!-- Apartado 3: Memoria RAM (NUEVO) -->
+        <div class="info-block">
+          <h3>3. Memoria RAM (Canales y ECC)</h3>
+          <p>
+            <strong>MSI B550M PRO-VDH (Gama baja):</strong>
+            Funciona en Dual-Channel (2 canales) con memoria DDR4 clásica.
+            Límite de 128 GB.
+          </p>
+          <p>
+            <strong>Gama Media y Alta (X870):</strong>
+            Funcionan en Dual-Channel pero con memoria DDR5 ultra rápida (hasta
+            más de 8000 MHz). Límite de 256 GB, aunque meter 4 módulos a máxima
+            velocidad suele dar dolores de cabeza.
+          </p>
+          <p>
+            <strong>ASUS Pro WS TRX50-SAGE (Estado del arte):</strong>
+            Juega en su propia liga. Funciona en Quad-Channel (4 canales
+            simultáneos) y soporta hasta 1 TB de memoria. Obliga a usar memoria
+            RDIMM con ECC integrado.
+          </p>
+
+          <div class="box-sencilla">
+            <h4>Explicación sencilla</h4>
+            <p style="margin: 0">
+              "Dual-Channel" significa que hay dos carreteras de doble sentido
+              conectando el almacén (RAM) y la fábrica (Procesador).
+              "Quad-Channel" significa que hay cuatro carreteras, moviendo el
+              doble de datos. Por su parte, el ECC es como tener a un corrector
+              ortográfico trabajando dentro de la memoria que vigila y limpia
+              fallos al vuelo.
+            </p>
+          </div>
+          <div class="box-ejemplo">
+            <h4>Ejemplo</h4>
+            <p style="margin: 0">
+              Imagina que dejas el PC trabajando 3 días seguidos. Si un rayo de
+              sol o el calor altera un solo número en la RAM (un 0 por un 1), la
+              placa normal se vuelve loca y te tira un pantallazo azul perdiendo
+              el trabajo de días. La memoria ECC de la placa industrial pilla el
+              fallo, lo borra, pone el número correcto y sigue trabajando como
+              si nada.
+            </p>
+          </div>
+        </div>
+
+        <!-- Apartado 4: Capas de PCB (NUEVO) -->
+        <div class="info-block">
+          <h3>4. Aislamiento y Capas de PCB</h3>
+          <p>
+            <strong>MSI B550M PRO-VDH (Gama baja):</strong>
+            Utiliza 4 a 6 capas de circuito. Funciona bien para velocidades
+            normales pero genera ruido eléctrico interno a altas frecuencias.
+          </p>
+          <p>
+            <strong>Gama Media y Alta (X870):</strong>
+            Utilizan 8 capas de cobre denso. Esto permite que las frecuencias de
+            la memoria RAM vuelen sin colapsar por interferencias de la propia
+            placa.
+          </p>
+          <p>
+            <strong>ASUS Pro WS TRX50-SAGE (Estado del arte):</strong>
+            Utiliza entre 10 y 12 capas de cobre de grado servidor. Diseñada
+            para que las interferencias de mover gigabytes por segundo no
+            existan y para disipar el calor extremo directamente a través de la
+            propia placa.
+          </p>
+
+          <div class="box-sencilla">
+            <h4>Explicación sencilla</h4>
+            <p style="margin: 0">
+              La placa base no es un trozo plano de plástico, es como un
+              sándwich o un edificio con varios pisos por donde van tuberías de
+              cobre microscópicas. Cuantos más pisos (capas) tenga, más puedes
+              separar las tuberías para que el calor y la electricidad de unas
+              no molesten a las otras.
+            </p>
+          </div>
+          <div class="box-ejemplo">
+            <h4>Ejemplo</h4>
+            <p style="margin: 0">
+              Una placa de 4 capas es como un piso de paredes finas: si el
+              vecino pone la música, te vibra el salón (interferencias) y la
+              conexión va mal. Una placa de 12 capas es un búnker insonorizado:
+              pueden estar taladrando al lado que tus datos viajan en absoluto
+              silencio.
+            </p>
+          </div>
+        </div>
+
+        <!-- Apartado 5: Conectividad y Gestión (NUEVO) -->
+        <div class="info-block">
+          <h3>5. Extras y Gestión Remota</h3>
+          <p>
+            <strong>MSI B550M PRO-VDH (Gama baja):</strong>
+            Lo justo para funcionar. Red de 1 Gigabit y WiFi 5 o 6.
+          </p>
+          <p>
+            <strong>ASUS ROG STRIX X870E-E (Gama alta):</strong>
+            Añade lujos: WiFi 7, red de 5 Gigabits, pantalla digital (Q-Code)
+            que te dice con dos números qué falla si el PC no arranca y un botón
+            físico para expulsar la gráfica sin dejarte los dedos.
+          </p>
+          <p>
+            <strong>ASUS Pro WS TRX50-SAGE (Estado del arte):</strong>
+            Doble red masiva (10 Gbps + 2.5 Gbps) y un chip especial (BMC /
+            IPMI) que funciona como un mini-ordenador independiente dentro de la
+            placa.
+          </p>
+
+          <div class="box-sencilla">
+            <h4>Explicación sencilla</h4>
+            <p style="margin: 0">
+              Mientras que una placa cara te da comodidades visuales y velocidad
+              de red premium para casa, la placa industrial incorpora su propio
+              administrador de sistemas en un chip que siempre está encendido,
+              aunque el PC principal esté apagado.
+            </p>
+          </div>
+          <div class="box-ejemplo">
+            <h4>Ejemplo</h4>
+            <p style="margin: 0">
+              Tu ordenador está en la oficina de Madrid y tú estás de viaje en
+              Tokio. De repente, el ordenador se congela por completo
+              (pantallazo). Si tienes una placa normal, estás vendido hasta que
+              alguien físicamente vaya y pulse el botón. Con el IPMI de la placa
+              industrial, entras por internet desde Tokio, ves la pantalla
+              congelada y le das a reiniciar como si estuvieras pulsando el
+              botón con el dedo.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border-color: #333; margin: 50px 0" />
+
+      <!-- TABLA COMPARATIVA (INTACTA) -->
+      <div id="tabla" class="section-block">
+        <h2>Tabla Comparativa de Componentes y Extras</h2>
+        <div style="overflow-x: auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Componente / Característica</th>
+                <th>MSI B550M PRO-VDH (Básica)</th>
+                <th>MSI PRO X870-P (Media)</th>
+                <th>ASUS ROG STRIX X870E-E (Alta)</th>
+                <th>ASUS TRX50-SAGE (Industrial)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Zócalo (Socket)</strong></td>
+                <td class="text-red">AM4</td>
+                <td class="text-yellow">AM5</td>
+                <td class="text-yellow">AM5</td>
+                <td class="text-green">sTR5 / SP6</td>
+              </tr>
+              <tr>
+                <td><strong>Tamaño (Factor de forma)</strong></td>
+                <td class="text-yellow">Micro-ATX</td>
+                <td class="text-yellow">ATX estándar</td>
+                <td class="text-yellow">ATX estándar</td>
+                <td class="text-green">CEB / E-ATX (gigante)</td>
+              </tr>
+              <tr>
+                <td><strong>Capas de la placa (PCB)</strong></td>
+                <td class="text-red">4 capas</td>
+                <td class="text-yellow">8 capas</td>
+                <td class="text-yellow">8 capas de cobre denso</td>
+                <td class="text-green">10 a 12 capas servidor</td>
+              </tr>
+              <tr>
+                <td><strong>Fases de poder (VRM)</strong></td>
+                <td class="text-red">4+2 (básicas sin blindar)</td>
+                <td class="text-yellow">14+2+1 (DrMOS 60A)</td>
+                <td class="text-green">18+2+2 (110A extremas)</td>
+                <td class="text-green">36 fases industriales</td>
+              </tr>
+              <tr>
+                <td><strong>Refrigeración activa en placa</strong></td>
+                <td class="text-red">No</td>
+                <td class="text-red">No</td>
+                <td class="text-red">No</td>
+                <td class="text-green">Sí (ventiladores VRM/chipset)</td>
+              </tr>
+              <tr>
+                <td><strong>Tipo de memoria RAM</strong></td>
+                <td class="text-red">DDR4</td>
+                <td class="text-yellow">DDR5</td>
+                <td class="text-yellow">DDR5</td>
+                <td class="text-green">DDR5 RDIMM</td>
+              </tr>
+              <tr>
+                <td><strong>Canales de RAM</strong></td>
+                <td class="text-yellow">2 (Dual-Channel)</td>
+                <td class="text-yellow">2 (Dual-Channel)</td>
+                <td class="text-yellow">2 (Dual-Channel)</td>
+                <td class="text-green">4 (Quad-Channel)</td>
+              </tr>
+              <tr>
+                <td><strong>Soporte RAM ECC</strong></td>
+                <td class="text-red">Solo modo no-ECC</td>
+                <td class="text-red">No / No oficial</td>
+                <td class="text-red">No / No oficial</td>
+                <td class="text-green">Sí (obligatoria)</td>
+              </tr>
+              <tr>
+                <td><strong>Capacidad máxima RAM</strong></td>
+                <td class="text-red">128 GB</td>
+                <td class="text-yellow">256 GB</td>
+                <td class="text-yellow">256 GB</td>
+                <td class="text-green">1 TB (1024 GB)</td>
+              </tr>
+              <tr>
+                <td><strong>Ranuras PCIe x16 blindadas</strong></td>
+                <td class="text-red">1 (refuerzo básico)</td>
+                <td class="text-yellow">1</td>
+                <td class="text-yellow">1</td>
+                <td class="text-green">3 a 4 (metal completo)</td>
+              </tr>
+              <tr>
+                <td><strong>Soporte para 3+ gráficas simultáneas</strong></td>
+                <td class="text-red">Imposible</td>
+                <td class="text-red">No</td>
+                <td class="text-red">No recomendable</td>
+                <td class="text-green">Sí (hasta 4 GPUs a tope)</td>
+              </tr>
+              <tr>
+                <td><strong>Generación PCIe principal</strong></td>
+                <td class="text-red">PCIe 4.0</td>
+                <td class="text-green">PCIe 5.0</td>
+                <td class="text-green">PCIe 5.0</td>
+                <td class="text-green">PCIe 5.0 (sin recorte)</td>
+              </tr>
+              <tr>
+                <td><strong>Ranuras M.2 para SSD</strong></td>
+                <td class="text-red">2 ranuras</td>
+                <td class="text-yellow">3 ranuras</td>
+                <td class="text-green">5 ranuras</td>
+                <td class="text-green">3 a 4 (+ SlimSAS)</td>
+              </tr>
+              <tr>
+                <td><strong>Disipadores calor SSD incluidos</strong></td>
+                <td class="text-red">1 (para un disco)</td>
+                <td class="text-yellow">Sí (en todas)</td>
+                <td class="text-green">Sí (gruesos con tubo cobre)</td>
+                <td class="text-green">Sí (bloques masivos metal)</td>
+              </tr>
+              <tr>
+                <td><strong>Conexión Red (Ethernet)</strong></td>
+                <td class="text-red">1 Gbps básico</td>
+                <td class="text-yellow">2.5 Gbps</td>
+                <td class="text-green">5 Gbps</td>
+                <td class="text-green">Doble: 10 Gbps + 2.5 Gbps</td>
+              </tr>
+              <tr>
+                <td><strong>WiFi y Bluetooth</strong></td>
+                <td class="text-red">WiFi 5/6 + BT 4.2/5.1</td>
+                <td class="text-green">WiFi 7 + BT 5.4</td>
+                <td class="text-green">WiFi 7 + BT 5.4</td>
+                <td class="text-green">WiFi 7 + BT 5.4</td>
+              </tr>
+              <tr>
+                <td><strong>Puertos USB4 / Thunderbolt</strong></td>
+                <td class="text-red">No</td>
+                <td class="text-green">Sí (2 traseros)</td>
+                <td class="text-green">Sí (2 traseros)</td>
+                <td class="text-green">Sí (Opcional/USB4)</td>
+              </tr>
+              <tr>
+                <td><strong>Tarjeta sonido integrada</strong></td>
+                <td class="text-red">Básica (ALC892/897)</td>
+                <td class="text-yellow">Buena (ALC4080)</td>
+                <td class="text-green">Prémium (+ DAC Savitech)</td>
+                <td class="text-green">Grado trabajo (ALC1220)</td>
+              </tr>
+              <tr>
+                <td><strong>Pantalla códigos error (Q-Code)</strong></td>
+                <td class="text-red">Solo 4 lucecitas</td>
+                <td class="text-red">Solo 4 lucecitas</td>
+                <td class="text-green">Sí (pantalla 2 dígitos)</td>
+                <td class="text-green">Sí (pantalla 2 dígitos)</td>
+              </tr>
+              <tr>
+                <td><strong>Botones físicos en placa</strong></td>
+                <td class="text-red">No</td>
+                <td class="text-red">No</td>
+                <td class="text-green">Sí (Start y FlexKey)</td>
+                <td class="text-green">Sí</td>
+              </tr>
+              <tr>
+                <td><strong>Desenganche rápido GPU</strong></td>
+                <td class="text-red">Pestaña clásica plástico</td>
+                <td class="text-yellow">Botón EZ PCIe</td>
+                <td class="text-green">Botón Q-Release Slim</td>
+                <td class="text-green">Bloqueo reforzado</td>
+              </tr>
+              <tr>
+                <td><strong>Chip gestión remota (IPMI/BMC)</strong></td>
+                <td class="text-red">No</td>
+                <td class="text-red">No</td>
+                <td class="text-red">No</td>
+                <td class="text-green">Sí (control remoto total)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <hr style="border-color: #333; margin: 50px 0" />
+
+      <!-- VOCABULARIO DE HISTORIA (INTACTO) -->
+      <div id="vocabulario" class="section-block">
+        <h2>Vocabulario de Historia</h2>
+        <ul>
+          <li>
+            <strong>Socket (Zócalo):</strong>
+            La cuna donde encaja el procesador con sus pines. Como la cerradura
+            de una puerta: una llave moderna no entra en un zócalo viejo.
+          </li>
+          <li>
+            <strong>VRM (Voltage Regulator Module):</strong>
+            El transformador interno de la placa. Baja los 12 voltios brutos de
+            la fuente a la energía limpia (1.1v) que necesita el procesador.
+          </li>
+          <li>
+            <strong>PCB (Printed Circuit Board):</strong>
+            La tabla verde/negra física formada por láminas de fibra de vidrio y
+            pistas de cobre. Cuantas más capas, menos interferencias.
+          </li>
+          <li>
+            <strong>PCIe:</strong>
+            Las vías de tren o carriles por donde viajan los datos entre el
+            procesador, gráfica y discos. Se miden en carriles (x1, x4, x16).
+          </li>
+          <li>
+            <strong>M.2 / NVMe:</strong>
+            Formato de discos duros modernos parecidos a una barra de chicle que
+            se atornillan directo a la placa, sin usar cables.
+          </li>
+          <li>
+            <strong>ECC (Error-Correcting Code):</strong>
+            Un chip en la RAM profesional que corrige micro-errores en los datos
+            al vuelo provocados por radiación o calor, evitando que el PC se
+            cuelgue.
+          </li>
+          <li>
+            <strong>Dual-Channel vs Quad-Channel:</strong>
+            Las tuberías de datos entre procesador y RAM. Dual tiene dos
+            paralelas (PCs normales), Quad tiene cuatro (PCs de servidor, rinden
+            el doble).
+          </li>
+          <li>
+            <strong>BMC / IPMI:</strong>
+            Microordenador integrado en placas profesionales que permite
+            encender, apagar o formatear el PC desde otra ciudad usando
+            internet.
+          </li>
+          <li>
+            <strong>Clear CMOS:</strong>
+            Botón o puente metálico para borrar la memoria de la BIOS y
+            devolverla a fábrica si el PC deja de arrancar tras tocar algo mal.
+          </li>
+        </ul>
+      </div>
+
+      <hr style="border-color: #333; margin: 50px 0" />
+
+      <!-- COMPARATIVA DE VERSIONES (AMPLIADA Y VISUAL) -->
+      <div id="versiones" class="section-block">
+        <h2>Comparativa de Versiones Clave</h2>
+
+        <ul
+          class="versiones-lista"
+          style="list-style-type: none; padding-left: 0">
+          <li>
+            <h3>Generaciones de PCIe (Ancho de banda por carril)</h3>
+            <p>
+              <span class="badge badge-red">PCIe 3.0</span>
+              ~1 GB/s por carril. (16 GB/s totales en gráfica). Es el estándar
+              de hace una década.
+            </p>
+            <p>
+              <span class="badge badge-yellow">PCIe 4.0</span>
+              ~2 GB/s por carril. (32 GB/s totales). Estándar de la mayoría de
+              PCs de hace un par de años (Placa de 130€).
+            </p>
+            <p>
+              <span class="badge badge-green">PCIe 5.0</span>
+              ~4 GB/s por carril. (64 GB/s totales). Lo más puntero, permite
+              discos M.2 con velocidades extremas de 14.000 MB/s (Placas de 489€
+              en adelante).
+            </p>
+          </li>
+
+          <li>
+            <h3>Generaciones de Memoria RAM</h3>
+            <p>
+              <span class="badge badge-red">DDR4</span>
+              Trabaja entre 2400 y 3600 MHz. La placa base regula su energía y
+              sus canales van en bloque cerrado.
+            </p>
+            <p>
+              <span class="badge badge-green">DDR5</span>
+              Arranca en 4800 MHz y puede superar los 8000 MHz. Llevan su propio
+              regulador de voltaje (PMIC) en el módulo y se dividen en
+              subcanales para reducir tiempos de espera.
+            </p>
+          </li>
+
+          <li>
+            <h3>Formatos de Tamaño (Factor de Forma)</h3>
+            <p>
+              <span class="badge badge-yellow">Micro-ATX</span>
+              Formato compacto y cuadrado. Ideal para cajas pequeñas, pero
+              recorta conexiones. (Gama baja).
+            </p>
+            <p>
+              <span class="badge badge-green">ATX</span>
+              El tamaño estándar por excelencia. Equilibrado para torres
+              normales con buena expansión. (Gama media y alta).
+            </p>
+            <p>
+              <span class="badge badge-blue">E-ATX / CEB</span>
+              Formatos gigantes y extendidos. No caben en torres normales;
+              diseñadas para montar decenas de discos, gráficas y fases de
+              servidor. (Estado del arte).
+            </p>
+          </li>
+
+          <li>
+            <h3>Generaciones de WiFi</h3>
+            <p>
+              <span class="badge badge-red">WiFi 5</span>
+              Banda de 5 GHz. Sufre interferencias si hay muchos aparatos en
+              casa. (Gama baja).
+            </p>
+            <p>
+              <span class="badge badge-yellow">WiFi 6 / 6E</span>
+              Añade la banda de 6 GHz. Sube la velocidad (9.6 Gbps) y gestiona
+              decenas de dispositivos a la vez sin colapsar.
+            </p>
+            <p>
+              <span class="badge badge-green">WiFi 7</span>
+              Lo más avanzado (46 Gbps). Permite tecnología MLO, conectando tu
+              PC a 5 GHz y 6 GHz
+              <strong>a la vez</strong>
+              para evitar tirones en juegos. (Gama alta).
+            </p>
+          </li>
+
+          <li>
+            <h3>Conectividad Inalámbrica (Bluetooth)</h3>
+            <p>
+              <span class="badge badge-red">BT 4.2</span>
+              Conexión estándar básica, rango corto.
+            </p>
+            <p>
+              <span class="badge badge-yellow">BT 5.1</span>
+              Mayor rango y mejor localización de dispositivos.
+            </p>
+            <p>
+              <span class="badge badge-green">BT 5.4</span>
+              Consumo ultra bajo, menos latencia para mandos/cascos y conexiones
+              a múltiples dispositivos más estables.
+            </p>
+          </li>
+
+          <li>
+            <h3>Puertos de Red por cable (Ethernet)</h3>
+            <p>
+              <span class="badge badge-red">1 Gbps</span>
+              Descarga máxima real de 115-120 MB/s. Tope en placas económicas.
+            </p>
+            <p>
+              <span class="badge badge-yellow">2.5 Gbps</span>
+              Descarga a 280-300 MB/s. Exprime cualquier fibra óptica de casa.
+              (Gama Media).
+            </p>
+            <p>
+              <span class="badge badge-blue">5 Gbps</span>
+              Alcanza unos 600 MB/s. (Gama Alta).
+            </p>
+            <p>
+              <span class="badge badge-green">10 Gbps</span>
+              Grado profesional. Supera los 1.100 MB/s de transferencia. Mueve
+              archivos pesados como si estuvieran dentro del PC. (Estado del
+              arte).
+            </p>
+          </li>
+
+          <li>
+            <h3>Puertos USB y Transferencia</h3>
+            <p>
+              <span class="badge badge-red">USB 2.0 (Negro)</span>
+              480 Mbps (~40 MB/s). Solo para ratones, teclados o webcams.
+            </p>
+            <p>
+              <span class="badge badge-yellow">USB 3.2 Gen 1 (Azul)</span>
+              5 Gbps (~500 MB/s). Velocidad clásica de los pendrives.
+            </p>
+            <p>
+              <span class="badge badge-blue">USB 3.2 Gen 2x2 (Tipo-C)</span>
+              20 Gbps (~2.000 MB/s). Para discos SSD externos muy rápidos.
+            </p>
+            <p>
+              <span class="badge badge-green">USB4 / Thunderbolt 4</span>
+              40 Gbps. Transferencia extrema, permite sacar vídeo 4K y cargar la
+              batería por un mismo cable Tipo-C. Presente solo en la gama alta.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">&#8679;</a>
+
+    <script>
+      const backToTopButton = document.getElementById("backToTop");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add("visible");
+        } else {
+          backToTopButton.classList.remove("visible");
+        }
+      });
+      backToTopButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>

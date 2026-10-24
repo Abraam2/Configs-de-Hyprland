@@ -1,0 +1,2 @@
+./notasPC.md
+./notasEXTERNO.md

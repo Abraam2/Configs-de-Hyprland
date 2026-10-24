@@ -2,6 +2,11 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 --
+-- Basura exp
+vim.opt.backupcopy = "yes"
+--
+--
+--
 vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.expand("~/.dotnet/tools")
 -- TODO: Hola, esto es una cosa que hay que hacer, salu2.
 
@@ -58,7 +63,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Basura de csharp de puta mierda de Microsoft de los cojones me cago en la puta madre y luego para que usemos Windows Forms de Windows XP obsoleto hijo de la gran puta me cago en cristo
 --
-local ignored = { IDE1006 = true }
+local ignored = { IDE1006 = true, IDE0054 = true, IDE0300 = true }
 local orig_set = vim.diagnostic.set
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.diagnostic.set = function(ns, bufnr, diagnostics, opts)

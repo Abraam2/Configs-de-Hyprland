@@ -176,6 +176,7 @@ enabled = true
 temperature_night = 5000
 
 [osd.kinds]
+lock_keys = false
 media = false
 
 [plugins]
@@ -240,7 +241,11 @@ directory = "/home/abraham/Fondos"
 
 [widget.cat]
 color = "primary"
-input_devices = [ "/dev/input/by-id/usb-Logitech_LogiG_TKL_MKeyboard-event-kbd" ]
+input_devices = [
+    "/dev/input/by-id/usb-Logitech_LogiG_TKL_MKeyboard-event-kbd",
+    "/dev/input/by-path/platform-i8042-serio-0-event-kbd",
+    "/dev/input/by-id/usb-1ea7_2.4G_Mouse-event-mouse"
+]
 type = "noctalia/bongocat:cat"
 
 [widget.media]

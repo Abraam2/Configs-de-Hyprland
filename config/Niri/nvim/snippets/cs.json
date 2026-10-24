@@ -16,5 +16,23 @@
       "}"
     ],
     "description": "Plantilla clásica con Main para C#"
+  },
+
+  "Console Write a secas": {
+    "prefix": "ct",
+    "body": ["Console.Write(\"$1\");$0"],
+    "description": "Console.Write simple"
+  },
+
+  "Console WriteLine a secas": {
+    "prefix": "cl",
+    "body": ["Console.WriteLine(\"$1\");$0"],
+    "description": "Console.WriteLine simple"
+  },
+
+  "Console WriteLine formateado (cl0)": {
+    "prefix": "cl0",
+    "body": ["Console.WriteLine(\"${1:Texto}: {0}\", ${2:variable});$0"],
+    "description": "Console.WriteLine con marcador {0}"
   }
 }
