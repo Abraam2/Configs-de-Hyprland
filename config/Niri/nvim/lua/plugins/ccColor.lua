@@ -1,7 +1,7 @@
 return {
   "uga-rosa/ccc.nvim",
   keys = {
-    { "<leader>cp", "<cmd>CccPick<cr>", desc = "Abrir selector de color" },
+    { "<leader>cP", "<cmd>CccPick<cr>", desc = "Abrir selector de color" },
     { "<leader>cv", "<cmd>CccHighlighterToggle<cr>", desc = "Activar/desactivar colores" },
   },
   config = function()
