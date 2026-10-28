@@ -216,13 +216,16 @@ wallpaper_scheme = "m3-rainbow"
 directory = "/home/abraham/Fondos"
 
     [wallpaper.default]
-    path = "/home/abraham/Fondos/rei.jpg"
+    path = "/home/abraham/Fondos/evangelion.jpg"
 
     [wallpaper.last]
-    path = "/home/abraham/Fondos/rei.jpg"
+    path = "/home/abraham/Fondos/evangelion.jpg"
 
     [wallpaper.monitors.DP-2]
     path = "/home/abraham/Fondos/rei.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/abraham/Fondos/evangelion.jpg"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"

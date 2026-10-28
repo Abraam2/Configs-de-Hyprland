@@ -1,0 +1,39 @@
+.contenedor {
+    width: 400px;
+    height: 400px;
+    background-color: #5f506e;
+    margin: 50px auto;
+    position: relative;
+}
+
+.caja {
+    width: 100px;
+    height: 100px;
+}
+
+/* Caja A: Relativa */
+.caja-a {
+    background-color: lightcoral;
+    position: relative;
+    top: 30px;
+    left: 50px;
+    z-index: 2;
+}
+
+/* Caja B: Absoluta */
+.caja-b {
+    background-color: lightgreen;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+/* Caja C: Fija */
+.caja-c {
+    background-color: lightblue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}

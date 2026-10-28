@@ -12,8 +12,7 @@ class Program {
             Console.WriteLine("5 - ejercicio 5");
             Console.WriteLine("6 - ejercicio 6");
             Console.WriteLine("7 - ejercicio 7");
-            Console.WriteLine("8 - ejercicio 7");
-            Console.WriteLine("9 - ejercicio 8");
+            Console.WriteLine("8 - ejercicio 8");
             Console.WriteLine("9 - ejercicio 9");
             Console.WriteLine("10 - ejercicio 10");
             Console.WriteLine("11 - ejercicio 11");
