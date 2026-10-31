@@ -1,5 +1,8 @@
 local M = {}
 
+-- Ruta absoluta al binario para que no dependa del PATH de la sesión
+local bin = vim.fn.expand("~/.npm-global/bin/live-server")
+
 local function root_of(file)
   return vim.fs.root(file, { ".live", "index.html" }) or vim.fs.dirname(file)
 end
@@ -36,9 +39,12 @@ local function find_port(root)
 end
 
 function M.open()
-  if vim.fn.executable("live-server") == 0 then
+  -- Comprobamos el ejecutable real directamente en su ruta o en PATH
+  if vim.fn.executable(bin) == 0 and vim.fn.executable("live-server") == 0 then
     return vim.notify("Falta live-server (npm i -g live-server)", vim.log.levels.ERROR)
   end
+
+  local cmd_bin = vim.fn.executable(bin) == 1 and bin or "live-server"
 
   local file = vim.api.nvim_buf_get_name(0)
   if file == "" then
@@ -53,7 +59,7 @@ function M.open()
 
   if not running then
     local id = vim.fn.jobstart({
-      "live-server",
+      cmd_bin,
       "--port=" .. port,
       "--host=127.0.0.1",
       "--no-browser",

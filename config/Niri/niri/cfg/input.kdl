@@ -30,6 +30,7 @@ input {
     mouse {
         // Disable acceleration.
         accel-profile "adaptive"
+        middle-emulation
 
         // Faster scrolling with the mouse wheel.
         scroll-factor 1.0
