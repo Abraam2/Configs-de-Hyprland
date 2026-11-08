@@ -27,8 +27,7 @@ end, { desc = "Toggle diagnostics (all)" })
 -- Al pulsar Alt + ñ en modo inserción: escribe {} y retrocede el cursor un espacio
 vim.keymap.set("i", "<M-ñ>", "{}<Left>", { desc = "Insertar llaves con cursor en medio" })
 
--- Al pulsar Alt + d en modo inserción: escribe {} y retrocede el cursor un espacio
-vim.keymap.set("i", "<M-d>", "{}<Left>", { desc = "Insertar llaves con cursor en medio" })
+vim.keymap.set("i", "<C-ñ>", "{}<Left>", { desc = "Insertar llaves con cursor en medio" })
 
 -- Al pulsar Alt + f en modo inserción: escribe [] y retrocede el cursor un espacio
 vim.keymap.set("i", "<M-f>", "[]<Left>", { desc = "Insertar llaves con cursor en medio" })
