@@ -15,20 +15,29 @@ return {
             score_offset = 50,
           },
           snippets = {
-            score_offset = 60, -- Por defecto un pelín por encima para que salte cw~ o for~
+            score_offset = 60, -- Tus snippets habituales (cw, for) siguen saliendo arriba
             transform_items = function(_, items)
               local col = vim.fn.col(".") - 1
               local line = vim.fn.getline(".")
               local char_before = line:sub(col, col)
+              local ft = vim.bo.filetype
 
-              -- 1. Si acabas de escribir un punto '.', ANULA los snippets por completo
+              -- 1. Si acabas de escribir un punto '.', ANULA snippets (C#, JS, etc.)
               if char_before == "." then
                 return {}
               end
 
-              -- 2. Si estás dentro de comillas o atributos HTML, baja los snippets al fondo
-              local node = vim.treesitter.get_node()
-              if node then
+              -- 2. En CSS: dentro de una propiedad (después de ':') no queremos basura de snippets
+              if ft == "css" or ft == "scss" or ft == "less" then
+                local before_cursor = line:sub(1, col)
+                if before_cursor:find(":%s*[%w_-]*$") then
+                  return {} -- Cero snippets en valores de CSS (como colores o fuentes)
+                end
+              end
+
+              -- 3. Si estás dentro de comillas o atributos HTML, baja los snippets al fondo
+              local ok, node = pcall(vim.treesitter.get_node)
+              if ok and node then
                 local t = node:type()
                 if vim.tbl_contains({ "string", "string_content", "attribute_value", "quoted_attribute_value" }, t) then
                   for _, item in ipairs(items) do
@@ -44,7 +53,7 @@ return {
             score_offset = 10,
           },
           buffer = {
-            score_offset = -100, -- Palabras del texto plano siempre al pozo
+            score_offset = -100, -- Palabras de texto plano al fondo
           },
         },
       },
@@ -53,14 +62,14 @@ return {
         sorts = { "score", "exact", "sort_text" },
       },
 
-      -- APAGAR las dos ventanas invasivas automáticas
+      -- Mantener apagadas las ventanas molestas
       completion = {
         documentation = {
-          auto_show = false, -- Adiós a la sábana gigante de texto que tapa media pantalla
+          auto_show = false,
         },
       },
       signature = {
-        enabled = false, -- Adiós a la caja flotante pequeña que se queda pegada al teclear
+        enabled = false,
       },
 
       keymap = {
@@ -69,7 +78,6 @@ return {
         ["<C-ñ>"] = { "accept", "fallback" },
         ["<C-p>"] = {},
         ["<C-b>"] = { "select_prev", "fallback" },
-        -- Si en algún momento quieres leer la documentación aposta, usas tus atajos
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
         ["<C-u>"] = { "scroll_documentation_up", "fallback" },
       },

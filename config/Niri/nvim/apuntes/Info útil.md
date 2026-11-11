@@ -8,7 +8,7 @@ Copiar texto, seleccionas línea que sustituye
 p -> Pega y CORTA el texto seleccionado (absoluta mierda)
 P -> Pega y NO CORTA, repito NO CORTA, no lo hace (absoluto cine)
 
-Código
+# Código
 
 <leader>co -> Añade los imports necesarios al código
 <leader>cr -> Renombra una función o variable, o lo que sea en TODO el proyecto, para que todo funcione de locos
@@ -16,10 +16,14 @@ Código
 <leader>sB -> Hace un GREP en los buffers abiertos
 <leader>si -> Permite buscar y saltar rápidamente entre funciones, con mayúsculas es en todo el proyecto
 
-Pasos prohibido
+# Pasos prohibido
 
 Control + o -> Te mueve hacía atrás en los saltos, puede moverte incluso entre buffers. IMPORTANTE USAR ESTO.
 Control + i -> Te mueve hacía delante en los saltos, puede moverte incluso entre buffers. IMPORTANTE USAR ESTO.
+
+# Random xD
+
+Mantener K sobre un elementos para sacar la info
 
 ### Plugins
 
