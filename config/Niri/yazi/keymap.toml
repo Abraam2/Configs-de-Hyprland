@@ -169,9 +169,19 @@ run = "plugin mover"
 desc = "Mover archivos de extensión X desde subcarpetas aquí"
 
 [[mgr.prepend_keymap]]
-on = ["C"]
+on = ["C", "i"]
 run = "plugin magia"
 desc = "Convertir imágenes con magia"
+
+[[mgr.prepend_keymap]]
+on = ["C", "m"]
+run = 'shell --block --confirm -- mkv2mp4 %s'
+desc = "MKV a MP4 (mantiene nombre)"
+
+[[mgr.prepend_keymap]]
+on = ["C", "n"]
+run = 'shell --block --confirm -- mkv2mp4 -n %s'
+desc = "MKV a MP4 (solo número cap)"
 
 [[mgr.prepend_keymap]]
 on = ["t", "k"]

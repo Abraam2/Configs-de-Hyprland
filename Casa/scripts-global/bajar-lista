@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+TXT_FILE="$1"
+
+if [[ ! -f "$TXT_FILE" ]]; then
+    echo "Uso: bajar-lista ruta/al/archivo.txt"
+    exit 1
+fi
+
+BASE_DIR=$(dirname "$(realpath "$TXT_FILE")")
+ep=1
+serie=1
+carpeta="Serie_1"
+
+while IFS= read -r line || [[ -n "$line" ]]; do
+    line=$(echo "$line" | tr -d '\r' | xargs)
+    [[ -z "$line" ]] && continue
+
+    if [[ "$line" == "!!!"* ]]; then
+        nombre_raw="${line#!!!}"
+        nombre_limpio=$(echo "$nombre_raw" | xargs | tr '/' '-')
+
+        if [[ -n "$nombre_limpio" ]]; then
+            carpeta="$nombre_limpio"
+        else
+            ((serie++))
+            carpeta="Serie_${serie}"
+        fi
+
+        ep=1
+        mkdir -p "$BASE_DIR/$carpeta"
+        echo "=========================================="
+        echo ">>> Serie: '$carpeta' (Contador a 01)"
+        echo "=========================================="
+        continue
+    fi
+
+    mkdir -p "$BASE_DIR/$carpeta"
+    num=$(printf "%02d" "$ep")
+    echo ">>> Descargando [$carpeta] -> ${num}.mp4"
+
+    yt-dlp --embed-subs --sub-langs "es.*" --merge-output-format mp4 -o "${BASE_DIR}/${carpeta}/${num}.mp4" "$line"
+
+    ((ep++))
+done <"$TXT_FILE"
+
+echo ">>> ¡Todas las descargas terminadas!"
