@@ -17,7 +17,18 @@ return {
         server = {
           log_level = "Verbose", -- Obliga al servidor a cantar todo
         },
-        lsp = { roslynator_enabled = false },
+        lsp = {
+          roslynator_enabled = false,
+          auto_refresh_codelens = false, -- deja de refrescar las lentes solo
+          config = {
+            settings = {
+              ["csharp|code_lens"] = {
+                dotnet_enable_references_code_lens = false, -- quita "0 referencias"
+                dotnet_enable_tests_code_lens = false,
+              },
+            },
+          },
+        },
       })
     end,
   },

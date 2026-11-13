@@ -1,0 +1,46 @@
+GUIA LIMPIEZA Y OPTIMIZACION BTRFS / CACHYOS
+
+1. BORRAR FOTOS VIEJAS (SNAPSHOTS)
+Ver lista de fotos guardadas:
+sudo snapper -c root list
+
+Borrar rango viejo (cambia los numeros segun tu lista, ej. de la 61 a la 104):
+sudo snapper -c root delete 61-104
+
+Comprobar que quedan pocas:
+sudo snapper -c root list
+
+
+2. LIMPIAR CACHE DE PROGRAMAS Y LOGS
+Borrar paquetes descargados y carpetas temporales residuales:
+sudo rm -rf /var/cache/pacman/pkg/*
+
+Dejar los registros del sistema en maximo 100MB:
+sudo journalctl --vacuum-size=100M
+
+
+3. RECUPERAR ESPACIO EN EL DISCO (BTRFS BALANCE)
+Reorganizar los bloques vacios para recuperar los gigas:
+sudo btrfs balance start -dusage=50 -musage=50 /
+
+
+4. LIMITAR SNAPPER PARA QUE NO SE VUELVA A LLENAR
+Abrir archivo de configuracion:
+sudo nano /etc/snapper/configs/root
+
+Buscar y cambiar estas dos lineas para guardar solo 5 fotos:
+NUMBER_LIMIT="5"
+NUMBER_LIMIT_IMPORTANT="5"
+
+Guardar: Ctrl + O, Enter. Salir: Ctrl + X.
+
+Activar limpieza automatica periodica:
+sudo systemctl enable --now snapper-cleanup.timer
+
+
+5. COMPROBAR ESPACIO LIBRE FINAL
+sudo btrfs filesystem usage /
+
+
+EXTRA: SI SIGUE LLENO, BUSCAR QUE CARPETAS PESAN
+sudo dust -d 1 -x /
