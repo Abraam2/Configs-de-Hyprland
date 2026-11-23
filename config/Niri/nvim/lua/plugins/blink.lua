@@ -13,7 +13,43 @@ return {
         providers = {
           lsp = {
             score_offset = 50,
+            transform_items = function(ctx, items)
+              if vim.bo.filetype ~= "cs" then
+                return items
+              end
+
+              local kw = ctx:get_keyword():lower()
+              if kw == "" then
+                return items
+              end
+
+              local K = vim.lsp.protocol.CompletionItemKind
+              local boost = {
+                [K.Variable] = 100,
+                [K.Field] = 80,
+                [K.Property] = 80,
+                [K.Method] = 60,
+                [K.Function] = 60,
+                [K.Keyword] = 40,
+              }
+
+              local out = {}
+              for _, item in ipairs(items) do
+                local label = (item.label or ""):lower()
+                -- Descarta lo que no contenga lo escrito como subcadena contigua
+                if label:find(kw, 1, true) then
+                  item.score_offset = (item.score_offset or 0) + (boost[item.kind] or 0)
+                  -- Prefijo exacto: bonus extra
+                  if label:sub(1, #kw) == kw then
+                    item.score_offset = item.score_offset + 100
+                  end
+                  table.insert(out, item)
+                end
+              end
+              return out
+            end,
           },
+
           snippets = {
             score_offset = 60, -- Tus snippets habituales (cw, for) siguen saliendo arriba
             transform_items = function(_, items)
@@ -49,9 +85,11 @@ return {
               return items
             end,
           },
+
           path = {
             score_offset = 10,
           },
+
           buffer = {
             score_offset = -100, -- Palabras de texto plano al fondo
           },
@@ -59,15 +97,21 @@ return {
       },
 
       fuzzy = {
-        sorts = { "score", "exact", "sort_text" },
+        sorts = { "exact", "score", "sort_text" }, -- exact primero (el default correcto)
+        max_typos = function()
+          return 0 -- sin tolerancia a typos
+        end,
+        use_proximity = true, -- prioriza palabras cercanas al cursor
       },
 
-      -- Mantener apagadas las ventanas molestas
       completion = {
+        list = { max_items = 50 },
+        -- Mantener apagadas las ventanas molestas
         documentation = {
           auto_show = false,
         },
       },
+
       signature = {
         enabled = false,
       },

@@ -23,6 +23,15 @@ alias gparted='xhost +si:localuser:root && sudo gparted && xhost -si:localuser:r
 alias metrolist='~/repos/Metrolist/gradlew :app:assembleDebug && adb install -r app/build/outputs/apk/foss/debug/app-foss-debug.apk'
 
 # -----------------------------------------------------
+# TV
+# -----------------------------------------------------
+
+alias conectarTV='adb connect 192.168.1.83:5555'
+alias paquetesTV='adb shell pm list packages -3'
+alias desinstalarTV='adb uninstall'
+alias capturaTV='adb exec-out screencap -p > captura.png'
+
+# -----------------------------------------------------
 # Maincra
 # -----------------------------------------------------
 
